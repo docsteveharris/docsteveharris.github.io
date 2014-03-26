@@ -44,7 +44,7 @@ For local testing, if I navigate to the root folder and run `jekyll build`, and 
 Final thoughts
 --------------
 
-My guess is that all the 'real' HTML and code lives in the `_site' directory, and it is this which is served by github. If I wanted to host the site elsewhere, then it would be the contents of this that I would be publishing after using jekyll on my local machine to build it.  
+My guess is that all the 'real' HTML and code lives in the `_site` directory, and it is this which is served by github. If I wanted to host the site elsewhere, then it would be the contents of this that I would be publishing after using jekyll on my local machine to build it.
 
 Useful links
 ------------

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: A little knowledge
 date: 2014-03-26 09:00:00 UTC
 ---
@@ -14,3 +14,16 @@ Now I have added the YAML front matter.
 2. Two
 3. Three
 4. Four
+
+
+Posts
+-----
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+

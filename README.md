@@ -1,5 +1,9 @@
 # My own readme
 
+## Notes
+
+- post tags should either be a space separated list or a formatted YAML list
+
 ## Log
 
 - 140418: converted to using kramdown markdown processor as [recommended](https://help.github.com/articles/migrating-your-pages-site-from-maruku)

@@ -1,6 +1,7 @@
 ---
 title: Blog set-up notes
 layout: post
+tags: howto
 ---
 
 This blog is hosted by github. And despite their claims of this being a simple thing to do, I struggled. Things now seem to work, and I think I now have the hang of this. These are a series of notes to myself to remind me of the things I have learned.

@@ -12,16 +12,16 @@ I then use a prefix system to file the note, but any file without a prefix gets 
 
 Currently, this looks something like this
 
-      qtx: _archive-taskpaper
-      qtp: taskpaper-projects
-      qtt: taskpaper
-      qpx: _archive-readme-projects
-      qpp: readme-projects
-      qww: clinical
-      qrr: running
-      qll: listacular
-      qbb: blog
-      qcf: config
+    qtx: _archive-taskpaper
+    qtp: taskpaper-projects
+    qtt: taskpaper
+    qpx: _archive-readme-projects
+    qpp: readme-projects
+    qww: clinical
+    qrr: running
+    qll: listacular
+    qbb: blog
+    qcf: config
 
 I then use Brett Terpstra's [folderize](http://brettterpstra.com/2014/05/04/folderize-sync-nvalt-notes-to-nested-folders/) script to translate theses codes into a folder hierarchy. There is one extra level of complication. For taskpaper/todo lists and readme-project files the first word of the file name then assigns that file to an area of responsibility, and the remainder of the name then defines the project to which it belongs. Again, though, if these are not assigned then the todo list or readme simple lives in the 'taskpaper' or 'readme-projects' folder. I can always go back and add the relevant area of responsibility or project keyword later.
 

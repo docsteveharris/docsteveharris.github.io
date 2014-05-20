@@ -20,6 +20,7 @@ categories_path: categories.html
 tags_path: tags.html
 
 # BASE_PATH: http://dbtek.github.io/dbyll
+baseurl: http://docsteveharris.github.io/
 
 markdown: kramdown
 kramdown:

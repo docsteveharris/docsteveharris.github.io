@@ -3,7 +3,7 @@ title: A unified text inbox
 layout: post
 tags: gtd
 category: gtd
-published: false
+published: true
 ---
 
 I seem to be struggling to keep track of notes and information, and part of the problem is that I feel mental inertia when I come to choose where to save a note. I am therefore trying a solution whereby I save *all* text notes in a single folder. On my Mac, this folder is the one tracked by nvAlt. It is therefore trivial to start a note. On the web and in iOS, this folder is the one tracked again by SimpleNote (the sync with simplenote is handled by nvAlt). Again it is trivial to add or find a note.

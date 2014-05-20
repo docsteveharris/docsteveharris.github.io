@@ -1,1 +1,12 @@
 markdown:   kramdown
+defaults:
+    -
+        scope:
+            path: "" # empty string for all variables
+        values:
+            layout: "default"
+            author: "Steve Harris"
+exclude:
+    - readme.md
+url: http://alittleknowledge.net
+name: docsteveharris

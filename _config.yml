@@ -1,12 +1,26 @@
-markdown:   kramdown
-defaults:
-    -
-        scope:
-            path: "" # empty string for all variables
-        values:
-            layout: "default"
-            author: "Steve Harris"
-exclude:
-    - readme.md
-url: http://alittleknowledge.net
-name: docsteveharris
+# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+
+paginate: 10 # pagination based on number of posts
+paginate_path: "page:num"
+exclude: ["README.md"] # files to exclude
+pygments: true
+
+title: a little knowledge
+description: Personal blog and notes for Steve Harris
+author:
+  name: Steve Harris
+  email: blog@steveharris.me
+  github: docsteveharris
+  twitter: drstevok
+  bio: "Personal blog and notes<br/>for Dr Steve Harris"
+  email_md5: 726351295ec82e145928582f595aa3aa
+
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
+
+# BASE_PATH: http://dbtek.github.io/dbyll
+
+markdown: kramdown
+kramdown:
+    input: GFM

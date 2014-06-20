@@ -6,11 +6,11 @@ category: gtd
 published: true
 ---
 
-I seem to be struggling to keep track of notes and information, and part of the problem is that I feel mental inertia when I come to choose where to save a note. I am therefore trying a solution whereby I save *all* text notes in a single folder. On my Mac, this folder is the one tracked by nvAlt. It is therefore trivial to start a note. On the web and in iOS, this folder is the one tracked again by SimpleNote (the sync with simplenote is handled by nvAlt). Again it is trivial to add or find a note.
+I seem to be strug gling to keep track of notes and information, and part of the problem is that I feel mental inertia when I come to choose where to save a note. I am therefore trying a solution whereby I save *all* text notes in a single folder. On my Mac, this folder is the one tracked by nvAlt. It is therefore trivial to start a note. On the web and in iOS, this folder is the one tracked again by SimpleNote (the sync with simplenote is handled by nvAlt). Again it is trivial to add or find a note.
 
 I then use a prefix system to file the note, but any file without a prefix gets a date prefix. This avoids problems with future file modifications and dates and provides a simple sorting system for files. All other prefixes start with 'q', and then have a 2 letter code.
 
-Currently, this looks something like this
+Currently, this looks something like this is
 
     qtx: _archive-taskpaper
     qtp: taskpaper-projects
@@ -18,6 +18,7 @@ Currently, this looks something like this
     qpx: _archive-readme-projects
     qpp: readme-projects
     qww: clinical
+    rbi: bibliography entries
     qrr: running
     qll: listacular
     qbb: blog

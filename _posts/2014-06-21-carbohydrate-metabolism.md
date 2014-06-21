@@ -6,8 +6,6 @@ category: ficm
 published: true
 ---
 
-## Carbohydrate Metabolism
-
 Think of the liver as the body's 'glucostat' - takes up glucose when in excess, and releases glucose during fasts.
 * Glucose enters all cells and via Hexokinase becomes glucose-6-phosphate; hence maintains a concentration gradient for glucose; it can now enter the Embden-Meyerhof (glycolytic) pathway
 * Liver (uniquely) contains glucose-6-phosphatase hence glucose can also be released back into the circulation; other cells can only produce a net return of glucose back to the circulation via lactate and its conversion in the liver back to glucose (Cori cycle)

@@ -6,8 +6,6 @@ category: ficm
 published: true
 ---
 
-## Protein Metabolism
-
 * Protein synthesis
     * albumin, alpha1-acid glycoprotein, transport proteins etc.
     * albumin 

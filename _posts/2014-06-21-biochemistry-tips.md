@@ -1,3 +1,13 @@
+---
+title: Biochemistry tips
+layout: post
+tags: ficm tips science
+category: ficm
+published: true
+---
+
+Assorted biochemistry notes and tips
+
 ## Redox status- Anything strongly electronegative (excess of unshielded protons in the nucleus) is an oxidant as it tries to steal electrons from other molecules- Glutathione is essentially a 'sacrifical anode' which donates its electrons to the oxidant
 -  Oxidation is simply a term which describes the relative electronegativities of different atoms in combination; because oxygen is the most electronegative atom (except for fluorine which is rare) then it always wins a competion for electrons; so when oxygen combines with another atom - the other atom is oxidised and loses its electrons to the more electronegative oxygen; reduction is the opposite historical term from reducing ores (metal oxide) to pure metals where electrons must be returned to the metal ion and oxygen seperated; the terms oxidation and reduction are historical but essentially describe the gain or loss of electrons to form a bond and may or may not involve oxygen or oxides and moreover electrons do not have to be wholly gained or lost but rather shared more or less unequally.
 - In a battery, the anode is the electrode where electrons go up (greek ana = up) and hence is the electrode where oxidation takes place; the cathode is where electrons go down into the cell (greek cata =down) and is the electode where reduction takes place

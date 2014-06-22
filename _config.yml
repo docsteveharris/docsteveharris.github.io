@@ -22,6 +22,7 @@ tags_path: tags.html
 # BASE_PATH: http://dbtek.github.io/dbyll
 # baseurl: http://docsteveharris.github.io/
 
-markdown: kramdown
-kramdown:
-    input: GFM
+# CHANGED: 2014-06-22 - switched fr Kramdown for super/sub-scripts
+markdown: redcarpet
+redcarpet:
+  extensions: [smart, strikethrough, superscript, tables, subscript]

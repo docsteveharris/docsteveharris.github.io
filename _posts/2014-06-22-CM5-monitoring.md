@@ -16,5 +16,4 @@ Originally
 
 More easily, stay with Lead II and move RA and indifferent electrodes to manubrium and V5 as above
 
-
-CM5 (Quyyumi, Brit Heart J, 1986)
+via Quyyumi, Brit Heart J, 1986

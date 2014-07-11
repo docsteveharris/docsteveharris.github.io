@@ -1,5 +1,5 @@
 ---
-title: PubMed search tas
+title: PubMed search tags
 layout: post
 tags: tips literature search
 category: academic

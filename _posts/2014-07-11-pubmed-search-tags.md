@@ -1,8 +1,8 @@
 ---
-title: The Stewart Hypothesis
+title: PubMed search tas
 layout: post
-tags: ficm science notes chemistry physiology
-category: ficm
+tags: tips literature search
+category: academic
 published: true
 ---
 I can never remember the tags that I need to help focus searches on [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/). In particular, I didn't know it was possible to specify a date range via tags so for the last 5 years (2009--2014) you'd type `2009:2014[dp]`.

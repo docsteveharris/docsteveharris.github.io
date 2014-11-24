@@ -26,9 +26,10 @@ And I can then easily add row and column percentages with
 
 All in all a nice syntax.
 
-My choices in R seem to be:
+Assuming in R, my data is called `wdt`, then my choices seem to be:
 
 ## Use `table` in base R
+
 
     table(dead7, icu_accept)
 

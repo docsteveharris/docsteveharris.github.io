@@ -6,7 +6,7 @@ categories: [code]
 tags: [Rstats, code, tutorial]
 ---
 
-I was trying to show some colleagues how to draw a [QQ-plot(http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) in R today. I failed miserably, and so have just spent a bit of time trying to redeem myself.
+I was trying to show some colleagues how to draw a [QQ-plot](http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) in R today. I failed miserably, and so have just spent a bit of time trying to redeem myself.
 
 This should do it.
 
@@ -37,4 +37,23 @@ That produces this.
 ![QQ-plot comparing two different age distributions]({{site.url}}/assets/media/141125_qqplot_1.png)
 
 And the point? It's a neat way to compare two different distributions. You can instantly see how close they are to each other.
+
+For example,
+
+```R
+# Right shift age
+tdt[, age.rightshift := age.old + 10]
+qqplot('age.old', 'age.rightshift', data=tdt)
+```
+
+![QQ-plot to show right (additive) shift]({{site.url}}/assets/media/141125_qqplot_2.png)
+
+
+```R
+# Scale age
+tdt[, age.scaled := age.old * 0.8]
+qqplot('age.old', 'age.scaled', data=tdt)
+```
+
+![QQ-plot to show scaling (multiplicative) shift]({{site.url}}/assets/media/141125_qqplot_3.png)
 

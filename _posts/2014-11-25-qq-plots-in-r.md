@@ -57,3 +57,5 @@ qqplot('age.old', 'age.scaled', data=tdt)
 
 ![QQ-plot to show scaling (multiplicative) shift]({{site.url}}/assets/media/141125_qqplot_3.png)
 
+Updated code available [here](https://gist.github.com/b36b908d7cb4de9b52b4)
+

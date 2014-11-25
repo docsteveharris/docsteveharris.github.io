@@ -6,8 +6,6 @@ category: space separated string
 published: true
 ---
 
-# Learning R
-
 I was asked by a colleague yesterday if there were any resources on the internet to help learn R. I feel that that should have an answer crafted by someone like [Randall Munroe](http://xkcd.com/about/) along the lines of 'What if you tried to count the number of ways there are to learn R'?
 
 Whatever that number is, it's now +1.

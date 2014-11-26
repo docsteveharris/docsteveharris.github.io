@@ -26,3 +26,7 @@ tags_path: tags.html
 markdown: redcarpet
 redcarpet:
   extensions: [smart, strikethrough, superscript, tables, subscript]
+
+# CHANGED: 2014-11-26 - [ ] disqus integration
+# as per https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions
+comments: true

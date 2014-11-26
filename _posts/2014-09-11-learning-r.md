@@ -3,7 +3,7 @@ title: Learning R
 layout: post
 comments: true
 tags: howto tutorial
-category: space separated string
+category: 
 published: true
 ---
 
@@ -16,3 +16,5 @@ I'll start with an unordered list. If we're all lucky, then from time to time, I
 ## Links and handy resources
 
 - Learn R interactively with [Swirl](http://swirlstats.com/)
+- Great [online help(http://docs.ggplot2.org/current/) for [ggplot2](http://ggplot2.org/) 
+- Nice [documentation for R](http://www.rdocumentation.org/)

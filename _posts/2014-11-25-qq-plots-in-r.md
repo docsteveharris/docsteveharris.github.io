@@ -11,7 +11,7 @@ I was trying to show some colleagues how to draw a [QQ-plot](http://en.wikipedia
 
 This should do it.
 
-```R
+```r
 # Test data: 1000 patients with two different age distributions
 tdt <- data.table(age.old=rnorm(1000, mean=65, sd=15), age.young=rnorm(1000,mean=55,sd=10))
 
@@ -41,7 +41,7 @@ And the point? It's a neat way to compare two different distributions. You can i
 
 For example,
 
-```R
+```r
 # Right shift age
 tdt[, age.rightshift := age.old + 10]
 qqplot('age.old', 'age.rightshift', data=tdt)
@@ -50,7 +50,7 @@ qqplot('age.old', 'age.rightshift', data=tdt)
 ![QQ-plot to show right (additive) shift]({{site.url}}/assets/media/141125_qqplot_2.png)
 
 
-```R
+```r
 # Scale age
 tdt[, age.scaled := age.old * 0.8]
 qqplot('age.old', 'age.scaled', data=tdt)

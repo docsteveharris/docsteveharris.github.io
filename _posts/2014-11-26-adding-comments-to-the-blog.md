@@ -34,3 +34,5 @@ layout: default
 
 {{ "{%"" }} endif %}
 ```
+
+PS. It's not so straightforward to include a code snippet containing Liquid template tags in  a post, but the answer is [here](http://jamiecollinson.com/blog/how-to-escape-liquid-template-tags/).

@@ -1,6 +1,7 @@
 ---
 title: Blog set-up notes
 layout: post
+comments: true
 tags: howto
 ---
 

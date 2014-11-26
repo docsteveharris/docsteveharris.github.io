@@ -1,6 +1,7 @@
 ---
 title: PubMed - Did you know?
 layout: post
+comments: true
 tags: tip
 category:
 published: true

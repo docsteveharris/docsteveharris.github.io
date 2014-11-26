@@ -1,6 +1,7 @@
 ---
 title: Reposition your 3-lead ECG please
 layout: post
+comments: true
 tags: ficm tips cardiology
 category: ficm
 published: true

@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: Neglected blog? Check-out the Sublime Jekyll package
 published: True
 categories: []

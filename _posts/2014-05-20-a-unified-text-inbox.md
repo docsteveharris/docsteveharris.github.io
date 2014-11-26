@@ -1,6 +1,7 @@
 ---
 title: A unified text inbox
 layout: post
+comments: true
 tags: gtd
 category: gtd
 published: true

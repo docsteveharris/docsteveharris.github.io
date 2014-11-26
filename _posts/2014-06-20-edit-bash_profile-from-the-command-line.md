@@ -1,6 +1,7 @@
 ---
 title: Edit .bash_profile from the command line
 layout: post
+comments: true
 tags: terminal bash quicktip
 category: 
 published: true

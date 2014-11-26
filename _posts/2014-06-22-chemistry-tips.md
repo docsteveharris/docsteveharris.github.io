@@ -1,6 +1,7 @@
 ---
 title: Chemistry notes
 layout: post
+comments: true
 tags: ficm science notes
 category: ficm
 published: true

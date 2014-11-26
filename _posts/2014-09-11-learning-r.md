@@ -1,6 +1,7 @@
 ---
 title: Learning R
 layout: post
+comments: true
 tags: howto tutorial
 category: space separated string
 published: true

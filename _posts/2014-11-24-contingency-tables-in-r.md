@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: Contingency Tables in R
 published: True
 categories: []

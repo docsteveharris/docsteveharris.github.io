@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: QQ plots in R
 published: True
 categories: [code]
@@ -58,4 +59,6 @@ qqplot('age.old', 'age.scaled', data=tdt)
 ![QQ-plot to show scaling (multiplicative) shift]({{site.url}}/assets/media/141125_qqplot_3.png)
 
 Updated code available [here](https://gist.github.com/b36b908d7cb4de9b52b4)
+
+And see [this nice answer](http://stats.stackexchange.com/a/101290/7746) on Cross-validated with some example Q-norm plots (where you use the QQ-plot to compare your data to a normal distribution).
 

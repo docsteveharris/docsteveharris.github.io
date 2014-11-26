@@ -1,6 +1,7 @@
 ---
 title: Using test to check on a file in the shell
 layout: post
+comments: true
 tags: shell bash tips Hazel
 category: 
 published: true

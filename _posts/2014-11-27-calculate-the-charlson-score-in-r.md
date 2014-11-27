@@ -14,6 +14,11 @@ The following function looks for these 20 variables, and uses a quick bit of mat
 
 {% gist docsteveharris/ab5ad52bc5115d962cb2 %}
 
+For reference, here is the table from the original paper containing the weights for the score.
+
+<!-- use raw html so you can set the width -->
+
+<img src = {{site.url}}/assets/media/141127_charlson_score.png style="width: 80%"/>
 
 
 [1]: [Charlson ME, Pompei P, Ales KL, MacKenzie CR. A new method of classifying prognostic comorbidity in longitudinal studies: development and validation. Journal of Chronic Diseases. 1987;40:373-383.

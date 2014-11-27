@@ -23,12 +23,9 @@ tags_path: tags.html
 # baseurl: http://docsteveharris.github.io/
 
 # CHANGED: 2014-06-22 - switched fr Kramdown for super/sub-scripts
-# CHANGED: 2014-11-27 - [ ] switched back to Kramdown for compatability
-# markdown: redcarpet
-# redcarpet:
-#   extensions: [smart, strikethrough, superscript, tables, subscript]
-kramdown:
-    input: gfm
+markdown: redcarpet
+redcarpet:
+  extensions: [smart, strikethrough, superscript, tables, subscript]
 
 # CHANGED: 2014-11-26 - [ ] disqus integration
 # as per https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions

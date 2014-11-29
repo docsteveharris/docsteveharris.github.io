@@ -13,6 +13,18 @@ Whatever that number is, it's now +1.
 
 I'll start with an unordered list. If we're all lucky, then from time to time, I will try and order it so the good stuff goes to the top.
 
+## Handy functions
+
+### `comment`
+
+Attach a 'comment' to an R object. For example, coming from Stata, I am normally working with a main data set even though there may be others in memory. I call this `wdt` for 'working data table', or `wdf` for 'working data frame'.
+
+    > comment(wdt) <- paste("Working data table: created: ", today())
+    > comment(wdt)
+    [1] "Working data table: created:  2014-11-29"
+
+The difference is that this comment exists in R, not just in the code so if I load this object up elsewhere then the comment comes with it.
+
 ## Links and handy resources
 
 - Learn R interactively with [Swirl](http://swirlstats.com/)

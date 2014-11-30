@@ -4,6 +4,7 @@ title: Syntax highlighting for R in the terminal
 published: True
 categories: []
 tags: []
+comments: true
 ---
 
 So R-studio seemed to be running really slowly today which prompted me to try using R in the terminal. This works nicely with [R-Box](https://github.com/randy3k/R-Box). Otherwise said, type in Sublime Text, and execute in R (via iTerm.)

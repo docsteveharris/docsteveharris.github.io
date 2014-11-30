@@ -4,6 +4,7 @@ title: Calculate the Charlson score in R
 published: True
 categories: []
 tags: [Rstats, datamx, howto, code]
+comments: true
 ---
 
 It is unlikely that anyone else will have data formatted in the same way as me, but it shouldn't be too hard to convert this.

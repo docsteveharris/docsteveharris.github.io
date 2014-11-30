@@ -4,6 +4,7 @@ title: Testing the Twitter widget
 published: False
 categories: []
 tags: []
+comments: true
 ---
 
 You should see my Twitter feed below!

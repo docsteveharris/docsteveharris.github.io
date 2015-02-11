@@ -1,7 +1,6 @@
 ---
 title: Control of pH
 layout: post
-comments: true
 tags: ficm science notes
 category: ficm
 published: true

@@ -1,7 +1,6 @@
 ---
 title: Protein metabolism
 layout: post
-comments: true
 tags: ficm notes metabolism
 category: ficm
 published: true

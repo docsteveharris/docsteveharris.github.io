@@ -1,7 +1,6 @@
 ---
 title: The Stewart Hypothesis
 layout: post
-comments: true
 tags: ficm science notes chemistry physiology
 category: ficm
 published: true

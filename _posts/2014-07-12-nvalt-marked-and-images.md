@@ -1,7 +1,6 @@
 ---
 title: nvAlt, Marked (the app), and images
 layout: post
-comments: true
 tags: apps tips code
 category: setup
 published: true

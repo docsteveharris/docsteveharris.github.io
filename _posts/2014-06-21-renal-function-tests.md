@@ -1,7 +1,6 @@
 ---
 title: Renal function tests
 layout: post
-comments: true
 tags: renal physiology ficm notes rcoa
 category: ficm
 published: true

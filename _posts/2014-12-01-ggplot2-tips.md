@@ -14,3 +14,7 @@ Another running file of useful tips (for me) when using the [ggplot2](http://ggp
 <img src = {{site.url}}/assets/media/141201_ColorBrewer__Color_Advice_for_Maps.png style="width: 80%"/>
 
 - Just discovered the [GGally](http://cran.r-project.org/web/packages/GGally/index.html) package. Seems to have a bunch of really help preset plots. For example, do you want to use ggplot2 to plot your survivor function? Then the `ggsurv` function might help.
+
+- Beware: ggplot2 by default scales points by the radius not the area; this is potentially misleading but can be fixed by the [`scale_size_area()`](http://docs.ggplot2.org/current/scale_size_area.html) option.
+
+

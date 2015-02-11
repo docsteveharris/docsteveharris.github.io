@@ -1,7 +1,6 @@
 ---
 title: How to turn off the Google Chrome menubar notifications icon in Mac OS X 
 layout: post
-comments: true
 tags: tips osx
 category: setup
 published: true

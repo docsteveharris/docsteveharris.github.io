@@ -1,7 +1,6 @@
 ---
 title: FICM notes
 layout: post
-comments: true
 tags: ficm notes rcoa
 category: ficm
 published: true

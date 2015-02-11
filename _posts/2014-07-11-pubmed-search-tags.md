@@ -1,8 +1,7 @@
 ---
 title: PubMed search tags
 layout: post
-comments: true
-tags: tips literature search howto
+tags: tips literature search
 category: academic
 published: true
 ---

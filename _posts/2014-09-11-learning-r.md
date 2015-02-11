@@ -2,7 +2,7 @@
 title: Learning R
 layout: post
 tags: howto tutorial
-category: space separated string
+category: code
 published: true
 ---
 

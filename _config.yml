@@ -1,31 +1,27 @@
-# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+# Dependencies
+markdown:            redcarpet
+highlighter:         pygments
 
-paginate: 10 # pagination based on number of posts
-paginate_path: "page:num"
-exclude: ["README.md"] # files to exclude
-pygments: true
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
 
-title: a little knowledge
-description: Personal blog and notes for Steve Harris
+# Setup
+title:            A Little Knowledge
+tagline:          is a dangerous thing
+url:              http://alittleknowledge.net
+paginate:         5
+baseurl:          /
 author:
-  name: Steve Harris
-  email: blog@steveharris.me
-  github: docsteveharris
-  twitter: drstevok
-  bio: "Personal blog and notes<br/>for Dr Steve Harris"
+  name:           Steve Harris
+  url:            https://twitter.com/drstevok
+  email:          blog@steveharris.me
   email_md5: 726351295ec82e145928582f595aa3aa
 
-rss_path: feed.xml
-categories_path: categories.html
-tags_path: tags.html
-
-# BASE_PATH: http://dbtek.github.io/dbyll
-# baseurl: http://docsteveharris.github.io/
-
-# CHANGED: 2014-06-22 - switched fr Kramdown for super/sub-scripts
-markdown: redcarpet
-redcarpet:
-  extensions: [smart, strikethrough, superscript, tables, subscript]
+# Custom vars
+version:             1.0.0
 
 # CHANGED: 2014-11-26 - [ ] disqus integration
 # as per https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions

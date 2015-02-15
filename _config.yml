@@ -3,17 +3,22 @@ permalink:        pretty
 relative_permalinks: true
 
 # Setup
-title:            Poole
-tagline:          The Jekyll Butler
-url:              http://getpoole.com
+title:            A Little Knowledge
+tagline:          is a dangerous thing
+url:              http://alittleknowledge.net
 paginate:         1
 baseurl:          /
 author:
-  name:           Mark Otto
-  url:            https://twitter.com/mdo
-  email:          markdotto@gmail.com
+  name:           Steve Harris
+  url:            https://twitter.com/drstevok
+  email:          blog@steveharris.me
+  email_md5: 726351295ec82e145928582f595aa3aa
 
 # Custom vars
 version:          1.0.0
 github:
   repo:           https://github.com/poole/poole
+
+# CHANGED: 2014-11-26 - [ ] disqus integration
+# as per https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions
+comments: tru

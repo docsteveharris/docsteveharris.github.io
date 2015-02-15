@@ -21,4 +21,4 @@ github:
 
 # CHANGED: 2014-11-26 - [ ] disqus integration
 # as per https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions
-comments: tru
+comments: true

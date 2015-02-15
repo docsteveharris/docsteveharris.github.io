@@ -1,12 +1,18 @@
+# Dependencies
+markdown:            redcarpet
+highlighter:         pygments
+
 # Permalinks
-permalink:        pretty
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
 relative_permalinks: true
 
 # Setup
 title:            A Little Knowledge
 tagline:          is a dangerous thing
 url:              http://alittleknowledge.net
-paginate:         1
+paginate:         5
 baseurl:          /
 author:
   name:           Steve Harris
@@ -15,9 +21,7 @@ author:
   email_md5: 726351295ec82e145928582f595aa3aa
 
 # Custom vars
-version:          1.0.0
-github:
-  repo:           https://github.com/poole/poole
+version:             1.0.0
 
 # CHANGED: 2014-11-26 - [ ] disqus integration
 # as per https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions

@@ -1,26 +1,19 @@
-# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
 
-paginate: 10 # pagination based on number of posts
-paginate_path: "page:num"
-exclude: ["README.md"] # files to exclude
-pygments: true
-
-title: a little knowledge
-description: Personal blog and notes for Steve Harris
+# Setup
+title:            Poole
+tagline:          The Jekyll Butler
+url:              http://getpoole.com
+paginate:         1
+baseurl:          /
 author:
-  name: Steve Harris
-  email: blog@steveharris.me
-  github: docsteveharris
-  twitter: drstevok
-  bio: "Personal blog and notes<br/>for Dr Steve Harris"
-  email_md5: 726351295ec82e145928582f595aa3aa
+  name:           Mark Otto
+  url:            https://twitter.com/mdo
+  email:          markdotto@gmail.com
 
-rss_path: feed.xml
-categories_path: categories.html
-tags_path: tags.html
-
-# BASE_PATH: http://dbtek.github.io/dbyll
-
-markdown: kramdown
-kramdown:
-    input: GFM
+# Custom vars
+version:          1.0.0
+github:
+  repo:           https://github.com/poole/poole

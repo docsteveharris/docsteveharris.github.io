@@ -1,10 +1,14 @@
 ---
-layout: post
-comments: true
 title: QQ plots in R
+layout: post
+categories: blog
+excerpt:
+tags: [R, code, tutorial]
+image:
+  feature:
 published: True
-categories: [code]
-tags: [Rstats, code, tutorial]
+comments: true
+
 ---
 
 I was trying to show some colleagues how to draw a [QQ-plot](http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) in R today. I failed miserably, and so have just spent a bit of time trying to redeem myself.

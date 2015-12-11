@@ -1,8 +1,11 @@
 ---
-layout: post
 title: Calculate the SOFA score in R
-categories: [datascibc]
-tags: [Rstats, howto, datamx]
+layout: post
+categories: blog
+excerpt:
+tags: [R, howto, data-wrangling, severity-score]
+image:
+  feature:
 published: True
 comments: True
 

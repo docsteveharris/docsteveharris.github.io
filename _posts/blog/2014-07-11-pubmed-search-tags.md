@@ -1,10 +1,16 @@
 ---
 title: PubMed search tags
+
 layout: post
+categories: blog
+excerpt:
 tags: tips literature search
-category: academic
-published: true
+image:
+  feature:
+published: True
+
 ---
+
 I can never remember the tags that I need to help focus searches on [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/). In particular, I didn't know it was possible to specify a date range via tags so for the last 5 years (2009--2014) you'd type `2009:2014[dp]`.
 
 | FIELD NAME               | `[TAG]`    | SEARCHES                                                                                  |  

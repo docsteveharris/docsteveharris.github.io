@@ -1,9 +1,12 @@
 ---
 title: Using test to check on a file in the shell
 layout: post
+categories: blog
+excerpt:
 tags: shell bash tips Hazel
-category: 
-published: true
+image:
+  feature:
+published: True
 ---
 
 Do you need to check whether a file meets certain conditions? Then use the `test` command in the bash shell.

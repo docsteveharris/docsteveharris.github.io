@@ -1,8 +1,12 @@
 ---
-layout: post
 title: My first R package
-categories: [code]
-tags: [howto, Rstats]
+layout: post
+categories: blog
+excerpt:
+image:
+  feature:
+published: True
+tags: [howto, R]
 published: True
 comments: True
 ---

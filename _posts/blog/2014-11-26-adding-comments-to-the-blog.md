@@ -1,10 +1,15 @@
 ---
-layout: post
 title: Adding comments to the blog
-published: True
-categories: []
+layout: post
+categories: blog
+excerpt:
+tags: [statistics]
 tags: [howto, blog]
+image:
+  feature:
+published: True
 comments: true
+
 ---
 
 Big day. I have added comments to the blog. Couldn't have been easier. Signed up for a [disqus](https://disqus.com/) account, and followed the instructions [here](https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions). The only small hint I can offer is that when you add the 'Universal Embed code' the tags need to be enclosed in curly braces `{` and `}`.

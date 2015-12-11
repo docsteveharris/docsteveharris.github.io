@@ -1,10 +1,13 @@
 ---
-layout: post
 title: Sublime Text tips
-published: True
-categories: [Setup]
+layout: post
+categories: blog
+excerpt:
 tags: [tips, runningfile, sublimetext]
+image:
+  feature:
 comments: True
+published: True
 ---
 
 Just an aide-memoire for myself really. When referring to keybindings then I will use `C` to indicate `Command` (OS X) or `Control` (Windows).

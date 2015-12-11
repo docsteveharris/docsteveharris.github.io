@@ -1,9 +1,12 @@
 ---
-layout: post
 title: Syntax highlighting for R in the terminal
+layout: post
+categories: blog
+excerpt:
+tags: [code howto terminal]
+image:
+  feature:
 published: True
-categories: []
-tags: []
 comments: true
 ---
 

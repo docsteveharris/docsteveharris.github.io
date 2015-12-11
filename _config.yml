@@ -1,10 +1,13 @@
 # Site wide configuration
 
 title: A little knowledge
-tagline: is a dangerous thing
+# title:
+# tagline: is a dangerous thing
 locale: en_US
-description: is a dangerous thing
-logo: gravatar-alk.png
+# description: is a dangerous thing
+description: ...
+# logo: a-little-knowledge.png
+logo: is-a-dangerous-thing.png
 search: true
 # for the live site e.g. on the master branch
 url: http://alittleknowledge.net

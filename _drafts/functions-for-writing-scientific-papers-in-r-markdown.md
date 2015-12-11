@@ -1,10 +1,12 @@
 ---
-layout: 
 title: Functions for writing scientific papers in R markdown
-categories: []
-tags: []
-published: True
-
+layout: post
+categories: blog
+excerpt:
+tags: [R, markdown, code]
+image:
+  feature:
+published: false
 ---
 
 Links I found useful

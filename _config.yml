@@ -1,28 +1,58 @@
-# Dependencies
-markdown:            redcarpet
-highlighter:         pygments
+# Site wide configuration
 
-# Permalinks
-#
-# Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:           pretty
-relative_permalinks: true
+title: A little knowledge
+tagline: is a dangerous thing
+locale: en_US
+description: is a dangerous thing
+logo: gravatar-alk.png
+search: true
+# url: http://alittleknowledge.net
+url: http://localhost:4000
 
-# Setup
-title:            A Little Knowledge
-tagline:          is a dangerous thing
-url:              http://alittleknowledge.net
-paginate:         5
-baseurl:          /
-author:
-  name:           Steve Harris
-  url:            https://twitter.com/drstevok
-  email:          blog@steveharris.me
-  email_md5: 726351295ec82e145928582f595aa3aa
+# Jekyll configuration
 
-# Custom vars
-version:             1.0.0
+permalink:   /:categories/:title/
+markdown:    kramdown # prev redcarpet
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
 
-# CHANGED: 2014-11-26 - [ ] disqus integration
-# as per https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions
-comments: true
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..2
+  enable_coderay: false
+
+mathjax: true
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+
+
+# Site owner
+owner:
+  name: Steve Harris
+  avatar: bio-photo.jpg
+  email: blog@steveharris.me
+  disqus-shortname: drstevok
+  twitter: drstevok
+  facebook: #username
+  github: docsteveharris
+  stackexchange: http://stackoverflow.com/users/992999/drstevok
+  linkedin: #username
+  instagram: #username
+  flickr: #username
+  tumblr: #username
+  pinterest: #username
+  weibo: #userid
+  google:
+    plus: #username
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:

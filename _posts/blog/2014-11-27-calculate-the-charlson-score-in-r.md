@@ -1,9 +1,12 @@
 ---
-layout: post
 title: Calculate the Charlson score in R
+layout: post
+categories: blog
+excerpt:
+tags: [R, data-wrangling, howto, code]
+image:
+  feature:
 published: True
-categories: []
-tags: [Rstats, datamx, howto, code]
 comments: true
 ---
 

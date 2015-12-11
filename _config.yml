@@ -6,7 +6,9 @@ locale: en_US
 description: is a dangerous thing
 logo: gravatar-alk.png
 search: true
+# for the live site e.g. on the master branch
 url: http://alittleknowledge.net
+# for testing e.g. on the develop branch
 # url: http://localhost:4000
 
 # Jekyll configuration
@@ -38,7 +40,7 @@ owner:
   name: Steve Harris
   avatar: bio-photo.jpg
   email: blog@steveharris.me
-  disqus-shortname: drstevok
+  disqus-shortname: alittleknowledgenet # site shortname not your username
   twitter: drstevok
   facebook: #username
   github: docsteveharris

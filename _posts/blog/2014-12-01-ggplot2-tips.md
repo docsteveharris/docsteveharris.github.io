@@ -1,10 +1,14 @@
 ---
-layout: post
 title: ggplot2 tips
-published: True
-categories: [code]
+layout: post
+categories: blog
+excerpt:
 tags: [runningfile, tips, howto]
+image:
+  feature:
+published: True
 comments: True
+
 ---
 
 Another running file of useful tips (for me) when using the [ggplot2](http://ggplot2.org/) library.

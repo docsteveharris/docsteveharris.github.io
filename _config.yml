@@ -6,8 +6,8 @@ locale: en_US
 description: is a dangerous thing
 logo: gravatar-alk.png
 search: true
-# url: http://alittleknowledge.net
-url: http://localhost:4000
+url: http://alittleknowledge.net
+# url: http://localhost:4000
 
 # Jekyll configuration
 

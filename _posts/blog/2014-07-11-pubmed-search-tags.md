@@ -4,7 +4,7 @@ title: PubMed search tags
 layout: post
 categories: blog
 excerpt:
-tags: tips literature search
+tags: [tips, literature, search]
 image:
   feature:
 published: True

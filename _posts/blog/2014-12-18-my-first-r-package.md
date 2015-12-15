@@ -19,18 +19,18 @@ Here goes.
 ## Set up
 
 
-```r
+{% highlight r %}
 # Don't evaluate this as the `create` will fail because the library already exits
 library(devtools)
 library(roxygen2)
 setwd("/Users/steve/usr/lib/R-stuff")
 create("datascibc")
-```
+{% endhighlight %}
 
 The `create` command makes a subdirectory for the new package. Inside this, there is a file called `DESCRIPTION.R`. I added my contact details, and the package description here.
 
 
-```r
+{% highlight r %}
 Package: datascibc
 Title: Miscellaneous helper functions 
 Version: 0.1
@@ -39,23 +39,23 @@ Description: Miscellaneous helper functions, but with a longer term plan to shar
 Depends: R (>= 3.1.2)
 License: What license is it under? Don't know!
 LazyData: true
-```
+{% endhighlight %}
 
 
 There is also a `datascibc\R` subdirectory. This is where you need to add the R functions you want to save. For example, in a file called `lookfor.R` save the following.
 
 
-```r
+{% highlight r %}
 # R version of lookfor: `names(data)[grep('pattern',names(data))]`
 lookfor <- function(d,p) names(d)[grep(p,names(d))]
-```
+{% endhighlight %}
 
 Not very easy to read is it. So now you are required to add some documentation via `roxygen2` with detailed instructions [here](https://github.com/klutometis/roxygen#roxygen2). In fact, the documentation required for a package is more complicated, and it is roxygen2 that is making this process simple.
 
 Here is the file with comments added.
 
 
-```r
+{% highlight r %}
 #' R version of the stata lookfor function
 #'
 #' This will try to find a variable when you can't remember its exact name
@@ -65,27 +65,27 @@ Here is the file with comments added.
 #' @examples
 #' lookfor_function()
 lookfor <- function(data=wdt,string_to_find) names(data)[grep(string_to_find,names(data))]
-```
+{% endhighlight %}
 
 Now process the documentation
 
 
-```r
+{% highlight r %}
 setwd("./datascibc")
 document()
 setwd("../")
-```
+{% endhighlight %}
 
 We should be done, and I can now install my package.
 
 
 
 
-```r
+{% highlight r %}
 install("datascibc")
-```
+{% endhighlight %}
 
-```
+{% highlight r %}
 ## Installing datascibc
 ## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD INSTALL  \
 ##   '/Users/steve/usr/lib/R-stuff/datascibc'  \
@@ -93,26 +93,26 @@ install("datascibc")
 ##   --install-tests 
 ## 
 ## Reloading installed datascibc
-```
+{% endhighlight %}
 
-```r
+{% highlight r %}
 # Let's see if R can print the new function
 lookfor
-```
+{% endhighlight %}
 
-```
+{% highlight r %}
 ## function (string_to_find, data = wdt) 
 ## names(data)[grep(string_to_find, names(data))]
 ## <environment: namespace:datascibc>
-```
+{% endhighlight %}
 
-```r
+{% highlight r %}
 # Let's test this
 test_data <- data.frame(id=c(1:10), x=seq(1, 100, 10))
 test_data
-```
+{% endhighlight %}
 
-```
+{% highlight r %}
 ##    id  x
 ## 1   1  1
 ## 2   2 11
@@ -124,18 +124,18 @@ test_data
 ## 8   8 71
 ## 9   9 81
 ## 10 10 91
-```
+{% endhighlight %}
 
-```r
+{% highlight r %}
 lookfor("id", test_data)
-```
+{% endhighlight %}
 
-```
+{% highlight r %}
 ## [1] "id"
-```
+{% endhighlight %}
 
-```r
+{% highlight r %}
 # Hooray!
-```
+{% endhighlight %}
 
 And again, Hooray!

@@ -19,11 +19,14 @@ These are notes from reading Andrew Gelman's and Jennifer Hill's 2007 edition of
 - I also had trouble with the `sim` function used in the examples. Switching from the `$` to the `@` operator seemed to help.
 
 
-	# Original R code
-	# Error with $ operator for S4 class, try @
-	curve (fit.2.sim$coef[i,1] + fit.2.sim$coef[i,2]*x, add=TRUE,col="gray")
-	# Updated R code
-	curve (fit.2.sim@coef[i,1] + fit.2.sim@coef[i,2]*x, add=TRUE,col="gray")
+{% highlight r %}
+# Original R code
+# Error with $ operator for S4 class, try @
+curve (fit.2.sim$coef[i,1] + fit.2.sim$coef[i,2]*x, add=TRUE,col="gray")
+# Updated R code
+curve (fit.2.sim@coef[i,1] + fit.2.sim@coef[i,2]*x, add=TRUE,col="gray")
+{% endhighlight %}
+
 
 
 

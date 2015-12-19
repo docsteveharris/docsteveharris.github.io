@@ -3,7 +3,7 @@ title: Learning R
 layout: post
 categories: blog
 excerpt:
-tags: [R statistics howto]
+tags: [R, statistics, howto]
 image:
   feature:
 published: True

@@ -2,7 +2,7 @@
 layout: post
 title: How to make a great R reproducible example?
 categories: blog
-tags: [R statistics help stackoverflow]
+tags: [R, statistics, help, stackoverflow]
 published: True
 excerpt: 
 image: 

@@ -3,11 +3,10 @@ layout: post
 title: Bootstap at the cluster or unit level?
 categories: blog
 tags: [R, statistics, howto]
+image:
+  feature:
 published: True
 comments: true
-image: 
-  feature:
-excerpt: "Speedy function to bootstrap while respecting the data structure"
 
 ---
 

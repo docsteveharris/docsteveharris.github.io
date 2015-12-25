@@ -11,8 +11,8 @@ published: True
 
 This blog is hosted by github. And despite their claims of this being a simple thing to do, I struggled. Things now seem to work, and I think I now have the hang of this. These are a series of notes to myself to remind me of the things I have learned.
 
-Set-up
-------
+## Set-up
+
 
 Create your github repository as you are [told to](http://pages.github.com/), and make sure you name it properly. The magic is that appropriately named and formatted page now pushed to this repository will be 'auto-magically' converted into a properly formatted HTML page.
 
@@ -20,21 +20,24 @@ This requires three elements.
 
 1. A properly named page. `index.md` is OK. And posts will need to be saved into the `.\_posts` directory with `CCYY-MM-DD-title.md` as their name. I found that `index.md` didn't compile properly unless I had put the formatted date-time into it's YAML header (see below):
 
-```yaml
-        ---
-        layout: default
-        title: A little knowledge
-        date: 2014-03-26 09:00:00 UTC
-        ---
-```
+{% highlight yaml %}
+
+
+---
+layout: default
+title: A little knowledge
+date: 2014-03-26 09:00:00 UTC
+---
+        
+{% endhighlight %}
 
 2. A YAML header at the top of the file. This is a list of key:value pairs on separate lines bounded above and below by three dashes `---`.
 
 3. Some templates and resources that will act as default layouts. I don't know where I copied mine from originally.
 
 
-Other notes
------------
+## Other notes
+
 
 I bought the site name at [Hover](www.hover.com). I had to then modify the A record at Hover so that it pointed to the Github IP address which I found [here](https://help.github.com/articles/my-custom-domain-isn-t-working).
 
@@ -47,13 +50,13 @@ I pushed this all to the repository, and then added the `_site` subdirectory to 
 For local testing, if I navigate to the root folder and run `jekyll build`, and then `jekyll serve`, I can see my site at `localhost:4000`.
 
 
-Final thoughts
---------------
+## Final thoughts
+
 
 My guess is that all the 'real' HTML and code lives in the `_site` directory, and it is this which is served by github. If I wanted to host the site elsewhere, then it would be the contents of this that I would be publishing after using jekyll on my local machine to build it.
 
-Useful links
-------------
+## Useful links
+
 
 + https://help.github.com/categories/20/articles
 + http://pages.github.com/

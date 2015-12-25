@@ -7,7 +7,7 @@ image:
   feature:
 published: True
 comments: true
-
+excerpt: ""
 ---
 
 I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful [Cross Validated](http://stats.stackexchange.com/q/97115/7746) recommends that any sampling that is to be done should respect the structure of the data.

@@ -1,26 +1,23 @@
 ---
 layout: page
-title: About the Jekyll Theme
-excerpt: "So Simple is a responsive Jekyll theme for your words and images."
-modified: 2014-08-08T19:44:38.564948-04:00
+title: Drink deep
+excerpt: 
 image:
-  feature: so-simple-sample-image-4.jpg
-  credit: WeGraphics
-  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
+  feature: # so-simple-sample-image-4.jpg
+  credit: # WeGraphics
+  creditlink: # http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
 ---
 
-Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the follow up to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes) --- by designer slash illustrator [Michael Rose](http://mademistakes.com).
+A series of links, and notes loosely related to using observational data to better understand clinical problems in critical care. I have unintentionally [misquoted](https://en.wikipedia.org/wiki/An_Essay_on_Criticism) Alexander Pope in naming this blog:
 
-## So Simple Theme is all about:
+> A little learning is a dangerous thing;  
+> Drink deep, or taste not the Pierian spring.
 
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
-* Minimal embellishments and subtle animations.
-* Optional large feature images for posts and pages.
-* [Custom 404 page]({{ site.url }}/404.html) to get you started.
-* [Simple site search](https://github.com/christian-fei/Simple-Jekyll-Search)
-* Support for Disqus Comments
+If you want to catch-up with me, then
 
-<a markdown="0" href="{{ site.url }}/theme-setup" class="btn">Install So Simple Theme</a>
+- You can find me on the Critical Care unit or in theatres at [UCLH](http://www.uclh.nhs.uk/Pages/home.aspx)
+- I am part of the [Centre for Anaesthesia](https://www.ucl.ac.uk/anaesthesia/people/harris), and a Fellow of the [Software Sustainability Institute](http://www.software.ac.uk/news/2015-12-07-fellows-2016-announced)
+- Or come to a [Data Science Breakfast Club](https://twitter.com/datascibc) meeting
 
-[^1]: Example: *domain.com/category-name/post-title*
+
+ 

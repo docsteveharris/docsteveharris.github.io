@@ -1,13 +1,18 @@
 # Site wide configuration
 
 title: A little knowledge
-tagline: is a dangerous thing
+# title:
+# tagline: is a dangerous thing
 locale: en_US
-description: is a dangerous thing
-logo: gravatar-alk.png
+# description: is a dangerous thing
+description: ...
+# logo: a-little-knowledge.png
+logo: is-a-dangerous-thing.png
 search: true
-# url: http://alittleknowledge.net
-url: http://localhost:4000
+# for the live site e.g. on the master branch
+url: http://alittleknowledge.net
+# for testing e.g. on the develop branch
+# url: http://localhost:4000
 
 # Jekyll configuration
 
@@ -38,7 +43,7 @@ owner:
   name: Steve Harris
   avatar: bio-photo.jpg
   email: blog@steveharris.me
-  disqus-shortname: drstevok
+  disqus-shortname: alittleknowledgenet # site shortname not your username
   twitter: drstevok
   facebook: #username
   github: docsteveharris

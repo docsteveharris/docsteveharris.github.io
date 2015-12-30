@@ -1,10 +1,14 @@
 ---
-layout: post
-comments: true
 title: Contingency Tables in R
+layout: post
+categories: blog
+excerpt:
+tags: [R statistics]
+image:
+  feature:
 published: True
-categories: []
-tags: []
+comments: true
+
 ---
 
 Hmmm. As I have mentioned I am switching from Stata to R, and right now I am missing the nice simple `tab` function from Stata that would give me a nice table like this.

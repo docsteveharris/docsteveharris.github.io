@@ -1,7 +1,12 @@
 ---
-title: Getting Microsoft OneNote 2007 files into the Mac version OneNote
+title: Getting Microsoft OneNote 2007 files into the Mac version of OneNote
 layout: post
-tags: howto
+categories: blog
+excerpt:
+tags: [howto]
+image:
+  feature:
+published: True
 ---
 
 So I have just spent an entire evening extracting the data from my old Microsoft OneNote 2007 files. This was quite a task so I thought I would document my notes here. If I had had access to a Windows 8 machine then it would have been easier. As I understand it, OneNote 2013 on a Windows machine will simply open a OneNote 2007 file. That file can then be uploaded to Microsoft Onedrive, and then ‘hey presto’, I would have had access to it back on my Mac.

@@ -31,3 +31,46 @@ Return `size` random samples from a vector `x` with or without `replace`ment.
 
 Replicate the whole item (`times`), or each element of the item (`each`)
 
+## order()
+
+Sort (re-order) a dataframe by values in a column
+
+	> df <- data.frame(x=sample(6), y=letters[1:6])
+	> df
+	  x y
+	1 1 a
+	2 3 b
+	3 5 c
+	4 6 d
+	5 4 e
+	6 2 f
+	> df[order(df$x),]
+	  x y
+	1 1 a
+	6 2 f
+	2 3 b
+	5 4 e
+	3 5 c
+	4 6 d
+
+## subset()
+
+Saves some typing when selecting rows from a data frame, and so the following are all equivalent.
+
+	mtcars[mtcars$cyl==4,]
+	subset(mtcars, cyl==4)
+
+The 'data.table' library automagically does this for you:
+
+	data.table(mtcars)[cyl==4]
+
+## which()
+
+Select items based on a logical test ...
+
+	> df <- data.frame(x=sample(6), y=letters[1:6])
+	> df[which(df$x %% 2 == 0),]
+	  x y
+	4 6 d
+	5 4 e
+	6 2 f

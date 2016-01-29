@@ -13,6 +13,28 @@ excerpt:
 
 A running list of R functions that _I_ should have known, and didn't with a minimal worked example in the style of [tl;dr](http://tldr-pages.github.io).
 
+## Assignment operator
+
+	> a <- 1	# assigns only within the environment
+	> f <- function () {
+		a <- 2
+		print(a)
+	}
+	> f()
+	[1] 2
+	> a
+	[1] 1	# nothing happens 'a' hasn't changed
+	
+
+	> f <- function () {
+		a <<- 2 # will assign 'out of the environment'
+		print(a)
+	}
+	> f()
+	[1] 2
+	> a
+	[1] 2	# 'a' is updated by <<- even within the function
+
 ## sample()
 
 	sample(x, size, replace = FALSE, prob = NULL)

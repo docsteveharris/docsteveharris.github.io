@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Getting data into R
 category: blog
 tags: [R, recipes, tutorial]

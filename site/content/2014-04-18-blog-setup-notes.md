@@ -1,6 +1,5 @@
 ---
 title: Blog set-up notes
-layout: post
 category: blog
 excerpt:
 tags: [howto, jekyll, github, blogging]

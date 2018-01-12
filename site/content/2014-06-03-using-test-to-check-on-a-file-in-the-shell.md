@@ -1,6 +1,5 @@
 ---
 title: Using test to check on a file in the shell
-layout: post
 category: blog
 excerpt:
 tags: shell bash tips Hazel

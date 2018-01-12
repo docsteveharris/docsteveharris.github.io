@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Data Analysis Using Regression and Multilevel/Hierarchical Models
 category: blog
 tags: [runningfile, notes, statistics, books, gelman]

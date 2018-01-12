@@ -1,6 +1,5 @@
 ---
 title: PubMed search tags
-layout: post
 category: blog
 excerpt:
 tags: [tips, literature, search]

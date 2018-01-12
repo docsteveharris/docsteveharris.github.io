@@ -1,6 +1,5 @@
 ---
 title: Calculate the SOFA score in R
-layout: post
 category: blog
 excerpt:
 tags: [R, howto, data-wrangling, severity-score]

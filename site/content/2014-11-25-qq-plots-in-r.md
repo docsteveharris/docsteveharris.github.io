@@ -1,6 +1,5 @@
 ---
 title: QQ plots in R
-layout: post
 category: blog
 excerpt:
 tags: [R, code, tutorial]

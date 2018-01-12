@@ -1,6 +1,5 @@
 ---
 title: Statistical Rethinking in public 1
-layout: post
 ---
 
 Publically working through the exercises in Richard McElreath's ['Statistical Rethinking'](http://xcelab.net/rm/statistical-rethinking/). The posts are written in R markdown and then knitted before publishing.

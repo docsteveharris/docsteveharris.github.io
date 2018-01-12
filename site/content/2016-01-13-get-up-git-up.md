@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Get up, git up"
 category: blog
 tags: [git, apps, osx]

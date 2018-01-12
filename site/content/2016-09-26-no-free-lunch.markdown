@@ -1,6 +1,5 @@
 ---
 title: No Free Lunch
-layout: post
 category: blog
 tags: [rstats, tips, methods]
 published: True

@@ -1,6 +1,5 @@
 ---
 title: Getting Microsoft OneNote 2007 files into the Mac version of OneNote
-layout: post
 category: blog
 excerpt:
 tags: [howto]

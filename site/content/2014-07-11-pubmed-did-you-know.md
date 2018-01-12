@@ -1,6 +1,5 @@
 ---
 title: PubMed - Did you know?
-layout: post
 category: blog
 excerpt:
 tags: [tips]

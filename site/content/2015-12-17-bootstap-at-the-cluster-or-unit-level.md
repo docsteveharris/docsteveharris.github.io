@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Bootstap at the cluster or unit level?
 category: blog
 tags: [R, statistics, howto]

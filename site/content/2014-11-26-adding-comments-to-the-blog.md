@@ -1,6 +1,5 @@
 ---
 title: Adding comments to the blog
-layout: post
 category: blog
 excerpt:
 tags: [howto, blog]

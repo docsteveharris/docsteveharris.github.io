@@ -1,5 +1,4 @@
 ---
-layout: post
 title: An exact fishy test
 category: blog
 tags: []

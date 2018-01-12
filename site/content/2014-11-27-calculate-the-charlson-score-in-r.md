@@ -1,6 +1,5 @@
 ---
 title: Calculate the Charlson score in R
-layout: post
 category: blog
 excerpt:
 tags: [R, data-wrangling, howto, code]

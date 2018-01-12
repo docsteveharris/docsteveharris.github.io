@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Parsing command line options in R
 category: blog
 tags: []

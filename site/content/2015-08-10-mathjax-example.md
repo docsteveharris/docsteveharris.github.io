@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "MathJax Example"
 category: blog
 excerpt:

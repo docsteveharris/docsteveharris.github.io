@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Science isn't broken
 category: blog
 tags: [statistics, link, quotes]

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: R functions you should know
 category: blog
 tags: [rstats, tips, runninglist]

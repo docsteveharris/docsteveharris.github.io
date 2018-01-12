@@ -1,5 +1,4 @@
 ---
-layout: post
 title: advanced r book notes
 category: blog
 tags: [rstats, books, notes, runningfile]

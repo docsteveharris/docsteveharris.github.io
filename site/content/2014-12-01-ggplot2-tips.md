@@ -1,6 +1,5 @@
 ---
 title: ggplot2 tips
-layout: post
 category: blog
 excerpt:
 tags: [runningfile, tips, howto]

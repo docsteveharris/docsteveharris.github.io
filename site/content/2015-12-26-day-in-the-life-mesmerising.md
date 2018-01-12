@@ -1,5 +1,4 @@
 ---
-layout: post
 title: A day in the life ... visualised
 category: blog
 tags: [statistics, link, dataviz]

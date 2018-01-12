@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Globally set options in R markdown
 category: blog
 tags: [rstats, tip, markdown]

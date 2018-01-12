@@ -1,6 +1,5 @@
 ---
 title: Stop using bivariate correlations for variable selection
-layout: post
 category: blog
 excerpt:
 tags: [statistics]

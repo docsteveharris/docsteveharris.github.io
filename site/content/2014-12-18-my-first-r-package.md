@@ -1,6 +1,5 @@
 ---
 title: My first R package
-layout: post
 category: blog
 excerpt:
 image:

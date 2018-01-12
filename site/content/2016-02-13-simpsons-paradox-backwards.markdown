@@ -1,6 +1,5 @@
 ---
 title: Simpson's Paradox backwards
-layout: post
 category: blog
 tags: [statistics, tutorial]
 published: True

@@ -1,1 +1,3 @@
 site/output/*
+todo.taskpaper
+__pycache__

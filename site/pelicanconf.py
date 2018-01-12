@@ -37,5 +37,5 @@ DEFAULT_PAGINATION = False
 PLUGIN_PATHS = ['../plugins']
 PLUGINS = ['i18n_subsites']
 
-THEME = '../pelican-bootstrap3'
+THEME = '../themes/pelican-bootstrap3'
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}

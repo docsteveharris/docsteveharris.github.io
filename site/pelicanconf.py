@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Steve Harris'
-SITENAME = 'alittleknowledge'
+SITENAME = 'a little knowledge ...'
 SITEURL = ''
 
 PATH = 'content'
@@ -38,4 +38,5 @@ PLUGIN_PATHS = ['../plugins']
 PLUGINS = ['i18n_subsites']
 
 THEME = '../themes/pelican-bootstrap3'
+BOOTSTRAP_THEME = 'flatly'
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}

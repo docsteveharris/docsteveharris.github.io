@@ -1,7 +1,7 @@
 ---
 layout: post
 title: R functions you should know
-categories: blog
+category: blog
 tags: [rstats, tips, runninglist]
 published: True
 comments: true

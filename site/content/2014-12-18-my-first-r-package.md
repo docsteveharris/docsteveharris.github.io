@@ -1,7 +1,7 @@
 ---
 title: My first R package
 layout: post
-categories: blog
+category: blog
 excerpt:
 image:
   feature:

@@ -1,7 +1,7 @@
 ---
 title: Sublime Text tips
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [tips, runningfile, sublimetext]
 image:

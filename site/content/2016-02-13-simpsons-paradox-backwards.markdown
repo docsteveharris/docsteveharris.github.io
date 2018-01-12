@@ -1,7 +1,7 @@
 ---
 title: Simpson's Paradox backwards
 layout: post
-categories: blog
+category: blog
 tags: [statistics, tutorial]
 published: True
 excerpt: 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: An exact fishy test
-categories: blog
+category: blog
 tags: []
 published: True
 excerpt: 

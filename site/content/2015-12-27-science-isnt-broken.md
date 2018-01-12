@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Science isn't broken
-categories: blog
+category: blog
 tags: [statistics, link, quotes]
 published: True
 excerpt: 

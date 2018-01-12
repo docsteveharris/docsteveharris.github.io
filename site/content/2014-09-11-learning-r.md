@@ -1,7 +1,7 @@
 ---
 title: Learning R
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [R, statistics, howto]
 image:

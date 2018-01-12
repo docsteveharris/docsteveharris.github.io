@@ -1,7 +1,7 @@
 ---
 title: Adding comments to the blog
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [howto, blog]
 image:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: advanced r book notes
-categories: blog
+category: blog
 tags: [rstats, books, notes, runningfile]
 published: True
 excerpt: 

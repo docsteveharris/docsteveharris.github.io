@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Parsing command line options in R
-categories: blog
+category: blog
 tags: []
 published: True
 excerpt: 

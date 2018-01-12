@@ -1,7 +1,7 @@
 ---
 title: How to report frailty in a Cox Model?
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [statistics, questions, stata]
 image:

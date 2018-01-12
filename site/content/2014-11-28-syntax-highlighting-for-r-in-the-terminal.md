@@ -1,7 +1,7 @@
 ---
 title: Syntax highlighting for R in the terminal
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [code, howto, terminal]
 image:

@@ -1,7 +1,7 @@
 ---
 title: Blog set-up notes
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [howto, jekyll, github, blogging]
 image:

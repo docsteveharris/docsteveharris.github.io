@@ -1,7 +1,7 @@
 ---
 title: Contingency Tables in R
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [R statistics]
 image:

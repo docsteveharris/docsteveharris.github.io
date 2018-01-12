@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Getting data into R
-categories: blog
+category: blog
 tags: [R, recipes, tutorial]
 published: True
 image: 

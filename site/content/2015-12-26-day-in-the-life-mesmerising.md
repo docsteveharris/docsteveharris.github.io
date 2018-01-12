@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A day in the life ... visualised
-categories: blog
+category: blog
 tags: [statistics, link, dataviz]
 published: True
 excerpt: 

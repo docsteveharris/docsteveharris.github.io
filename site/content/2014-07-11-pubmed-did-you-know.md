@@ -1,8 +1,7 @@
 ---
 title: PubMed - Did you know?
-
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [tips]
 image:
@@ -15,4 +14,3 @@ I have a nagging feeling that I have always been told that I should use Ovid Med
 
 - pubmed: you can't put a wildcard (`?` or `*`) in the middle of the word (whereas you can in ovid)
 - ovid tag syntax (`pencillin.ti`) differs from pubmed (`penicillin[ti]`)
-

@@ -1,7 +1,7 @@
 ---
 title: QQ plots in R
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [R, code, tutorial]
 image:

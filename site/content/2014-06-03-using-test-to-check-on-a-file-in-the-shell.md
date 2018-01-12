@@ -1,7 +1,7 @@
 ---
 title: Using test to check on a file in the shell
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: shell bash tips Hazel
 image:

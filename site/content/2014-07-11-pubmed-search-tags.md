@@ -1,8 +1,7 @@
 ---
 title: PubMed search tags
-
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [tips, literature, search]
 image:

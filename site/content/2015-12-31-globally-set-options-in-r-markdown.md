@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Globally set options in R markdown
-categories: blog
+category: blog
 tags: [rstats, tip, markdown]
 published: True
 image: 

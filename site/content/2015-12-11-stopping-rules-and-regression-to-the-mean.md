@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Stopping rules and regression to the mean
-categories: blog
+category: blog
 tags: [statistics, link]
 published: True
 excerpt: 

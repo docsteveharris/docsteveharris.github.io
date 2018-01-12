@@ -1,7 +1,7 @@
 ---
 title: ggplot2 tips
 layout: post
-categories: blog
+category: blog
 excerpt:
 tags: [runningfile, tips, howto]
 image:
@@ -15,7 +15,7 @@ Another running file of useful tips (for me) when using the [ggplot2](http://ggp
 
 - colour scales: I only just worked out how to find the names of the [ColorBrewer](http://colorbrewer2.org/#) palettes that are available. The quickest way is to head over to the website, pick the colour scheme you want, and then note the name (see the arrow below), and pass this to `scale_color_brewer(type="seq", palette="YlOrRd")`.
 
-![]({filename}/images/141201_ColorBrewer__Color_Advice_for_Maps.png)
+![Screenshot of ColorBrewer]({filename}/images/141201_ColorBrewer__Color_Advice_for_Maps.png)
 
 - Just discovered the [GGally](http://cran.r-project.org/web/packages/GGally/index.html) package. Seems to have a bunch of really help preset plots. For example, do you want to use ggplot2 to plot your survivor function? Then the `ggsurv` function might help.
 

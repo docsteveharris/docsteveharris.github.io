@@ -1,7 +1,7 @@
 ---
 title: No Free Lunch
 layout: post
-categories: blog
+category: blog
 tags: [rstats, tips, methods]
 published: True
 comments: true

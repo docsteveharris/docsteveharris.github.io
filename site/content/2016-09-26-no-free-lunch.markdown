@@ -1,5 +1,6 @@
 ---
 title: No Free Lunch
+Slug: no-free-lunch
 category: blog
 tags: [rstats, tips, methods]
 published: True

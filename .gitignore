@@ -1,3 +1,12 @@
 site/output/*
 todo.taskpaper
+.DS_Store
 __pycache__
+/alittleknowledge.sublime-workspace
+._.*
+*.sublime-workspace
+/site/config.codekit3
+/themes
+/plugins
+/site/content/.Ulysses-favorites.plist
+/site/content/.Ulysses-Group.plist

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>a little knowledge ...</title>
+        <meta charset="utf-8" />
+
+
+    <meta name="tags" content="[howto" />
+    <meta name="tags" content="tips" />
+    <meta name="tags" content="]" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">a little knowledge ... <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/how-to-use-tmux.html" rel="bookmark"
+         title="Permalink to Why can't I ever remember how to use tmux">Why can't I ever remember how to use tmux</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2018-04-02T00:00:00+02:00">
+      Mon 02 April 2018
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/steve-harris.html">Steve Harris</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>I didn't get <a href="https://en.wikipedia.org/wiki/Tmux">tmux</a> when I first came across it. It just seemed like a handy way to manage windows and tabs in the terminal.</p>
+<p>It's strength though is that it allows you to create persistent shell sessions that can be named, detached (when you need to do something else), and reattached when you need them as if you had been there the whole time.</p>
+<p>Install via homebrew, or if you're using <a href="http://skwp.github.io/dotfiles/">yadr</a> then you're all sorted (but note that <em>yadr</em> switches the prefix from <code>Ctrl-b</code> to <code>Ctrl-a</code> as per Screens.</p>
+<hr>
+<p>Useful links</p>
+<ul>
+<li>https://danielmiessler.com/study/tmux/#shortcut</li>
+<li>https://robots.thoughtbot.com/a-tmux-crash-course#must-haves</li>
+</ul>
+<p>Useful keyboard shortcuts via <a href="https://coderwall.com/p/mxzdrg/keyboard-shortcuts-i-use-every-day-in-tmux">Coderwall</a></p>
+<ul>
+<li><code>^b</code> then <code>c</code> to create a new window</li>
+<li><code>^b</code> then <code>n</code> to switch to the next window</li>
+<li><code>^b</code> then <code>,</code> then [type something] then ⌤ to rename the current window</li>
+<li><code>^b</code> then <code>%</code> to split the current window into panes vertically</li>
+<li><code>^b</code> then <code>"</code> to split the current window into panes horizontally</li>
+<li><code>^b</code> then <code>↑</code> to move to the above pane (works for all four arrows)</li>
+<li><code>^b</code> then <code>q</code> to show pane numbers, then (optionally) the number to switch to that pane</li>
+<li><code>^b</code> then <code>⎇↑</code> to resize the current pane up (works for all four arrows)</li>
+<li><code>^b</code> then <code>x</code> to kill the current pane (or window if it only has one pane)</li>
+<li><code>^b</code> then <code>[</code> to enter copy mode, then four arrow keys to move, even past the visible point, which is great for scrolling--I don't use it much for copying/pasting.</li>
+</ul>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>a little knowledge ...</title>
+        <meta charset="utf-8" />
+
+
+    <meta name="tags" content="[]" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">a little knowledge ... <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/mathjax-example.html" rel="bookmark"
+         title="Permalink to "MathJax Example"">"MathJax Example"</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-08-10T08:08:50-04:00">
+      Mon 10 August 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/steve-harris.html">Steve Harris</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p><a href="http://www.mathjax.org/">MathJax</a> is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know about, one for block or displayed mathematics <code>\[ ... \]</code>, and the other for inline mathematics <code>\( ... \)</code>.</p>
+<h2>Usage</h2>
+<p>To enable MathJax support be sure Kramdown is your Markdown flavor of choice and MathJax is set to true in your <code>_config.yml</code> file.</p>
+<div class="highlight"><pre><span></span><span class="n">markdown</span><span class="o">:</span> <span class="n">kramdown</span>
+<span class="n">mathjax</span><span class="o">:</span> <span class="kc">true</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>Here is an example MathJax inline rendering \\( 1/x^{2} \\), and here is a block rendering:
+\\[ \frac{1}{n^{2}} \\]
+</pre></div>
+
+
+<p>Here is an example MathJax inline rendering \( 1/x^{2} \), and here is a block rendering:
+\[ \frac{1}{n^{2}} \]</p>
+<p>The only thing to look out for is the escaping of the backslash when using markdown, so the delimiters become <code>\\[ ... \\]</code> and <code>\\( ... \\)</code> for inline and block maths respectively.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

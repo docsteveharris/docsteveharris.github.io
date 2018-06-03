@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>a little knowledge ...</title>
+        <meta charset="utf-8" />
+
+
+    <meta name="tags" content="[R" />
+    <meta name="tags" content="howto" />
+    <meta name="tags" content="data-wrangling" />
+    <meta name="tags" content="severity-score]" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">a little knowledge ... <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/calculate-the-sofa-score-in-r.html" rel="bookmark"
+         title="Permalink to Calculate the SOFA score in R">Calculate the SOFA score in R</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-02-11T00:00:00+01:00">
+      Wed 11 February 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/steve-harris.html">Steve Harris</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>A follow on from the Charlson score function previously <a href="http://alittleknowledge.net/2014/11/27/calculate-the-charlson-score-in-r.html">posted</a>. Here are functions to calculate the SOFA score.</p>
+<p>Please note</p>
+<ul>
+<li>it's almost inconceivable that your data will be similar to mine, and you will be able to just use these 'as is'; however, they might provide a useful skeleton.</li>
+<li>there are some add-ons included (e.g. if a blood gas is not available then you can still generate the SOFA respiratory score using oxygen saturations and the S:F ratio via this (slightly flawed) <a href="http://www.ncbi.nlm.nih.gov/pubmed/19242333">proposal</a>)</li>
+<li>there are some arbitrary decisions too (i.e. vasopressin use is considered to assign patients to 4 SOFA points for cardiovascular dysfunction)</li>
+</ul>
+<script src="https://gist.github.com/docsteveharris/195396d4b99e35bb4641.js"></script>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

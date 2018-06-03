@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>a little knowledge ...</title>
+        <meta charset="utf-8" />
+
+
+    <meta name="tags" content="[runningfile" />
+    <meta name="tags" content="tips" />
+    <meta name="tags" content="howto]" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">a little knowledge ... <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/ggplot2-tips.html" rel="bookmark"
+         title="Permalink to ggplot2 tips">ggplot2 tips</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2014-12-01T00:00:00+01:00">
+      Mon 01 December 2014
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/steve-harris.html">Steve Harris</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>Another running file of useful tips (for me) when using the <a href="http://ggplot2.org/">ggplot2</a> library.</p>
+<ul>
+<li>colour scales: I only just worked out how to find the names of the <a href="http://colorbrewer2.org/#">ColorBrewer</a> palettes that are available. The quickest way is to head over to the website, pick the colour scheme you want, and then note the name (see the arrow below), and pass this to <code>scale_color_brewer(type="seq", palette="YlOrRd")</code>.</li>
+</ul>
+<p><img alt="Screenshot of ColorBrewer" src="/images/141201_ColorBrewer__Color_Advice_for_Maps.png"></p>
+<ul>
+<li>
+<p>Just discovered the <a href="http://cran.r-project.org/web/packages/GGally/index.html">GGally</a> package. Seems to have a bunch of really help preset plots. For example, do you want to use ggplot2 to plot your survivor function? Then the <code>ggsurv</code> function might help.</p>
+</li>
+<li>
+<p>Beware: ggplot2 by default scales points by the radius not the area; this is potentially misleading but can be fixed by the <a href="http://docs.ggplot2.org/current/scale_size_area.html"><code>scale_size_area()</code></a> option.</p>
+</li>
+</ul>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

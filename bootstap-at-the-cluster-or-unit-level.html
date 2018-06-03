@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>a little knowledge ...</title>
+        <meta charset="utf-8" />
+
+
+    <meta name="tags" content="[R" />
+    <meta name="tags" content="statistics" />
+    <meta name="tags" content="howto]" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">a little knowledge ... <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/bootstap-at-the-cluster-or-unit-level.html" rel="bookmark"
+         title="Permalink to Bootstap at the cluster or unit level?">Bootstap at the cluster or unit level?</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-12-17T00:00:00+01:00">
+      Thu 17 December 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/steve-harris.html">Steve Harris</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful <a href="http://stats.stackexchange.com/q/97115/7746">Cross Validated</a> recommends that any sampling that is to be done should respect the structure of the data.</p>
+<p>This means first sampling (with replacement) hospitals, and then sampling (with replacement again) within each hospital before re-assembling the data.</p>
+<p>There is a better explanation along with a <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/HowToBootstrapCorrelatedData">code snippet</a> from the biostats department at Vanderbilt. However, with 48 hospitals and 15000 patients, this ran very slowly.</p>
+<p>I have re-written this using the <a href="https://github.com/Rdatatable/data.table/wiki">data.table</a> with a good (great?) improvement in speed (but some loss of flexibility).</p>
+<div class="highlight"><pre><span></span><span class="c1"># Generate sample data</span>
+<span class="c1"># --------------------</span>
+
+tdt <span class="o">&lt;-</span> data.table<span class="p">(</span>id<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">15000</span><span class="p">,</span> site<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">,</span> age<span class="o">=</span><span class="kp">round</span><span class="p">(</span>rnorm<span class="p">(</span>n<span class="o">=</span><span class="m">10000</span><span class="p">,</span> mean<span class="o">=</span><span class="m">65</span><span class="p">,</span> sd<span class="o">=</span><span class="m">18</span><span class="p">)))</span>
+
+<span class="c1"># Non data.table version</span>
+<span class="c1"># ----------------------</span>
+
+resample <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>dat<span class="p">,</span> cluster<span class="p">,</span> <span class="kp">replace</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1"># exit early for trivial data</span>
+  <span class="kr">if</span><span class="p">(</span><span class="kp">nrow</span><span class="p">(</span>dat<span class="p">)</span> <span class="o">==</span> <span class="m">1</span> <span class="o">||</span> <span class="kp">all</span><span class="p">(</span>replace<span class="o">==</span><span class="kc">FALSE</span><span class="p">))</span>
+      <span class="kr">return</span><span class="p">(</span>dat<span class="p">)</span>
+
+  <span class="c1"># sample the clustering factor</span>
+  cls <span class="o">&lt;-</span> <span class="kp">sample</span><span class="p">(</span><span class="kp">unique</span><span class="p">(</span>dat<span class="p">[[</span>cluster<span class="p">[</span><span class="m">1</span><span class="p">]]]),</span> replace<span class="o">=</span><span class="kp">replace</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+
+  <span class="c1"># subset on the sampled clustering factors</span>
+  sub <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span>cls<span class="p">,</span> <span class="kr">function</span><span class="p">(</span>b<span class="p">)</span> <span class="kp">subset</span><span class="p">(</span>dat<span class="p">,</span> dat<span class="p">[[</span>cluster<span class="p">[</span><span class="m">1</span><span class="p">]]]</span><span class="o">==</span>b<span class="p">))</span>
+
+  <span class="c1"># sample lower levels of hierarchy (if any)</span>
+  <span class="kr">if</span><span class="p">(</span><span class="kp">length</span><span class="p">(</span>cluster<span class="p">)</span> <span class="o">&gt;</span> <span class="m">1</span><span class="p">)</span>
+    sub <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span><span class="kp">sub</span><span class="p">,</span> resample<span class="p">,</span> cluster<span class="o">=</span>cluster<span class="p">[</span><span class="m">-1</span><span class="p">],</span> replace<span class="o">=</span><span class="kp">replace</span><span class="p">[</span><span class="m">-1</span><span class="p">])</span>
+
+  <span class="c1"># join and return samples</span>
+  <span class="kp">do.call</span><span class="p">(</span><span class="kp">rbind</span><span class="p">,</span> <span class="kp">sub</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="c1"># Data.table version</span>
+<span class="c1"># ------------------</span>
+
+rsample2 <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>data<span class="o">=</span>tdt<span class="p">,</span> id.unit<span class="o">=</span>id.u<span class="p">,</span> id.cluster<span class="o">=</span>id.c<span class="p">)</span> <span class="p">{</span>
+    <span class="kn">require</span><span class="p">(</span>data.table<span class="p">)</span>
+
+    setkeyv<span class="p">(</span>tdt<span class="p">,</span>id.cluster<span class="p">)</span>
+    <span class="c1"># Generate within cluster ID (needed for the sample command)</span>
+    tdt<span class="p">[,</span> <span class="s">&quot;id.within&quot;</span> <span class="o">:=</span> <span class="m">.</span>SD<span class="p">[,</span><span class="m">.</span><span class="kp">I</span><span class="p">],</span> by<span class="o">=</span>id.cluster<span class="p">,</span> with<span class="o">=</span><span class="kc">FALSE</span><span class="p">]</span>
+
+    <span class="c1"># Random sample of sites</span>
+    bdt <span class="o">&lt;-</span> data.table<span class="p">(</span><span class="kp">sample</span><span class="p">(</span><span class="kp">unique</span><span class="p">(</span>tdt<span class="p">[[</span>id.cluster<span class="p">]]),</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+    setnames<span class="p">(</span>bdt<span class="p">,</span><span class="s">&quot;V1&quot;</span><span class="p">,</span>id.cluster<span class="p">)</span>
+    setkeyv<span class="p">(</span>bdt<span class="p">,</span>id.cluster<span class="p">)</span>
+
+    <span class="c1"># Use random sample of sites to select from original data</span>
+    <span class="c1"># then</span>
+    <span class="c1"># within each site sample with replacement using the within site ID</span>
+    bdt <span class="o">&lt;-</span> tdt<span class="p">[</span>bdt<span class="p">,</span> <span class="m">.</span>SD<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">.</span>SD<span class="o">$</span>id.within<span class="p">,</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">)],</span>by<span class="o">=</span><span class="m">.</span>EACHI<span class="p">]</span>
+
+    <span class="c1"># return data sampled with replacement respecting clusters</span>
+    bdt<span class="p">[,</span> id.within <span class="o">:=</span> <span class="kc">NULL</span><span class="p">]</span> <span class="c1"># drop id.within</span>
+    <span class="kr">return</span><span class="p">(</span>bdt<span class="p">)</span>
+<span class="p">}</span>
+
+cluster <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;site&quot;</span><span class="p">,</span> <span class="s">&quot;id&quot;</span><span class="p">)</span>
+<span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> resample<span class="p">(</span>tdt<span class="p">,</span>cluster<span class="p">,</span><span class="kt">c</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="bp">T</span><span class="p">)))</span>
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> resample<span class="p">(</span>tdt<span class="p">,</span>cluster<span class="p">,</span><span class="kt">c</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="bp">T</span><span class="p">)))</span>
+   user  system elapsed 
+  <span class="m">8.597</span>   <span class="m">0.092</span>   <span class="m">8.786</span> 
+<span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> rsample2<span class="p">(</span>tdt<span class="p">,</span> id.unit<span class="o">=</span><span class="s">&quot;pid&quot;</span><span class="p">,</span> id.cluster<span class="o">=</span><span class="s">&quot;site&quot;</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> rsample2<span class="p">(</span>tdt<span class="p">,</span> id.unit<span class="o">=</span><span class="s">&quot;pid&quot;</span><span class="p">,</span> id.cluster<span class="o">=</span><span class="s">&quot;site&quot;</span><span class="p">))</span>
+   user  system elapsed 
+  <span class="m">0.051</span>   <span class="m">0.001</span>   <span class="m">0.052</span> 
+</pre></div>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

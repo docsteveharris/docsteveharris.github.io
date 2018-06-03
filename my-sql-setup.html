@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>a little knowledge ...</title>
+        <meta charset="utf-8" />
+
+
+    <meta name="tags" content="[howto" />
+    <meta name="tags" content="tips" />
+    <meta name="tags" content="methods" />
+    <meta name="tags" content="sweetsetup]" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">a little knowledge ... <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/my-sql-setup.html" rel="bookmark"
+         title="Permalink to My SQL setup">My SQL setup</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2018-02-14T00:00:00+01:00">
+      Wed 14 February 2018
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/steve-harris.html">Steve Harris</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>Install MySQL via homebrew</p>
+<div class="highlight"><pre><span></span>brew install mysql
+</pre></div>
+
+
+<p>Data will be stored by default at <code>/usr/local/var/mysql</code>. You can confirm this as follows:</p>
+<div class="highlight"><pre><span></span>$&gt;mysql.server start
+$&gt;mysql -u root
+mysql&gt; select @@datadir;
++-----------------------+
+| @@datadir             |
++-----------------------+
+| /usr/local/var/mysql/ |
++-----------------------+
+1 row in set (0.00 sec)
+$&gt;mysql.server stop
+</pre></div>
+
+
+<p>Moving the data directory means editing the <code>my.cnf</code> file at <code>my.cnf</code> which can exist in multiple locations. See below ...</p>
+<div class="highlight"><pre><span></span>$&gt;my_print_defaults --help
+...
+Default options are read from the following files in the given order:
+/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf
+...
+</pre></div>
+
+
+<p>I edited <code>/usr/local/etc/my.cnf</code>. This worked and didn't require root privileges. Make sure the server has been stopped before you do this.</p>
+<p>My data directory is at `/volumes/safe/sql' and my file currently looks like:</p>
+<div class="highlight"><pre><span></span><span class="k">[mysqld]</span>
+<span class="c1"># Default Homebrew MySQL server config</span>
+<span class="c1"># Only allow connections from localhost</span>
+<span class="na">bind-address</span> <span class="o">=</span> <span class="s">127.0.0.1</span>
+
+<span class="na">datadir</span><span class="o">=</span><span class="s">/volumes/safe/sql</span>
+
+<span class="k">[client]</span>
+<span class="na">port</span><span class="o">=</span><span class="s">3306</span>
+</pre></div>
+
+
+<h2>Useful links</h2>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-change-a-mysql-data-directory-to-a-new-location-on-centos-7">How to Change a MySQL Data Directory to a New Location on CentOS 7</a></li>
+<li><a href="https://stackoverflow.com/questions/7973927/for-homebrew-mysql-installs-wheres-my-cnf">For homebrew mysql installs, where's my.cnf?</a></li>
+</ul>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

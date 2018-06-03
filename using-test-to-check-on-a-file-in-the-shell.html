@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>a little knowledge ...</title>
+        <meta charset="utf-8" />
+
+
+    <meta name="tags" content="shell bash tips Hazel" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">a little knowledge ... <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/using-test-to-check-on-a-file-in-the-shell.html" rel="bookmark"
+         title="Permalink to Using test to check on a file in the shell">Using test to check on a file in the shell</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2014-06-03T00:00:00+02:00">
+      Tue 03 June 2014
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/steve-harris.html">Steve Harris</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Do you need to check whether a file meets certain conditions? Then use the <code>test</code> command in the bash shell.</p>
+<p>For example, I am using <a href="http://www.noodlesoft.com/hazel.php">Hazel</a> to clean up my desktop, but I have a bunch of directories symlinked there that I don't want it to touch. There is no such test built into Hazel (it can check for aliases but not symlinks). So instead the following line will check <code>test -L myfile.ext</code> and returns a <code>0</code> in the variable <code>$?</code> if true, and <code>1</code> if false (just type <code>echo $?</code> afterwards to see).</p>
+<p>The Hazel one-liner then becomes <code>test ! -L $1</code> since Hazel uses <code>$1</code> to refer to the file being examined. Note the exclamation mark <code>!</code> that negates the test so it is checking that the file is <em>not</em> a symlink.</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

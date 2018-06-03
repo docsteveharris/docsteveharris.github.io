@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>a little knowledge ...</title>
+        <meta charset="utf-8" />
+
+
+    <meta name="tags" content="[rstats" />
+    <meta name="tags" content="tip" />
+    <meta name="tags" content="markdown]" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">a little knowledge ... <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="/globally-set-options-in-r-markdown.html" rel="bookmark"
+         title="Permalink to Globally set options in R markdown">Globally set options in R markdown</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2015-12-31T00:00:00+01:00">
+      Thu 31 December 2015
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="/author/steve-harris.html">Steve Harris</a>
+    </address>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <hr>
+<p>Normally you specify options in R markdown at the start of each chunk which requires typing them out for every block if they differ from the defaults.</p>
+<div class="highlight"><pre><span></span><span class="sb">``</span>`<span class="p">{</span>r echo<span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> warnings<span class="o">=</span><span class="kc">FALSE</span><span class="p">}</span>
+<span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="kp">print</span><span class="p">(</span><span class="s">&quot;This line is printed but the one above isn&#39;t&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>But you can specify these options globally.
+
+```{R}
+```{r}
+# Globally change R markdown options (need to load knitr first)
+require(knitr)
+opts_chunk$set(warning=FALSE, echo=FALSE)
+library(ggplot2)
+print(&quot;This line is printed but the one above isn&#39;t&quot;)
+</pre></div>
+
+
+<p>```</p>
+<p>The trick is that you need the <code>knitr</code> package loaded and not the <code>rmarkdown</code> package otherwise you can't access <code>opts_chunk</code>.</p>
+<p>More detail <a href="http://stackoverflow.com/questions/11190281/global-comment-option-for-r-markdown-in-knitr">here</a></p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

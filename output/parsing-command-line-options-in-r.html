@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Parsing command line options in R</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/blog.html">blog</a></li>
+                    <li><a href="/category/longform.html">longform</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/parsing-command-line-options-in-r.html" rel="bookmark"
+           title="Permalink to Parsing command line options in R">Parsing command line options in R</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-18T00:00:00+00:00">
+                Published: Mon 18 January 2016
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/.html">[]</a> </p>
+</footer><!-- /.post-info -->      <hr>
+<p>Notes to myself in the form of an R script about how to parse command line arguments. See <a href="http://stackoverflow.com/questions/2151212/ddg#2154190">StackOverflow</a> for alternatives.</p>
+<div class="highlight"><pre><span></span><span class="c1">#! /usr/local/bin/Rscript</span>
+
+<span class="c1"># Hashbang line - optional when running interactively but if you wish to</span>
+<span class="c1"># run `myfile.R` instead of `Rscript myfile.R`</span>
+<span class="c1"># Don&#39;t forget to chmod +x myfile.R first</span>
+
+<span class="c1"># Testing out docopt package</span>
+<span class="c1"># See http://docopt.org</span>
+<span class="c1"># and</span>
+<span class="c1"># https://cran.r-project.org/web/packages/docopt/index.html</span>
+
+<span class="c1"># install.packages(&quot;docopt&quot;) </span>
+
+<span class="c1"># Doc string below then assigned to name &#39;doc&#39;</span>
+<span class="s">&quot;usage: scratch.R [-v -m &lt;msg&gt;] &lt;param&gt; &lt;file_arg&gt; </span>
+
+<span class="s">options:</span>
+<span class="s"> -v        verbose</span>
+<span class="s"> -m &lt;msg&gt;  Message&quot;</span> <span class="o">-&gt;</span> doc
+
+<span class="kn">require</span><span class="p">(</span>docopt<span class="p">)</span> <span class="c1"># load the docopt library to parse</span>
+<span class="c1"># BEWARE if you have compulsory args on the command line then the</span>
+<span class="c1"># interactive versino will fail hence the `try` wrapper below which</span>
+<span class="c1"># assigns the args needed</span>
+
+opts <span class="o">&lt;-</span> <span class="kp">try</span><span class="p">(</span>docopt<span class="p">(</span>doc<span class="p">),</span> silent<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="c1"># parse command line arguments </span>
+<span class="c1"># NB: Uses the syntax structure of the doc string to define these</span>
+
+<span class="c1"># If interactive then no args so define these here</span>
+<span class="kr">if</span><span class="p">(</span><span class="kp">class</span><span class="p">(</span>opts<span class="p">)</span><span class="o">==</span><span class="s">&quot;try-error&quot;</span><span class="p">)</span> <span class="p">{</span>
+    opts <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">()</span>
+    opts<span class="o">$</span>m <span class="o">&lt;-</span> <span class="s">&quot;Interactive Script&quot;</span>
+    opts<span class="o">$</span>v <span class="o">&lt;-</span> <span class="kc">FALSE</span>
+    <span class="kp">print</span><span class="p">(</span>str<span class="p">(</span>opts<span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kr">if</span> <span class="p">(</span>opts<span class="o">$</span>v<span class="p">)</span> <span class="kp">print</span><span class="p">(</span>str<span class="p">(</span>opts<span class="p">))</span> 
+<span class="kr">if</span> <span class="p">(</span><span class="o">!</span><span class="kp">is.null</span><span class="p">(</span>opts<span class="o">$</span><span class="kp">message</span><span class="p">))</span> <span class="kp">cat</span><span class="p">(</span><span class="s">&quot;MESSAGE: &quot;</span><span class="p">,</span> opts<span class="o">$</span>m<span class="p">)</span>
+</pre></div>
+
+
+<p>Now on the command line<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup></p>
+<div class="highlight"><pre><span></span>&gt; Rscript scratch.R -v -m CommandLineScript foo bar.txt
+
+Welcome at Mon Jan <span class="m">18</span> <span class="m">16</span>:29:04 <span class="m">2016</span>
+Loading required package: docopt
+Loading required package: methods
+List of <span class="m">8</span>
+ $ -v        : logi TRUE
+ $ -m        : chr <span class="s2">&quot;CommandLineScript&quot;</span>
+ $ &lt;param&gt;   : chr <span class="s2">&quot;foo&quot;</span>
+ $ &lt;file_arg&gt;: chr <span class="s2">&quot;bar.txt&quot;</span>
+ $ v         : logi TRUE
+ $ m         : chr <span class="s2">&quot;CommandLineScript&quot;</span>
+ $ param     : chr <span class="s2">&quot;foo&quot;</span>
+ $ file_arg  : chr <span class="s2">&quot;bar.txt&quot;</span>
+NULL
+
+Goodbye at  Mon Jan <span class="m">18</span> <span class="m">16</span>:29:04 <span class="m">2016</span>
+</pre></div>
+
+
+<p>And the console output from an interactive session</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;scratch.R&quot;</span><span class="p">)</span>
+List of <span class="m">2</span>
+ <span class="o">$</span> m<span class="o">:</span> chr <span class="s">&quot;Interactive Script&quot;</span>
+ <span class="o">$</span> v<span class="o">:</span> logi <span class="kc">FALSE</span>
+<span class="kc">NULL</span>
+</pre></div>
+
+
+<hr>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn-1">
+<p>Note that you can't parse a command line argument surrounded by quotes or using spaces. This seems to be a <a href="http://stackoverflow.com/questions/33844516/quote-marks-in-args-for-littler-docopt/33844969#33844969">bug</a> in <code>docopt</code>?&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

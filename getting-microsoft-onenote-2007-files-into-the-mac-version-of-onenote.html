@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Getting Microsoft OneNote 2007 files into the Mac version of OneNote - a little knowledge ...</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html">
+
+        <meta name="author" content="Steve Harris" />
+        <meta name="keywords" content="[howto]" />
+        <meta name="description" content="So I have just spent an entire evening extracting the data from my old Microsoft OneNote 2007 files. This was quite a task so I thought I would document my notes here. If I had had access to a Windows 8 machine then it would have been easier. As I …" />
+
+        <meta property="og:site_name" content="a little knowledge ..." />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Getting Microsoft OneNote 2007 files into the Mac version of OneNote"/>
+        <meta property="og:url" content="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html"/>
+        <meta property="og:description" content="So I have just spent an entire evening extracting the data from my old Microsoft OneNote 2007 files. This was quite a task so I thought I would document my notes here. If I had had access to a Windows 8 machine then it would have been easier. As I …"/>
+        <meta property="article:published_time" content="2014-04-18" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="[howto]" />
+            <meta property="article:author" content="Steve Harris" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+a little knowledge ...            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li >
+                            <a href="/category/longform.html">Longform</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html"
+                       rel="bookmark"
+                       title="Permalink to Getting Microsoft OneNote 2007 files into the Mac version of OneNote">
+                        Getting Microsoft OneNote 2007 files into the Mac version of OneNote
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-04-18T00:00:00+02:00"> Fri 18 April 2014</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/howto.html">[howto]</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>So I have just spent an entire evening extracting the data from my old Microsoft OneNote 2007 files. This was quite a task so I thought I would document my notes here. If I had had access to a Windows 8 machine then it would have been easier. As I understand it, OneNote 2013 on a Windows machine will simply open a OneNote 2007 file. That file can then be uploaded to Microsoft Onedrive, and then ‘hey presto’, I would have had access to it back on my Mac.</p>
+<p>Instead I have Windows XP and OneNote 2007 running inside a VMware Fusion (version 4) virtual machine. I could also have bought Windows 8 and upgraded VMware Fusion to version 6, and saved myself all the trouble. With an academic discount, and upgrade pricing, that would still have cost me £85. It would possibly have been worth it had I needed Windows for anything else, but for now I don’t.</p>
+<p>Instead, I found a copy of Office 2010 after a lot of googling. Most of these are illegal and come with keygens and cracks, but you can avoid problems if you just use it for the 29 day trial period. I installed this on the Windows XP virtual machine (after upgrading to Service Pack 3). I then opened my old OneNote 2007 folders one by one, and by clicking on the properties menu item, selected the option to upgrade them to the 2010 file format.</p>
+<p>These 2010 version files can now be opened and edited by <a href="http://outline.ws/">Outline</a> (a Mac version of OneNote). The 2007 files were read only.</p>
+<p>I could have stopped there, but Outline also connects to Onedrive so I copied the sections of the notebooks over to empty new notebooks I had created on Onedrive. These are now available to the Mac version of OneNote.</p>
+<p>About six hours of work. Not really sure that it wouldn’t have been better to have spent the £80.</p>
+<h2>Quick list of thing's I learnt</h2>
+<ul>
+<li>Neither Outline nor Mac OneNote can be searched by Spotlight (as of 18 Apr 2014)</li>
+<li>Only the text content of a table is copied to the clipboard when working with Outline. Mac OneNote gets this right</li>
+<li>You can't rename OneNote notebooks in Outline (at least those that are saved on Onedrive)</li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
+    <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="#" target="_blank">You can modify those links in your config file</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Steve Harris
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>

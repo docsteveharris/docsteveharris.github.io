@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>My first R package - a little knowledge ...</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/my-first-r-package.html">
+
+        <meta name="author" content="Steve Harris" />
+        <meta name="keywords" content="[howto,R]" />
+        <meta name="description" content="This is a complete copy of Hilary Parker&#39;s post and techinque, but I am unreasonably pleased with myself for this. Please direct all credit to Not So Standard Deviations. Any errors are mine - though it seems to work on my system. You&#39;ll note that my thankyou comment is the zillionth …" />
+
+        <meta property="og:site_name" content="a little knowledge ..." />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="My first R package"/>
+        <meta property="og:url" content="/my-first-r-package.html"/>
+        <meta property="og:description" content="This is a complete copy of Hilary Parker&#39;s post and techinque, but I am unreasonably pleased with myself for this. Please direct all credit to Not So Standard Deviations. Any errors are mine - though it seems to work on my system. You&#39;ll note that my thankyou comment is the zillionth …"/>
+        <meta property="article:published_time" content="2014-12-18" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="[howto" />
+            <meta property="article:tag" content="R]" />
+            <meta property="article:author" content="Steve Harris" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+a little knowledge ...            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li >
+                            <a href="/category/longform.html">Longform</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/my-first-r-package.html"
+                       rel="bookmark"
+                       title="Permalink to My first R package">
+                        My first R package
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-12-18T00:00:00+01:00"> Thu 18 December 2014</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/howto.html">[howto</a>
+        /
+	<a href="/tag/r.html">R]</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>This is a complete copy of Hilary Parker's post and techinque, but I am unreasonably pleased with myself for this. Please direct all credit to <a href="http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Not So Standard Deviations</a>. Any errors are mine - though it seems to work on my system. You'll note that my thankyou comment is the zillionth on the list, and I found the link via Jeff Leek's excellent blog <a href="http://simplystatistics.org/2014/12/17/a-non-comprehensive-list-of-awesome-things-other-people-did-in-2014/">simplystats</a></p>
+<p>Here goes.</p>
+<h2>Set up</h2>
+<div class="highlight"><pre><span></span><span class="c1"># Don&#39;t evaluate this as the `create` will fail because the library already exits</span>
+<span class="kn">library</span><span class="p">(</span>devtools<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>roxygen2<span class="p">)</span>
+<span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;/Users/steve/usr/lib/R-stuff&quot;</span><span class="p">)</span>
+create<span class="p">(</span><span class="s">&quot;datascibc&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The <code>create</code> command makes a subdirectory for the new package. Inside this, there is a file called <code>DESCRIPTION.R</code>. I added my contact details, and the package description here.</p>
+<div class="highlight"><pre><span></span>Package<span class="o">:</span> datascibc
+Title<span class="o">:</span> Miscellaneous helper functions
+Version<span class="o">:</span> <span class="m">0.1</span>
+Authors<span class="o">@</span>R<span class="o">:</span> <span class="s">&quot;Steve Harris &lt;git@steveharris.me&gt; [aut, cre]&quot;</span>
+Description<span class="o">:</span> Miscellaneous helper functions<span class="p">,</span> but with a longer term plan to share these functions with the other members of <span class="o">@</span>datascibc
+Depends<span class="o">:</span> R <span class="p">(</span><span class="o">&gt;=</span> <span class="m">3.1.2</span><span class="p">)</span>
+License<span class="o">:</span> What license is it under<span class="o">?</span> Don<span class="s">&#39;</span><span class="err">t know!</span>
+LazyData<span class="o">:</span> true
+</pre></div>
+
+
+<p>There is also a <code>datascibc\R</code> subdirectory. This is where you need to add the R functions you want to save. For example, in a file called <code>lookfor.R</code> save the following.</p>
+<div class="highlight"><pre><span></span><span class="c1"># R version of lookfor: `names(data)[grep(&#39;pattern&#39;,names(data))]`</span>
+lookfor <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>d<span class="p">,</span>p<span class="p">)</span> <span class="kp">names</span><span class="p">(</span>d<span class="p">)[</span><span class="kp">grep</span><span class="p">(</span>p<span class="p">,</span><span class="kp">names</span><span class="p">(</span>d<span class="p">))]</span>
+</pre></div>
+
+
+<p>Not very easy to read is it. So now you are required to add some documentation via <code>roxygen2</code> with detailed instructions <a href="https://github.com/klutometis/roxygen#roxygen2">here</a>. In fact, the documentation required for a package is more complicated, and it is roxygen2 that is making this process simple.</p>
+<p>Here is the file with comments added.</p>
+<div class="highlight"><pre><span></span><span class="c1">#&#39; R version of the stata lookfor function</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; This will try to find a variable when you can&#39;t remember its exact name</span>
+<span class="c1">#&#39; @param string_to_find This is the string you wish to find Defaults to &#39;id&#39;.</span>
+<span class="c1">#&#39; @keywords stata</span>
+<span class="c1">#&#39; @export</span>
+<span class="c1">#&#39; @examples</span>
+<span class="c1">#&#39; lookfor_function()</span>
+lookfor <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>data<span class="o">=</span>wdt<span class="p">,</span>string_to_find<span class="p">)</span> <span class="kp">names</span><span class="p">(</span>data<span class="p">)[</span><span class="kp">grep</span><span class="p">(</span>string_to_find<span class="p">,</span><span class="kp">names</span><span class="p">(</span>data<span class="p">))]</span>
+</pre></div>
+
+
+<p>Now process the documentation</p>
+<div class="highlight"><pre><span></span><span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;./datascibc&quot;</span><span class="p">)</span>
+document<span class="p">()</span>
+<span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;../&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>We should be done, and I can now install my package.</p>
+<div class="highlight"><pre><span></span>install<span class="p">(</span><span class="s">&quot;datascibc&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">## Installing datascibc</span>
+<span class="c1">## &#39;/Library/Frameworks/R.framework/Resources/bin/R&#39; --vanilla CMD INSTALL  \</span>
+<span class="c1">##   &#39;/Users/steve/usr/lib/R-stuff/datascibc&#39;  \</span>
+<span class="c1">##   --library=&#39;/Library/Frameworks/R.framework/Versions/3.1/Resources/library&#39;  \</span>
+<span class="c1">##   --install-tests</span>
+<span class="c1">##</span>
+<span class="c1">## Reloading installed datascibc</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Let&#39;s see if R can print the new function</span>
+lookfor
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">## function (string_to_find, data = wdt)</span>
+<span class="c1">## names(data)[grep(string_to_find, names(data))]</span>
+<span class="c1">## &lt;environment: namespace:datascibc&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Let&#39;s test this</span>
+test_data <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>id<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">),</span> x<span class="o">=</span><span class="kp">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">10</span><span class="p">))</span>
+test_data
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">##    id  x</span>
+<span class="c1">## 1   1  1</span>
+<span class="c1">## 2   2 11</span>
+<span class="c1">## 3   3 21</span>
+<span class="c1">## 4   4 31</span>
+<span class="c1">## 5   5 41</span>
+<span class="c1">## 6   6 51</span>
+<span class="c1">## 7   7 61</span>
+<span class="c1">## 8   8 71</span>
+<span class="c1">## 9   9 81</span>
+<span class="c1">## 10 10 91</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>lookfor<span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span> test_data<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">## [1] &quot;id&quot;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Hooray!</span>
+</pre></div>
+
+
+<p>And again, Hooray!</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
+    <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="#" target="_blank">You can modify those links in your config file</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Steve Harris
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>

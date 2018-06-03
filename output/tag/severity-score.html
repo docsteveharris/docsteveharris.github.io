@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - severity-score]</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/blog.html">blog</a></li>
+                    <li><a href="/category/longform.html">longform</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/calculate-the-sofa-score-in-r.html">Calculate the SOFA score in R</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-02-11T00:00:00+00:00">
+                Published: Wed 11 February 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/howto.html">howto</a> <a href="/tag/data-wrangling.html">data-wrangling</a> <a href="/tag/severity-score.html">severity-score]</a> </p>
+</footer><!-- /.post-info --><hr>
+<p>A follow on from the Charlson score function previously <a href="http://alittleknowledge.net/2014/11/27/calculate-the-charlson-score-in-r.html">posted</a>. Here are functions to calculate the SOFA score.</p>
+<p>Please note</p>
+<ul>
+<li>it's almost inconceivable that your data will be similar to mine, and you will be able to just use these 'as is'; however, they might provide a useful skeleton.</li>
+<li>there are some add-ons included (e.g. if a blood gas is not available then you can still generate the SOFA respiratory score using oxygen saturations and the S:F ratio via this (slightly flawed) <a href="http://www.ncbi.nlm.nih.gov/pubmed/19242333">proposal</a>)</li>
+<li>there are some arbitrary decisions too (i.e. vasopressin use is considered to assign patients to 4 SOFA points for cardiovascular dysfunction)</li>
+</ul>
+<script src="https://gist.github.com/docsteveharris/195396d4b99e35bb4641.js"></script>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

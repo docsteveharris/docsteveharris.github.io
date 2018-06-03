@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - longform</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/blog.html">blog</a></li>
+                    <li class="active"><a href="/category/longform.html">longform</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/a-brief-review-of-causal-infererence.html">A brief review of causal infererence</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-01-12T00:00:00+00:00">
+                Published: Fri 12 January 2018
+        </abbr>
+
+<p>In <a href="/category/longform.html">longform</a>.</p>
+<p>tags: <a href="/tag/methods.html">[methods</a> <a href="/tag/research.html">research</a> <a href="/tag/causal-inference.html">causal-inference]</a> </p>
+</footer><!-- /.post-info --><h1>Introduction</h1>
+<p>We wish to improve the health of others. For this we need to understand which levers are genuinely connected to better health outcomes. For the medical researcher, there are two threats: spurious correlations and systematic bias. Statistics provides the tools to handle the former.</p>
+<p>Using the language of probability, they allow us to distinguish signal from noise. Examining births in London between 1664 and 1757, and finding 737,629 male and 698,958 females (an excess of 38,671 male births), we could conclude that something is amiss. <a href="">^1</a>  However, scale this back ten thousand fold, and observing 74 male and 70 female births, we might have little to say. The probability of the former occurring by chance is 1.08e-228, while the latter is 0.40 (40%).<a href="">^2</a> These probabilities are numerical estimates of plausibility, and the machinery to calculate them developed from investigating games of chance in the 18th century. From this follows classical statistical hypothesis testing, and modern Bayesian techniques, and machine learning.
+Statistics however has no tools to handle systematic bias. More specifically, we can be confident that people carrying cigarette lighters will more have higher rates of lung cancer, but we do not know whether banning cigarette lighters will save lives. Not only does association not imply causation, but it provides no insight into the direction of causality. The association would be identical whether the lung cancer creates a craving for cigarettes, or cigarettes cause lung cancer. The language of statistics is mathematics, and mathematical equations are equivalent whether written forwards or backwards.
+The solution to this problem has been experimental design where the physical process allows us to distinguish cause from effect. Just as we are warned that 'association is not causation', there is a complementary truism that, there is 'no causation without manipulation'. <a href="">@Holland1986</a> 
+The grammar for causality abandons algebra and probability for a theory of graphs. The field of graphical models has been developed by Judea Pearl, and won him the Turing Prize (the 'Nobel prize of computing') in 2011. The graph invites us first to add cigarettes as a common cause of carrying lighters and lung cancer. It provides tools to decide whether we can be confident that the observed relationship is free from systematic bias or not. Finally, it offers guidance on the measurements we need to make to determine whether the flow of causality is from the cigarette or the lighter. 
+The joy of this visual approach is its accessibility although there has been, as yet, little penetration of these methods into the clinical literature. <a href="">@Elwert2013a</a>
+This review will introduce this language through a worked example developed from a study of long term survival following major surgery. <a href="">@Khuri2005a</a> We will then use this new tool to compare causal and non-causal methodologies available to the clinical researcher. This will provide a framework for the clinical researcher to understand modern observational techniques including propensity score models, instrumental variable analyses, regression discontinuity designs, and interrupted time-series analyses.</p>
+<h2>Worked example: long term survival following major surgery</h2>
+<p>Khuri and colleagues published in 2005 a report from the Veterans Affairs hospitals in the USA that examined the relationship between post-operative complications and long term survival.<a href="">@Khuri2005a</a> This was an observational study <em>not</em> a randomised controlled trial. Measures of pre-operative risk, surgical severity and post-operative complications were combined with long term outcome data. <em>Post</em>-operative complications were seen as a proxy for poor <em>peri</em>-operative care, and the authors wished to quantify the importance of this period of care. For expository purposes, we will only consider a small subset of the measurements used. We will also consider a thought experiment where we randomise patients to a higher level of care in the Intensive Care Unit (ICU) following surgery either experimentally, or via the effect of ICU bed strain that in turn affects access to ICU care.</p>
+<h2>Graphical models: the syntax of a model</h2>
+<p>Before we sketch the graphical model of this study, we need to introduce the vocabulary. Graphs are composed of nodes (variables), and arrows (edges). The arrow indicates a <em>possible</em> causal effect between two variables. Downstream variables (at the head of the arrow) are often called children; upstream variables (at the tail) are ancestors. The direct ancestors are the 'parents' of a variable.
+The <em>absence</em> of an arrow is a statement of a <em>strong</em> assumption that there is <em>no</em> causal effect.<a href="">@Elwert2013a</a> Conversely, the presence of an arrow does <em>not</em> mandate that the parent is a cause of the child; the causal effect may be zero. Therefore, where we cannot assume there is no causal relation, we must include an arrow.
+A <em>path</em> is a sequence of arrows. For causality to be possible, a path cannot be circular (egg $\rightarrow$ chicken$\rightarrow$ egg); each node on a path can only be visited once. Where this is true, then the model may be called a <em>Directed Acyclic Graph (DAG)</em>. Because of the assumption that the absence of an arrow implies the absence of an effect, then a <em>Causal DAG</em> is a statement of everything that is known about a particular process.<br>
+That completes the formal definition of the components of a graphical model. However, you will often see additional colouring and shading which is used to aid discussion. Nodes are often drawn as squares to indicate that a variable is observed, or as circles where the variable is unobserved or unmeasured. In our worked example, we highlight the exposure (peri-operative care) in green, and the outcome (mortality) in blue. We use a green arrow to highlight the causal relationship we are trying to estimate (the effect of peri-operative care on long term outcomes). Finally, we use red to highlight paths that create non-causal (biasing) connections between the exposure and the outcome.  </p>
+<h2>The use of graphical models</h2>
+<p>Each model starts with the two nodes, the exposure and the outcome, linked by one edge: the causal relationship of interest. Remember that the arrow is only indicating a <em>possible</em> effect; this may be zero in the final analysis. We then add all other <em>possible</em> relationships to the graph. A series of remarkably simple rules (theorems) then allow us to decide if we can <em>identify</em> the causal relationship. This is only possible if we can eliminate all non-causal paths between the exposure and the outcome. This means finding a set of measures that <em>controls</em> for confounding without introducing selection bias through a <em>collider</em>.<br>
+We will now expand our model of peri-operative care and mortality to illustrate this process.</p>
+<h3>Confounding and backdoor paths</h3>
+<p>Two variables may be associated where they share a common <em>cause</em>. For example, smoking is a common cause (<em>confounder</em>) for carrying cigarette lighters and for lung cancer so there is a <em>biasing</em>  or <em>backdoor</em> path from cigarette lighters to lung cancer (${cigarette\ lighters}\leftarrow{smoking}\rightarrow{lung\ cancer}$ ). We must <em>control</em> for smoking to get at the true causal effect of lighters on lung cancer.
+In our example (Figure 2a), ICU might be used more often for the elderly, and the mortality would also be higher for the elderly so we have a red biasing path from peri-operative care back through age to mortality. If we 'control' for age (indicated by shading the square grey in Figure 2(a)ii), then we 'block' the backdoor path. If the graph is complete (a causal DAG), then controlling for age is sufficient to identify the true effect of peri-operative care on mortality. Where important variables are unmeasured (e.g. frailty in Figure 2b), then confounding will persist.  </p>
+<h3>Selection and colliders</h3>
+<p>Confounding and backdoor paths create the temptation to include <em>all</em> potentially related variables as controls. However, this strategy risks creating a bias. This subtle problem is also called Berkson's paradox of which the Monty-Hall problem is a notorious example.<a href="">^3</a> 
+Consider investigating the relationship between smoking, asbestos exposure and lung cancer, but only studying patients with a diagnosis of lung cancer. Selecting the study population is just another form of control. For a patients to have lung cancer without asbestos exposure, we would expect heavier smoking histories. Conversely, for patients to have lung cancer without smoking, we would expect greater asbestos exposure. Within this selected population, we will therefore find an inverse relationship between lung cancer and smoking. We say that lung cancer is a <em>collider</em> on the path between smoking and asbestos (${smoking}\rightarrow{lung\ cancer}\leftarrow{asbestos\ exposure}$ ) because two arrows collide onto the same variable.
+In our example (Figure 2c), we might have measures of Acute Kidney Injury (AKI) in the ICU and be tempted to use this as a control. However, AKI is likely partly genetically determined as well as related to standards of peri-operative care. <em>Controlling</em> for AKI creates a collider from which a biasing path now connects peri-operative care and mortality. Similarly, by making AKI status part of the inclusion criteria (another form of control) we would also open the same biasing path. </p>
+<h2>Causal estimation of treatment effects</h2>
+<p>These rules allow us to inspect a graphical model and decide whether the relationship between two variables is free from systematic bias. Where we can block all backdoor paths without inducing false associations by conditioning on a collider, the relationship is said to be <em>identifiable</em>. We can very simply map the study design to the graphical model to decide if we have achieved that aim.</p>
+<h3>Experimental randomisation</h3>
+<p>Randomised experiments work because we physically create a procedure that severs the exposure from the outcome other than through the treatment. The proverbial coin toss has no ancestors in the graphical model. Its only pathway to the outcome is through treatment (a child node), and therefore the causal relationship is identifiable without further controls (Figure 2d). For this reason, the randomised clinical trial (RCT) is held as the gold standard. <a href="">@Bothwell2016</a> However, the RCTs are expensive juggernauts that may additionally be unethical or impractical to deliver. <a href="">@Adebamowo2014; @Frieden2017</a> </p>
+<h3>Natural randomisation</h3>
+<h4>Instrumental variable methods</h4>
+<p>An alternative is to identify natural experiments where a pre-existing process takes the place of the coin toss or concealed envelope. These are normally termed <em>Instrumental Variable analyses</em> where the instrument is the natural randomisation event. They can be best thought of as randomised controlled trials with imperfect 'compliance'.
+The best 'compliance' possibly occurs with deliberate randomisation events not originally intended for research. For example, in 1969 the United States operated a lottery based on birthday and initials to conscript men to fight in the Vietnam war. This random allocation to military service was subsequently used to show that veteran status negatively affects future career progression as a civilian.<a href="">^4</a><a href="">@Angrist1990</a> Similarly, in the Oregon Experiment an expansion of health insurance was allocated by lottery, and used to show that use of preventive health services substantially increased.<a href="">@Baicker2013a</a><br>
+<em>Mendelian randomisation</em> studies offer another classic natural experiment albeit with less perfect compliance because of imperfect genetic penetrance. These studies take advantage of the random chromosomal sorting of alleles (Mendel's second law of 'Independent Assortment').<a href="">@Katan1986</a> For example, low cholesterol had been hypothesised to increase the risk of cancer. However, this was disproved using the Apolipoprotein genotype (ApoE) wherein ApoE2 carriers (low cholesterol) has the same cancer related mortality as ApoE4 carriers (high cholesterol).<a href="">@Trompet2009</a>
+Finally, we can use the interaction of random events with the natural variation in the delivery of care. For example. researchers compared regional versus general anaesthesia for hip fracture based on the variation in practice between hospitals. Patients living half way between a hospital that prefers general anaesthesia and a hospital that prefers regional techniques are randomised by the ambulance choosing to turn left or right as it leaves the patient's home to drive to the hospital. Mortality was shown to be similar, but length of stay shorter with the use of regional techniques.<a href="">@Neuman2014a</a>
+In the forthcoming Sprint National Anaesthesia Project (Epidemiology of Critical Care after Surgery), we will use ICU occupancy at the time of surgery as random event that affects subsequent access to ICU (Figure 2d). <a href="">@Moonesinghe2017a</a> A similar strategy has been used to evaluate the effect of ICU on deteriorating ward patients. <a href="">@Harris2015a</a>
+In all of these examples, a randomising node with no ancestors has a single path through a downstream treatment to the outcome being studied, and so the causal effect is identifiable.</p>
+<h4>Regression discontinuity designs</h4>
+<p>A regression discontinuity design uses the interaction between natural variation in measurements and a rigid protocol or administrative rule to generate a randomising event. For example primary care guidelines mandate, statin prescriptions where the 10-year cardiovascular risk exceeds 20%. Individuals whose risk falls immediately on either side of the boundary (19.9% versus 20.1%) will receive different treatment recommendations despite being otherwise very similar.<a href="">@Geneletti2014</a> We could imagine an application of this approach to the question of long term survival following surgery if there was a recommendation to provide critical care where the pre-operatively measured predicted post-operative risk exceeded a certain threshold. The variables used to define post-operative risk include physiology and laboratory measures. Patients with risks just above and just below the threshold are effectively randomised by the natural variation and measurement error inherent in such measures . </p>
+<h4>Difference-in-differences (DD) and Interrupted Time Series (ITS) analyses</h4>
+<p>Difference-in-differences (DD) and Interrupted Times Series (ITS) analyses are modifications of the classical 'before and after studies' that attempt to handle the criticism that differences are driven by underlying secular trends. Both exploit an external random shock to a system that alters the delivery of care. The classical example of a DD study examined the introduction of a minimum wage on employment in New Jersey in 1992. The neighbouring state of Pennsylvania that made no such policy change was used as as a control for changes in employment driven by other factors.<br>
+Difference-in-Difference studies require just two measurements (before and after) across two or more entities (410 fast food restaurants in the above example). ITS analyses require multiple measurements over time (the 'time series') for one or more entities. For example, the NHS introduced a pay for performance scheme for critical care, the Quality and Outcome Framework (QOF) in 2004--5. It was adopted immediately by almost all general practitioners (GP) precluding a DD analysis that would require that some GPs did not participate. However, longitudinal data from several years before to several years after ( 2000-2007) showed a significant uplift in performance measures for different target conditions.<a href="">@Kontopantelis2015</a> 
+In our example, we might imagine the introduction of a new billing code for peri-operative care. This could either be studied in a single institution with longitudinal data as an ITS, or across multiple institutions that differentially affected by the billing code in a DD design.</p>
+<h2>Non-causal estimation of effects</h2>
+<p>Finally, end by summarising other non-causal approaches with particular emphasis on propensity score models since they are often misunderstood <a href="">@Freemantle2013</a>
+1. Unadjusted association
+2. Case-control design
+3. Regression models and the wider family
+4. Propensity score models: <a href="">@Raghunathan2016</a>; Raghunathan K, Layton JB, Ohnuma T, Shaw AD. Observational Research Using Propensity Scores. Adv Chronic Kidney Dis. 2016;23:367-372.</p>
+<h3>Propensity score models :Worked example: Critical Care admission and patient outcomes</h3>
+<p>PSM works on the principle that patients with equal probabilities (propensities) for receiving an intervention would be similar in terms of their baseline confounders, and thus comparing outcomes on individuals matched on their propensity scores would reduce or eliminate the effects of confounding by balancing the distribution of confounder variables. Propensity scores would be computed for each individual based on baseline characteristics, using multivariable regression. Then each individual allocated to an intervention would then be matched to one or more individuals with similar or equal propensity scores. We can illustrate this graphically, building again upon our earlier model of the Khuri <em>et al</em> paper using the modified subset of variables, but in this instance substituting "Peri-op Care" for "Critical Care Admission" (Figure xx.a).
+In our example, we might compute a propensity score for the likelihood of Critical Care Admission, using Age and Frailty as predictors. We then match patients with the same propensity scores but differing on whether or not they received the treatment of interest (Critical Care admission). As a result we block the path for Age and Frailty to the Mortality outcome, by conditioning patients through their propensity scores. </p>
+<h1>Conclusion</h1>
+<p><a href="">^1</a>: bibtex: StiglerHistoryStatistics1986</p>
+<p><a href="">^2</a>: Laplace's estimates, annotate and cite</p>
+<p><a href="">^3</a>: .</p>
+<p><a href="">^4</a>: Importantly, an IV analysis only offers information for the 'compliers' within the natural experiment. As an example, this means that we can not use the draft to understand future political success since several US politicians (notably George W Bush and Donald Trump) were exempted from the draft.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Parsing command line options in R - a little knowledge ...</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/parsing-command-line-options-in-r.html">
+
+        <meta name="author" content="Steve Harris" />
+        <meta name="keywords" content="[]" />
+        <meta name="description" content="Notes to myself in the form of an R script about how to parse command line arguments. See StackOverflow for alternatives. #! /usr/local/bin/Rscript # Hashbang line - optional when running interactively but if you wish to # run `myfile.R` instead of `Rscript myfile.R` # Don&#39;t forget to chmod +x …" />
+
+        <meta property="og:site_name" content="a little knowledge ..." />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Parsing command line options in R"/>
+        <meta property="og:url" content="/parsing-command-line-options-in-r.html"/>
+        <meta property="og:description" content="Notes to myself in the form of an R script about how to parse command line arguments. See StackOverflow for alternatives. #! /usr/local/bin/Rscript # Hashbang line - optional when running interactively but if you wish to # run `myfile.R` instead of `Rscript myfile.R` # Don&#39;t forget to chmod +x …"/>
+        <meta property="article:published_time" content="2016-01-18" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="[]" />
+            <meta property="article:author" content="Steve Harris" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+a little knowledge ...            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li >
+                            <a href="/category/longform.html">Longform</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/parsing-command-line-options-in-r.html"
+                       rel="bookmark"
+                       title="Permalink to Parsing command line options in R">
+                        Parsing command line options in R
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-01-18T00:00:00+01:00"> Mon 18 January 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/.html">[]</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <hr>
+<p>Notes to myself in the form of an R script about how to parse command line arguments. See <a href="http://stackoverflow.com/questions/2151212/ddg#2154190">StackOverflow</a> for alternatives.</p>
+<div class="highlight"><pre><span></span><span class="c1">#! /usr/local/bin/Rscript</span>
+
+<span class="c1"># Hashbang line - optional when running interactively but if you wish to</span>
+<span class="c1"># run `myfile.R` instead of `Rscript myfile.R`</span>
+<span class="c1"># Don&#39;t forget to chmod +x myfile.R first</span>
+
+<span class="c1"># Testing out docopt package</span>
+<span class="c1"># See http://docopt.org</span>
+<span class="c1"># and</span>
+<span class="c1"># https://cran.r-project.org/web/packages/docopt/index.html</span>
+
+<span class="c1"># install.packages(&quot;docopt&quot;) </span>
+
+<span class="c1"># Doc string below then assigned to name &#39;doc&#39;</span>
+<span class="s">&quot;usage: scratch.R [-v -m &lt;msg&gt;] &lt;param&gt; &lt;file_arg&gt; </span>
+
+<span class="s">options:</span>
+<span class="s"> -v        verbose</span>
+<span class="s"> -m &lt;msg&gt;  Message&quot;</span> <span class="o">-&gt;</span> doc
+
+<span class="kn">require</span><span class="p">(</span>docopt<span class="p">)</span> <span class="c1"># load the docopt library to parse</span>
+<span class="c1"># BEWARE if you have compulsory args on the command line then the</span>
+<span class="c1"># interactive versino will fail hence the `try` wrapper below which</span>
+<span class="c1"># assigns the args needed</span>
+
+opts <span class="o">&lt;-</span> <span class="kp">try</span><span class="p">(</span>docopt<span class="p">(</span>doc<span class="p">),</span> silent<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="c1"># parse command line arguments </span>
+<span class="c1"># NB: Uses the syntax structure of the doc string to define these</span>
+
+<span class="c1"># If interactive then no args so define these here</span>
+<span class="kr">if</span><span class="p">(</span><span class="kp">class</span><span class="p">(</span>opts<span class="p">)</span><span class="o">==</span><span class="s">&quot;try-error&quot;</span><span class="p">)</span> <span class="p">{</span>
+    opts <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">()</span>
+    opts<span class="o">$</span>m <span class="o">&lt;-</span> <span class="s">&quot;Interactive Script&quot;</span>
+    opts<span class="o">$</span>v <span class="o">&lt;-</span> <span class="kc">FALSE</span>
+    <span class="kp">print</span><span class="p">(</span>str<span class="p">(</span>opts<span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kr">if</span> <span class="p">(</span>opts<span class="o">$</span>v<span class="p">)</span> <span class="kp">print</span><span class="p">(</span>str<span class="p">(</span>opts<span class="p">))</span> 
+<span class="kr">if</span> <span class="p">(</span><span class="o">!</span><span class="kp">is.null</span><span class="p">(</span>opts<span class="o">$</span><span class="kp">message</span><span class="p">))</span> <span class="kp">cat</span><span class="p">(</span><span class="s">&quot;MESSAGE: &quot;</span><span class="p">,</span> opts<span class="o">$</span>m<span class="p">)</span>
+</pre></div>
+
+
+<p>Now on the command line<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup></p>
+<div class="highlight"><pre><span></span>&gt; Rscript scratch.R -v -m CommandLineScript foo bar.txt
+
+Welcome at Mon Jan <span class="m">18</span> <span class="m">16</span>:29:04 <span class="m">2016</span>
+Loading required package: docopt
+Loading required package: methods
+List of <span class="m">8</span>
+ $ -v        : logi TRUE
+ $ -m        : chr <span class="s2">&quot;CommandLineScript&quot;</span>
+ $ &lt;param&gt;   : chr <span class="s2">&quot;foo&quot;</span>
+ $ &lt;file_arg&gt;: chr <span class="s2">&quot;bar.txt&quot;</span>
+ $ v         : logi TRUE
+ $ m         : chr <span class="s2">&quot;CommandLineScript&quot;</span>
+ $ param     : chr <span class="s2">&quot;foo&quot;</span>
+ $ file_arg  : chr <span class="s2">&quot;bar.txt&quot;</span>
+NULL
+
+Goodbye at  Mon Jan <span class="m">18</span> <span class="m">16</span>:29:04 <span class="m">2016</span>
+</pre></div>
+
+
+<p>And the console output from an interactive session</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;scratch.R&quot;</span><span class="p">)</span>
+List of <span class="m">2</span>
+ <span class="o">$</span> m<span class="o">:</span> chr <span class="s">&quot;Interactive Script&quot;</span>
+ <span class="o">$</span> v<span class="o">:</span> logi <span class="kc">FALSE</span>
+<span class="kc">NULL</span>
+</pre></div>
+
+
+<hr>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn-1">
+<p>Note that you can't parse a command line argument surrounded by quotes or using spaces. This seems to be a <a href="http://stackoverflow.com/questions/33844516/quote-marks-in-args-for-littler-docopt/33844969#33844969">bug</a> in <code>docopt</code>?&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
+    <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="#" target="_blank">You can modify those links in your config file</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Steve Harris
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>[howto - a little knowledge ...</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+    <meta name="author" content="Steve Harris" />
+    <meta name="keywords" content="[howto" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="a little knowledge ..." />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="a little knowledge ..."/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="a little knowledge ..."/>
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+a little knowledge ...            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li >
+                            <a href="/category/longform.html">Longform</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <article>
+                <h2><a href="/how-to-use-tmux.html">Why can't I ever remember how to use tmux</a></h2>
+                <div class="summary"><hr>
+<p>I didn't get <a href="https://en.wikipedia.org/wiki/Tmux">tmux</a> when I first came across it. It just seemed like a handy way to manage windows and tabs in the terminal.</p>
+<p>It's strength though is that it allows you to create persistent shell sessions that can be named, detached (when you need to do something else …</p>
+                    <a class="btn btn-default btn-xs" href="/how-to-use-tmux.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/setting-up-ssh-keys-for-a-synology.html">Setting up SSH keys for a Synology NAS</a></h2>
+                <div class="summary">
+                    <a class="btn btn-default btn-xs" href="/setting-up-ssh-keys-for-a-synology.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/atom-hydrogen-jupyter.html">Atom + Hydrogen + Jupyter</a></h2>
+                <div class="summary"><hr>
+<h2>Install Anaconda (and therefore Jupyter)</h2>
+<ol>
+<li>install anaconda (this get's you jupyter)
+Add the conda binary to your path
+<code>PATH=$PATH:/Users/steve/anaconda3/bin</code></li>
+<li>install 
+<code>conda install -c r r-essentials</code>
+see <a href="https://docs.anaconda.com/anaconda/user-guide/tasks/use-r-language">https://docs.anaconda.com/anaconda/user-guide/tasks/use-r-language</a>
+Note that this doesn't install <strong>data.table</strong>
+Installing R packages within …</li></ol>
+                    <a class="btn btn-default btn-xs" href="/atom-hydrogen-jupyter.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/my-sql-setup.html">My SQL setup</a></h2>
+                <div class="summary"><hr>
+<p>Install MySQL via homebrew</p>
+<div class="highlight"><pre><span></span>brew install mysql
+</pre></div>
+
+
+<p>Data will be stored by default at <code>/usr/local/var/mysql</code>. You can confirm this as follows:</p>
+<div class="highlight"><pre><span></span>$&gt;mysql.server start
+$&gt;mysql -u root
+mysql&gt; select @@datadir;
++-----------------------+
+| @@datadir             |
++-----------------------+
+| /usr/local/var/mysql/ |
++-----------------------+
+1 row in set (0.00 sec)
+$&gt;mysql.server stop
+</pre></div>
+
+
+<p>Moving the …</p>
+                    <a class="btn btn-default btn-xs" href="/my-sql-setup.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/bootstap-at-the-cluster-or-unit-level.html">Bootstap at the cluster or unit level?</a></h2>
+                <div class="summary"><hr>
+<p>I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful <a href="http://stats.stackexchange.com/q/97115/7746">Cross Validated</a> recommends that any sampling that is to be done should respect the structure of the data.</p>
+<p>This means first sampling (with replacement) hospitals …</p>
+                    <a class="btn btn-default btn-xs" href="/bootstap-at-the-cluster-or-unit-level.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/calculate-the-sofa-score-in-r.html">Calculate the SOFA score in R</a></h2>
+                <div class="summary"><hr>
+<p>A follow on from the Charlson score function previously <a href="http://alittleknowledge.net/2014/11/27/calculate-the-charlson-score-in-r.html">posted</a>. Here are functions to calculate the SOFA score.</p>
+<p>Please note</p>
+<ul>
+<li>it's almost inconceivable that your data will be similar to mine, and you will be able to just use these 'as is'; however, they might provide a useful skeleton.</li>
+<li>there …</li></ul>
+                    <a class="btn btn-default btn-xs" href="/calculate-the-sofa-score-in-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/my-first-r-package.html">My first R package</a></h2>
+                <div class="summary"><p>This is a complete copy of Hilary Parker's post and techinque, but I am unreasonably pleased with myself for this. Please direct all credit to <a href="http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Not So Standard Deviations</a>. Any errors are mine - though it seems to work on my system. You'll note that my thankyou comment is the zillionth …</p>
+                    <a class="btn btn-default btn-xs" href="/my-first-r-package.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/ggplot2-tips.html">ggplot2 tips</a></h2>
+                <div class="summary"><hr>
+<p>Another running file of useful tips (for me) when using the <a href="http://ggplot2.org/">ggplot2</a> library.</p>
+<ul>
+<li>colour scales: I only just worked out how to find the names of the <a href="http://colorbrewer2.org/#">ColorBrewer</a> palettes that are available. The quickest way is to head over to the website, pick the colour scheme you want, and then …</li></ul>
+                    <a class="btn btn-default btn-xs" href="/ggplot2-tips.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/syntax-highlighting-for-r-in-the-terminal.html">Syntax highlighting for R in the terminal</a></h2>
+                <div class="summary"><p>So R-studio seemed to be running really slowly today which prompted me to try using R in the terminal. This works nicely with <a href="https://github.com/randy3k/R-Box">R-Box</a>. Otherwise said, type in Sublime Text, and execute in R (via iTerm.)</p>
+<p>This all worked much more quickly, and the plots show up in a lovely …</p>
+                    <a class="btn btn-default btn-xs" href="/syntax-highlighting-for-r-in-the-terminal.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/calculate-the-charlson-score-in-r.html">Calculate the Charlson score in R</a></h2>
+                <div class="summary"><p>It is unlikely that anyone else will have data formatted in the same way as me, but it shouldn't be too hard to convert this.</p>
+<p>You just need a data where the rows represent patients, and there are a series of columns containing indicator variables for the components of the …</p>
+                    <a class="btn btn-default btn-xs" href="/calculate-the-charlson-score-in-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/adding-comments-to-the-blog.html">Adding comments to the blog</a></h2>
+                <div class="summary"><hr>
+<p>Big day. I have added comments to the blog. Couldn't have been easier. Signed up for a <a href="https://disqus.com/">disqus</a> account, and followed the instructions <a href="https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions">here</a>. The only small hint I can offer is that when you add the 'Universal Embed code' the tags need to be enclosed in curly braces <code>{</code> and …</p>
+                    <a class="btn btn-default btn-xs" href="/adding-comments-to-the-blog.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/learning-r.html">Learning R</a></h2>
+                <div class="summary"><hr>
+<p>I was asked by a colleague yesterday if there were any resources on the internet to help learn R. I feel that that should have an answer crafted by someone like <a href="http://xkcd.com/about/">Randall Munroe</a> along the lines of 'What if you tried to count the number of ways there are to …</p>
+                    <a class="btn btn-default btn-xs" href="/learning-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/blog-set-up-notes.html">Blog set-up notes</a></h2>
+                <div class="summary"><p>This blog is hosted by github. And despite their claims of this being a simple thing to do, I struggled. Things now seem to work, and I think I now have the hang of this. These are a series of notes to myself to remind me of the things I …</p>
+                    <a class="btn btn-default btn-xs" href="/blog-set-up-notes.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html">Getting Microsoft OneNote 2007 files into the Mac version of OneNote</a></h2>
+                <div class="summary"><p>So I have just spent an entire evening extracting the data from my old Microsoft OneNote 2007 files. This was quite a task so I thought I would document my notes here. If I had had access to a Windows 8 machine then it would have been easier. As I …</p>
+                    <a class="btn btn-default btn-xs" href="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
+    <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="#" target="_blank">You can modify those links in your config file</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Steve Harris
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>

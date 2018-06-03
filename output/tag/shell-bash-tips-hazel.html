@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - shell bash tips Hazel</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/blog.html">blog</a></li>
+                    <li><a href="/category/longform.html">longform</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/using-test-to-check-on-a-file-in-the-shell.html">Using test to check on a file in the shell</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-06-03T00:00:00+00:00">
+                Published: Tue 03 June 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/shell-bash-tips-hazel.html">shell bash tips Hazel</a> </p>
+</footer><!-- /.post-info --><p>Do you need to check whether a file meets certain conditions? Then use the <code>test</code> command in the bash shell.</p>
+<p>For example, I am using <a href="http://www.noodlesoft.com/hazel.php">Hazel</a> to clean up my desktop, but I have a bunch of directories symlinked there that I don't want it to touch. There is no such test built into Hazel (it can check for aliases but not symlinks). So instead the following line will check <code>test -L myfile.ext</code> and returns a <code>0</code> in the variable <code>$?</code> if true, and <code>1</code> if false (just type <code>echo $?</code> afterwards to see).</p>
+<p>The Hazel one-liner then becomes <code>test ! -L $1</code> since Hazel uses <code>$1</code> to refer to the file being examined. Note the exclamation mark <code>!</code> that negates the test so it is checking that the file is <em>not</em> a symlink.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

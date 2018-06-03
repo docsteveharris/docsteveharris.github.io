@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>My first R package</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/blog.html">blog</a></li>
+                    <li><a href="/category/longform.html">longform</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/my-first-r-package.html" rel="bookmark"
+           title="Permalink to My first R package">My first R package</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-18T00:00:00+00:00">
+                Published: Thu 18 December 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/howto.html">[howto</a> <a href="/tag/r.html">R]</a> </p>
+</footer><!-- /.post-info -->      <p>This is a complete copy of Hilary Parker's post and techinque, but I am unreasonably pleased with myself for this. Please direct all credit to <a href="http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Not So Standard Deviations</a>. Any errors are mine - though it seems to work on my system. You'll note that my thankyou comment is the zillionth on the list, and I found the link via Jeff Leek's excellent blog <a href="http://simplystatistics.org/2014/12/17/a-non-comprehensive-list-of-awesome-things-other-people-did-in-2014/">simplystats</a></p>
+<p>Here goes.</p>
+<h2>Set up</h2>
+<div class="highlight"><pre><span></span><span class="c1"># Don&#39;t evaluate this as the `create` will fail because the library already exits</span>
+<span class="kn">library</span><span class="p">(</span>devtools<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>roxygen2<span class="p">)</span>
+<span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;/Users/steve/usr/lib/R-stuff&quot;</span><span class="p">)</span>
+create<span class="p">(</span><span class="s">&quot;datascibc&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The <code>create</code> command makes a subdirectory for the new package. Inside this, there is a file called <code>DESCRIPTION.R</code>. I added my contact details, and the package description here.</p>
+<div class="highlight"><pre><span></span>Package<span class="o">:</span> datascibc
+Title<span class="o">:</span> Miscellaneous helper functions
+Version<span class="o">:</span> <span class="m">0.1</span>
+Authors<span class="o">@</span>R<span class="o">:</span> <span class="s">&quot;Steve Harris &lt;git@steveharris.me&gt; [aut, cre]&quot;</span>
+Description<span class="o">:</span> Miscellaneous helper functions<span class="p">,</span> but with a longer term plan to share these functions with the other members of <span class="o">@</span>datascibc
+Depends<span class="o">:</span> R <span class="p">(</span><span class="o">&gt;=</span> <span class="m">3.1.2</span><span class="p">)</span>
+License<span class="o">:</span> What license is it under<span class="o">?</span> Don<span class="s">&#39;</span><span class="err">t know!</span>
+LazyData<span class="o">:</span> true
+</pre></div>
+
+
+<p>There is also a <code>datascibc\R</code> subdirectory. This is where you need to add the R functions you want to save. For example, in a file called <code>lookfor.R</code> save the following.</p>
+<div class="highlight"><pre><span></span><span class="c1"># R version of lookfor: `names(data)[grep(&#39;pattern&#39;,names(data))]`</span>
+lookfor <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>d<span class="p">,</span>p<span class="p">)</span> <span class="kp">names</span><span class="p">(</span>d<span class="p">)[</span><span class="kp">grep</span><span class="p">(</span>p<span class="p">,</span><span class="kp">names</span><span class="p">(</span>d<span class="p">))]</span>
+</pre></div>
+
+
+<p>Not very easy to read is it. So now you are required to add some documentation via <code>roxygen2</code> with detailed instructions <a href="https://github.com/klutometis/roxygen#roxygen2">here</a>. In fact, the documentation required for a package is more complicated, and it is roxygen2 that is making this process simple.</p>
+<p>Here is the file with comments added.</p>
+<div class="highlight"><pre><span></span><span class="c1">#&#39; R version of the stata lookfor function</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; This will try to find a variable when you can&#39;t remember its exact name</span>
+<span class="c1">#&#39; @param string_to_find This is the string you wish to find Defaults to &#39;id&#39;.</span>
+<span class="c1">#&#39; @keywords stata</span>
+<span class="c1">#&#39; @export</span>
+<span class="c1">#&#39; @examples</span>
+<span class="c1">#&#39; lookfor_function()</span>
+lookfor <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>data<span class="o">=</span>wdt<span class="p">,</span>string_to_find<span class="p">)</span> <span class="kp">names</span><span class="p">(</span>data<span class="p">)[</span><span class="kp">grep</span><span class="p">(</span>string_to_find<span class="p">,</span><span class="kp">names</span><span class="p">(</span>data<span class="p">))]</span>
+</pre></div>
+
+
+<p>Now process the documentation</p>
+<div class="highlight"><pre><span></span><span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;./datascibc&quot;</span><span class="p">)</span>
+document<span class="p">()</span>
+<span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;../&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>We should be done, and I can now install my package.</p>
+<div class="highlight"><pre><span></span>install<span class="p">(</span><span class="s">&quot;datascibc&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">## Installing datascibc</span>
+<span class="c1">## &#39;/Library/Frameworks/R.framework/Resources/bin/R&#39; --vanilla CMD INSTALL  \</span>
+<span class="c1">##   &#39;/Users/steve/usr/lib/R-stuff/datascibc&#39;  \</span>
+<span class="c1">##   --library=&#39;/Library/Frameworks/R.framework/Versions/3.1/Resources/library&#39;  \</span>
+<span class="c1">##   --install-tests</span>
+<span class="c1">##</span>
+<span class="c1">## Reloading installed datascibc</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Let&#39;s see if R can print the new function</span>
+lookfor
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">## function (string_to_find, data = wdt)</span>
+<span class="c1">## names(data)[grep(string_to_find, names(data))]</span>
+<span class="c1">## &lt;environment: namespace:datascibc&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Let&#39;s test this</span>
+test_data <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>id<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">),</span> x<span class="o">=</span><span class="kp">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">10</span><span class="p">))</span>
+test_data
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">##    id  x</span>
+<span class="c1">## 1   1  1</span>
+<span class="c1">## 2   2 11</span>
+<span class="c1">## 3   3 21</span>
+<span class="c1">## 4   4 31</span>
+<span class="c1">## 5   5 41</span>
+<span class="c1">## 6   6 51</span>
+<span class="c1">## 7   7 61</span>
+<span class="c1">## 8   8 71</span>
+<span class="c1">## 9   9 81</span>
+<span class="c1">## 10 10 91</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>lookfor<span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span> test_data<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">## [1] &quot;id&quot;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Hooray!</span>
+</pre></div>
+
+
+<p>And again, Hooray!</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

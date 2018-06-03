@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Articles by Steve Harris - a little knowledge ...</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+        <meta name="author" content="Steve Harris" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="a little knowledge ..." />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="a little knowledge ..."/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="a little knowledge ..."/>
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+a little knowledge ...            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li >
+                            <a href="/category/longform.html">Longform</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <article>
+                <h2><a href="/how-to-use-tmux.html">Why can't I ever remember how to use tmux</a></h2>
+                <div class="summary"><hr>
+<p>I didn't get <a href="https://en.wikipedia.org/wiki/Tmux">tmux</a> when I first came across it. It just seemed like a handy way to manage windows and tabs in the terminal.</p>
+<p>It's strength though is that it allows you to create persistent shell sessions that can be named, detached (when you need to do something else …</p>
+                    <a class="btn btn-default btn-xs" href="/how-to-use-tmux.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/setting-up-ssh-keys-for-a-synology.html">Setting up SSH keys for a Synology NAS</a></h2>
+                <div class="summary">
+                    <a class="btn btn-default btn-xs" href="/setting-up-ssh-keys-for-a-synology.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/get-rid-of-dot-underscore-files.html">dot underscore <code>_.</code> files</a></h2>
+                <div class="summary"><p class="first last">How to get rid of annoying <cite>._</cite> files cluttering up your file system</p>
+
+                    <a class="btn btn-default btn-xs" href="/get-rid-of-dot-underscore-files.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/reStructuredText-running-file.html">reStructuredText running file</a></h2>
+                <div class="summary"><p class="first last">Running list of tips and tricks for using reStructuredText</p>
+
+                    <a class="btn btn-default btn-xs" href="/reStructuredText-running-file.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/atom-hydrogen-jupyter.html">Atom + Hydrogen + Jupyter</a></h2>
+                <div class="summary"><hr>
+<h2>Install Anaconda (and therefore Jupyter)</h2>
+<ol>
+<li>install anaconda (this get's you jupyter)
+Add the conda binary to your path
+<code>PATH=$PATH:/Users/steve/anaconda3/bin</code></li>
+<li>install 
+<code>conda install -c r r-essentials</code>
+see <a href="https://docs.anaconda.com/anaconda/user-guide/tasks/use-r-language">https://docs.anaconda.com/anaconda/user-guide/tasks/use-r-language</a>
+Note that this doesn't install <strong>data.table</strong>
+Installing R packages within …</li></ol>
+                    <a class="btn btn-default btn-xs" href="/atom-hydrogen-jupyter.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/my-sql-setup.html">My SQL setup</a></h2>
+                <div class="summary"><hr>
+<p>Install MySQL via homebrew</p>
+<div class="highlight"><pre><span></span>brew install mysql
+</pre></div>
+
+
+<p>Data will be stored by default at <code>/usr/local/var/mysql</code>. You can confirm this as follows:</p>
+<div class="highlight"><pre><span></span>$&gt;mysql.server start
+$&gt;mysql -u root
+mysql&gt; select @@datadir;
++-----------------------+
+| @@datadir             |
++-----------------------+
+| /usr/local/var/mysql/ |
++-----------------------+
+1 row in set (0.00 sec)
+$&gt;mysql.server stop
+</pre></div>
+
+
+<p>Moving the …</p>
+                    <a class="btn btn-default btn-xs" href="/my-sql-setup.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/reference-management-on-mac-os.html">Reference management on Mac OS</a></h2>
+                <div class="summary"><p>I use Bookends. I cite using pandoc formats (e.g. <code>[@Pirracchio2011a]</code> which can be produced by Bookends by following this <a href="https://www.rousette.org.uk/archives/bookends-and-pandoc/">walkthrough</a>.</p>
+                    <a class="btn btn-default btn-xs" href="/reference-management-on-mac-os.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/a-brief-review-of-causal-infererence.html">A brief review of causal infererence</a></h2>
+                <div class="summary"><h1>Introduction</h1>
+<p>We wish to improve the health of others. For this we need to understand which levers are genuinely connected to better health outcomes. For the medical researcher, there are two threats: spurious correlations and systematic bias. Statistics provides the tools to handle the former.</p>
+<p>Using the language of probability …</p>
+                    <a class="btn btn-default btn-xs" href="/a-brief-review-of-causal-infererence.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/no-free-lunch.html">No Free Lunch</a></h2>
+                <div class="summary"><hr>
+<p>The average is the modern solution to summarising data. Where more than one measurement existed, then the original historical reflex was to choose the best measurement: a fine strategy if you know which is best. Originally, God, the Church, or the King (as His official representative) would choose. Practically, this …</p>
+                    <a class="btn btn-default btn-xs" href="/no-free-lunch.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/simpsons-paradox-backwards.html">Simpson's Paradox backwards</a></h2>
+                <div class="summary"><hr>
+<p>I have been enjoying reading Judea Pearl's new book <em>Causal Inference in Statistics: A primer</em><sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup></p>
+<p>Following on from their example, consider trying to choose between two doctors. You automatically choose the one with the best outcomes. But suppose the one with the best outcomes chooses the easiest cases. The …</p>
+                    <a class="btn btn-default btn-xs" href="/simpsons-paradox-backwards.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/r-functions-you-should-know.html">R functions you should know</a></h2>
+                <div class="summary"><hr>
+<p>A running list of R functions that <em>I</em> should have known, and didn't with a minimal worked example in the style of <a href="http://tldr-pages.github.io">tl;dr</a>.</p>
+<h2>Assignment operator <code>&lt;-</code> versus <code>&lt;&lt;-</code></h2>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> a <span class="o">&lt;-</span> <span class="m">1</span>    <span class="c1"># assigns only within the environment</span>
+<span class="o">&gt;</span> f <span class="o">&lt;-</span> <span class="kr">function</span> <span class="p">()</span> <span class="p">{</span>
+    a <span class="o">&lt;-</span> <span class="m">2</span>
+    <span class="kp">print</span><span class="p">(</span>a<span class="p">)</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> f<span class="p">()</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">2</span>
+<span class="o">&gt;</span> a
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">1</span>   <span class="c1"># nothing happens &#39;a&#39; hasn …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/r-functions-you-should-know.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/advanced-r-book-notes.html">advanced r book notes</a></h2>
+                <div class="summary"><hr>
+<p>A series of notes gleaned from reading Hadley Wickham's <a href="http://adv-r.had.co.nz">Advanced R</a>.<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> For now, I have created sections based around each chapter. I suspect that will rapidly make this page very cumbersome, but it seems like a good place to start.</p>
+<h2>Unsorted general tips</h2>
+<ul>
+<li>read the source code of functions …</li></ul>
+                    <a class="btn btn-default btn-xs" href="/advanced-r-book-notes.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/parsing-command-line-options-in-r.html">Parsing command line options in R</a></h2>
+                <div class="summary"><hr>
+<p>Notes to myself in the form of an R script about how to parse command line arguments. See <a href="http://stackoverflow.com/questions/2151212/ddg#2154190">StackOverflow</a> for alternatives.</p>
+<div class="highlight"><pre><span></span><span class="c1">#! /usr/local/bin/Rscript</span>
+
+<span class="c1"># Hashbang line - optional when running interactively but if you wish to</span>
+<span class="c1"># run `myfile.R` instead of `Rscript myfile.R`</span>
+<span class="c1"># Don&#39;t forget to chmod +x …</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="/parsing-command-line-options-in-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/get-up-git-up.html">"Get up, git up"</a></h2>
+                <div class="summary"><hr>
+<p>I have been using <a href="https://www.sourcetreeapp.com">SourceTree</a> as a GUI for git, but just came across <a href="http://gitup.co">GitUp</a>. It starts off just looking like a pretty way to view your repository with a fairly typical graph, but you can in fact work from within the graph.</p>
+<p><img alt="Screenshot of GitUp" src="/images/gitup_160113.gif"></p>
+<p>To me, this makes things seem much …</p>
+                    <a class="btn btn-default btn-xs" href="/get-up-git-up.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/awesome-r.html">Awesome R</a></h2>
+                <div class="summary"><hr>
+<blockquote>
+<p>A curated list of awesome R frameworks, packages and software.</p>
+</blockquote>
+                    <a class="btn btn-default btn-xs" href="/awesome-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/globally-set-options-in-r-markdown.html">Globally set options in R markdown</a></h2>
+                <div class="summary"><hr>
+<p>Normally you specify options in R markdown at the start of each chunk which requires typing them out for every block if they differ from the defaults.</p>
+<div class="highlight"><pre><span></span><span class="sb">``</span>`<span class="p">{</span>r echo<span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> warnings<span class="o">=</span><span class="kc">FALSE</span><span class="p">}</span>
+<span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="kp">print</span><span class="p">(</span><span class="s">&quot;This line is printed but the one above isn&#39;t&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>But you can specify these …</pre></div>
+                    <a class="btn btn-default btn-xs" href="/globally-set-options-in-r-markdown.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/getting-data-into-r.html">Getting data into R</a></h2>
+                <div class="summary"><hr>
+<p>Try</p>
+<ul>
+<li><a href="https://github.com/hadley/readr/blob/master/README.md">readr</a></li>
+<li><a href="http://www.rdocumentation.org/packages/data.table/functions/fread">fread</a></li>
+<li><code>read.csv</code> in Base R but beware you need to specify <code>stringsAsFactors=FALSE</code> otherwise strings are imported in a way that you are unlikely to find helpful</li>
+</ul>
+                    <a class="btn btn-default btn-xs" href="/getting-data-into-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/science-isnt-broken.html">Science isn't broken</a></h2>
+                <div class="summary"><hr>
+<blockquote>
+<p>The important lesson here is that a single analysis is not sufficient to find a definitive answer. Every result is a temporary truth, one that’s subject to change when someone else comes along to build, test and analyze anew.</p>
+</blockquote>
+                    <a class="btn btn-default btn-xs" href="/science-isnt-broken.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/a-day-in-the-life-visualised.html">A day in the life ... visualised</a></h2>
+                <div class="summary"><hr>
+                    <a class="btn btn-default btn-xs" href="/a-day-in-the-life-visualised.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/data-analysis-using-regression-and-multilevelhierarchical-models.html">Data Analysis Using Regression and Multilevel/Hierarchical Models</a></h2>
+                <div class="summary"><hr>
+<p>These are notes from reading Andrew Gelman's and Jennifer Hill's 2007 edition of <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. I started reading this book a few days ago, so these are running notes which I will update as progress. You could consider this a live 'book review'.</p>
+<h2>General …</h2>
+                    <a class="btn btn-default btn-xs" href="/data-analysis-using-regression-and-multilevelhierarchical-models.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/bootstap-at-the-cluster-or-unit-level.html">Bootstap at the cluster or unit level?</a></h2>
+                <div class="summary"><hr>
+<p>I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful <a href="http://stats.stackexchange.com/q/97115/7746">Cross Validated</a> recommends that any sampling that is to be done should respect the structure of the data.</p>
+<p>This means first sampling (with replacement) hospitals …</p>
+                    <a class="btn btn-default btn-xs" href="/bootstap-at-the-cluster-or-unit-level.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/an-exact-fishy-test.html">An exact fishy test</a></h2>
+                <div class="summary"><hr>
+<p>Unbelievable: What ever numbers you pick are statistically 'non-random'?</p>
+<blockquote>
+<p>You chose the numbers 09 08 07 06 45 08 07 02 77 01</p>
+<p>But these are clearly not random numbers. We can tell because random numbers do not contain patterns but the numbers you entered show a fairly obvious pattern …</p></blockquote>
+                    <a class="btn btn-default btn-xs" href="/an-exact-fishy-test.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/how-to-make-a-great-r-reproducible-example.html">How to make a great R reproducible example?</a></h2>
+                <div class="summary"><hr>
+                    <a class="btn btn-default btn-xs" href="/how-to-make-a-great-r-reproducible-example.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/stopping-rules-and-regression-to-the-mean.html">Stopping rules and regression to the mean</a></h2>
+                <div class="summary"><hr>
+                    <a class="btn btn-default btn-xs" href="/stopping-rules-and-regression-to-the-mean.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/mathjax-example.html">"MathJax Example"</a></h2>
+                <div class="summary"><p><a href="http://www.mathjax.org/">MathJax</a> is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know …</p>
+                    <a class="btn btn-default btn-xs" href="/mathjax-example.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/calculate-the-sofa-score-in-r.html">Calculate the SOFA score in R</a></h2>
+                <div class="summary"><hr>
+<p>A follow on from the Charlson score function previously <a href="http://alittleknowledge.net/2014/11/27/calculate-the-charlson-score-in-r.html">posted</a>. Here are functions to calculate the SOFA score.</p>
+<p>Please note</p>
+<ul>
+<li>it's almost inconceivable that your data will be similar to mine, and you will be able to just use these 'as is'; however, they might provide a useful skeleton.</li>
+<li>there …</li></ul>
+                    <a class="btn btn-default btn-xs" href="/calculate-the-sofa-score-in-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/my-first-r-package.html">My first R package</a></h2>
+                <div class="summary"><p>This is a complete copy of Hilary Parker's post and techinque, but I am unreasonably pleased with myself for this. Please direct all credit to <a href="http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Not So Standard Deviations</a>. Any errors are mine - though it seems to work on my system. You'll note that my thankyou comment is the zillionth …</p>
+                    <a class="btn btn-default btn-xs" href="/my-first-r-package.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/ggplot2-tips.html">ggplot2 tips</a></h2>
+                <div class="summary"><hr>
+<p>Another running file of useful tips (for me) when using the <a href="http://ggplot2.org/">ggplot2</a> library.</p>
+<ul>
+<li>colour scales: I only just worked out how to find the names of the <a href="http://colorbrewer2.org/#">ColorBrewer</a> palettes that are available. The quickest way is to head over to the website, pick the colour scheme you want, and then …</li></ul>
+                    <a class="btn btn-default btn-xs" href="/ggplot2-tips.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/sublime-text-tips.html">Sublime Text tips</a></h2>
+                <div class="summary"><p>Just an aide-memoire for myself really. When referring to keybindings then I will use <code>C</code> to indicate <code>Command</code> (OS X) or <code>Control</code> (Windows).</p>
+<ul>
+<li><code>C-D</code> expands the current selection to the next word, but it's easy to overshoot. In which case, <code>C-U</code> will undo (called a soft undo, and therefore distinct …</li></ul>
+                    <a class="btn btn-default btn-xs" href="/sublime-text-tips.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/syntax-highlighting-for-r-in-the-terminal.html">Syntax highlighting for R in the terminal</a></h2>
+                <div class="summary"><p>So R-studio seemed to be running really slowly today which prompted me to try using R in the terminal. This works nicely with <a href="https://github.com/randy3k/R-Box">R-Box</a>. Otherwise said, type in Sublime Text, and execute in R (via iTerm.)</p>
+<p>This all worked much more quickly, and the plots show up in a lovely …</p>
+                    <a class="btn btn-default btn-xs" href="/syntax-highlighting-for-r-in-the-terminal.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/calculate-the-charlson-score-in-r.html">Calculate the Charlson score in R</a></h2>
+                <div class="summary"><p>It is unlikely that anyone else will have data formatted in the same way as me, but it shouldn't be too hard to convert this.</p>
+<p>You just need a data where the rows represent patients, and there are a series of columns containing indicator variables for the components of the …</p>
+                    <a class="btn btn-default btn-xs" href="/calculate-the-charlson-score-in-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/adding-comments-to-the-blog.html">Adding comments to the blog</a></h2>
+                <div class="summary"><hr>
+<p>Big day. I have added comments to the blog. Couldn't have been easier. Signed up for a <a href="https://disqus.com/">disqus</a> account, and followed the instructions <a href="https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions">here</a>. The only small hint I can offer is that when you add the 'Universal Embed code' the tags need to be enclosed in curly braces <code>{</code> and …</p>
+                    <a class="btn btn-default btn-xs" href="/adding-comments-to-the-blog.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/qq-plots-in-r.html">QQ plots in R</a></h2>
+                <div class="summary"><hr>
+<p>I was trying to show some colleagues how to draw a <a href="http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">QQ-plot</a> in R today. I failed miserably, and so have just spent a bit of time trying to redeem myself.</p>
+<p>This should do it.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Test data: 1000 patients with two different age distributions</span>
+tdt <span class="o">&lt;-</span> data.table<span class="p">(</span>age.old<span class="o">=</span>rnorm …</pre></div>
+                    <a class="btn btn-default btn-xs" href="/qq-plots-in-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/contingency-tables-in-r.html">Contingency Tables in R</a></h2>
+                <div class="summary"><hr>
+<p>Hmmm. As I have mentioned I am switching from Stata to R, and right now I am missing the nice simple <code>tab</code> function from Stata that would give me a nice table like this.</p>
+<div class="highlight"><pre><span></span>    tab dead7 icu_accept
+
+           | Accepted to critical
+        7d |         care
+ mortality |         0          1 |     Total
+-----------+----------------------+----------
+     False |     8,143      2 …</pre></div>
+                    <a class="btn btn-default btn-xs" href="/contingency-tables-in-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/neglected-blog-check-out-the-sublime-jekyll-package.html">Neglected blog? Check-out the Sublime Jekyll package</a></h2>
+                <div class="summary"><p>Been neglecting this blog for a while, and that is because there is a certain amount of momentum required to write a post. However, I have now installed the <a href="https://sublime.wbond.net/packages/Jekyll">Jekyll</a> package for <a href="http://www.sublimetext.com/">Sublime Text</a>, and using this post as my first test.</p>
+<p>Now to publish ...</p>
+                    <a class="btn btn-default btn-xs" href="/neglected-blog-check-out-the-sublime-jekyll-package.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/learning-r.html">Learning R</a></h2>
+                <div class="summary"><hr>
+<p>I was asked by a colleague yesterday if there were any resources on the internet to help learn R. I feel that that should have an answer crafted by someone like <a href="http://xkcd.com/about/">Randall Munroe</a> along the lines of 'What if you tried to count the number of ways there are to …</p>
+                    <a class="btn btn-default btn-xs" href="/learning-r.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/pubmed-did-you-know.html">PubMed - Did you know?</a></h2>
+                <div class="summary"><hr>
+<p>I have a nagging feeling that I have always been told that I should use Ovid Medline rather than PubMed if I am doing a <em>serious</em> search. I have just spent 10 minutes on the interweb trying to work out why. As far as I can see, Ovid is just …</p>
+                    <a class="btn btn-default btn-xs" href="/pubmed-did-you-know.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/pubmed-search-tags.html">PubMed search tags</a></h2>
+                <div class="summary"><hr>
+<p>I can never remember the tags that I need to help focus searches on <a href="http://www.ncbi.nlm.nih.gov/pubmed/">PubMed</a>. In particular, I didn't know it was possible to specify a date range via tags so for the last 5 years (2009--2014) you'd type <code>2009:2014[dp]</code>.</p>
+<table>
+<thead>
+<tr>
+<th align="left">FIELD NAME</th>
+<th align="left"><code>[TAG]</code></th>
+<th align="left">SEARCHES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Affiliation</td>
+<td align="left"><code>[AD]</code></td>
+<td align="left">First listed …</td></tr></tbody></table>
+                    <a class="btn btn-default btn-xs" href="/pubmed-search-tags.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/edit-bash_profile-from-the-command-line.html">Edit .bash_profile from the command line</a></h2>
+                <div class="summary"><p>It's a pain to have to change my system preferences to show <code>.bash_profile</code>, then navigate, and open it for editing.</p>
+<p><code>subl .bash_profile</code></p>
+<p>does this directly from the command line.</p>
+<p>Make sure you have symlinked to your Sublime Text installtion first.</p>
+<p><code>ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl …</code></p>
+                    <a class="btn btn-default btn-xs" href="/edit-bash_profile-from-the-command-line.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/using-test-to-check-on-a-file-in-the-shell.html">Using test to check on a file in the shell</a></h2>
+                <div class="summary"><p>Do you need to check whether a file meets certain conditions? Then use the <code>test</code> command in the bash shell.</p>
+<p>For example, I am using <a href="http://www.noodlesoft.com/hazel.php">Hazel</a> to clean up my desktop, but I have a bunch of directories symlinked there that I don't want it to touch. There is no …</p>
+                    <a class="btn btn-default btn-xs" href="/using-test-to-check-on-a-file-in-the-shell.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/git-tips.html">Git tips</a></h2>
+                <div class="summary"><p>I have been using Git now for a couple of years, and have struggled to understand what it does. I get the basic concept  (that it keeps a record of the changes I make to my code) but it also sometimes seems to get in the way. I have read …</p>
+                    <a class="btn btn-default btn-xs" href="/git-tips.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/blog-set-up-notes.html">Blog set-up notes</a></h2>
+                <div class="summary"><p>This blog is hosted by github. And despite their claims of this being a simple thing to do, I struggled. Things now seem to work, and I think I now have the hang of this. These are a series of notes to myself to remind me of the things I …</p>
+                    <a class="btn btn-default btn-xs" href="/blog-set-up-notes.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html">Getting Microsoft OneNote 2007 files into the Mac version of OneNote</a></h2>
+                <div class="summary"><p>So I have just spent an entire evening extracting the data from my old Microsoft OneNote 2007 files. This was quite a task so I thought I would document my notes here. If I had had access to a Windows 8 machine then it would have been easier. As I …</p>
+                    <a class="btn btn-default btn-xs" href="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/how-to-report-frailty-in-a-cox-model.html">How to report frailty in a Cox Model?</a></h2>
+                <div class="summary"><p>Struggling to report frailty in a survival model. Any ideas? I posted the <a href="http://stats.stackexchange.com/questions/87672/the-right-way-to-report-random-effects-in-a-cox-survival-model">question</a> to <a href="http://stats.stackexchange.com/">Cross Validated</a>.</p>
+<h2>Update 2015-12-11</h2>
+<p>There's an <a href="http://stats.stackexchange.com/a/87679/7746">answer</a> now for parametric models, but below in the end I used the Median Hazard Ratio<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> (analogous to the Median Odds Ratio). </p>
+<p>Here's a little code snippet to …</p>
+                    <a class="btn btn-default btn-xs" href="/how-to-report-frailty-in-a-cox-model.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/stop-using-bivariate-correlations-for-variable-selection.html">Stop using bivariate correlations for variable selection</a></h2>
+                <div class="summary"><p><a href="http://jacobsimmering.com/2014/03/20/BivariateCorrelations/">Stop using bivariate correlations for variable selection</a></p>
+                    <a class="btn btn-default btn-xs" href="/stop-using-bivariate-correlations-for-variable-selection.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
+    <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="#" target="_blank">You can modify those links in your config file</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Steve Harris
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>

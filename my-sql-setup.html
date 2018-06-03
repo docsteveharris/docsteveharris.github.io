@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>My SQL setup - a little knowledge ...</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/my-sql-setup.html">
+
+        <meta name="author" content="Steve Harris" />
+        <meta name="keywords" content="[howto,tips,methods,sweetsetup]" />
+        <meta name="description" content="Install MySQL via homebrew brew install mysql Data will be stored by default at /usr/local/var/mysql. You can confirm this as follows: $&gt;mysql.server start $&gt;mysql -u root mysql&gt; select @@datadir; +-----------------------+ | @@datadir | +-----------------------+ | /usr/local/var/mysql/ | +-----------------------+ 1 row in set (0.00 sec) $&gt;mysql.server stop Moving the …" />
+
+        <meta property="og:site_name" content="a little knowledge ..." />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="My SQL setup"/>
+        <meta property="og:url" content="/my-sql-setup.html"/>
+        <meta property="og:description" content="Install MySQL via homebrew brew install mysql Data will be stored by default at /usr/local/var/mysql. You can confirm this as follows: $&gt;mysql.server start $&gt;mysql -u root mysql&gt; select @@datadir; +-----------------------+ | @@datadir | +-----------------------+ | /usr/local/var/mysql/ | +-----------------------+ 1 row in set (0.00 sec) $&gt;mysql.server stop Moving the …"/>
+        <meta property="article:published_time" content="2018-02-14" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="[howto" />
+            <meta property="article:tag" content="tips" />
+            <meta property="article:tag" content="methods" />
+            <meta property="article:tag" content="sweetsetup]" />
+            <meta property="article:author" content="Steve Harris" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+a little knowledge ...            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li >
+                            <a href="/category/longform.html">Longform</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/my-sql-setup.html"
+                       rel="bookmark"
+                       title="Permalink to My SQL setup">
+                        My SQL setup
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-02-14T00:00:00+01:00"> Wed 14 February 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/howto.html">[howto</a>
+        /
+	<a href="/tag/tips.html">tips</a>
+        /
+	<a href="/tag/methods.html">methods</a>
+        /
+	<a href="/tag/sweetsetup.html">sweetsetup]</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <hr>
+<p>Install MySQL via homebrew</p>
+<div class="highlight"><pre><span></span>brew install mysql
+</pre></div>
+
+
+<p>Data will be stored by default at <code>/usr/local/var/mysql</code>. You can confirm this as follows:</p>
+<div class="highlight"><pre><span></span>$&gt;mysql.server start
+$&gt;mysql -u root
+mysql&gt; select @@datadir;
++-----------------------+
+| @@datadir             |
++-----------------------+
+| /usr/local/var/mysql/ |
++-----------------------+
+1 row in set (0.00 sec)
+$&gt;mysql.server stop
+</pre></div>
+
+
+<p>Moving the data directory means editing the <code>my.cnf</code> file at <code>my.cnf</code> which can exist in multiple locations. See below ...</p>
+<div class="highlight"><pre><span></span>$&gt;my_print_defaults --help
+...
+Default options are read from the following files in the given order:
+/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf
+...
+</pre></div>
+
+
+<p>I edited <code>/usr/local/etc/my.cnf</code>. This worked and didn't require root privileges. Make sure the server has been stopped before you do this.</p>
+<p>My data directory is at `/volumes/safe/sql' and my file currently looks like:</p>
+<div class="highlight"><pre><span></span><span class="k">[mysqld]</span>
+<span class="c1"># Default Homebrew MySQL server config</span>
+<span class="c1"># Only allow connections from localhost</span>
+<span class="na">bind-address</span> <span class="o">=</span> <span class="s">127.0.0.1</span>
+
+<span class="na">datadir</span><span class="o">=</span><span class="s">/volumes/safe/sql</span>
+
+<span class="k">[client]</span>
+<span class="na">port</span><span class="o">=</span><span class="s">3306</span>
+</pre></div>
+
+
+<h2>Connecting to MySQL from R (without ODBC)</h2>
+<p>See https://github.com/r-dbi/RMariaDB</p>
+<div class="highlight"><pre><span></span>install.packages(&#39;RMariaDB&#39;, repos=&quot;https://cloud.r-project.org&quot;)
+</pre></div>
+
+
+<p>Install mysql-connector-c from Homebrew; this was tricky and I had to <code>brew unlink mysql</code> before it would work, and then <code>brew link mysql --overwrite</code> afterwards. Still not sure if this broke things</p>
+<div class="highlight"><pre><span></span>brew install mysql-connector-c
+</pre></div>
+
+
+<p>Then edit <code>/usr/local/etc/my.cnf</code></p>
+<div class="highlight"><pre><span></span><span class="k">[spotlight]</span>
+<span class="na">database</span><span class="o">=</span><span class="s">spotlight</span>
+<span class="na">user</span><span class="o">=</span><span class="s">steve</span>
+<span class="na">password</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+</pre></div>
+
+
+<h2>Useful links</h2>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-change-a-mysql-data-directory-to-a-new-location-on-centos-7">How to Change a MySQL Data Directory to a New Location on CentOS 7</a></li>
+<li><a href="https://stackoverflow.com/questions/7973927/for-homebrew-mysql-installs-wheres-my-cnf">For homebrew mysql installs, where's my.cnf?</a></li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
+    <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="#" target="_blank">You can modify those links in your config file</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Steve Harris
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>

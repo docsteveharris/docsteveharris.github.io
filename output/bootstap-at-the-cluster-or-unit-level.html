@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Bootstap at the cluster or unit level?</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/blog.html">blog</a></li>
+                    <li><a href="/category/longform.html">longform</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/bootstap-at-the-cluster-or-unit-level.html" rel="bookmark"
+           title="Permalink to Bootstap at the cluster or unit level?">Bootstap at the cluster or unit level?</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-17T00:00:00+00:00">
+                Published: Thu 17 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/statistics.html">statistics</a> <a href="/tag/howto.html">howto]</a> </p>
+</footer><!-- /.post-info -->      <hr>
+<p>I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful <a href="http://stats.stackexchange.com/q/97115/7746">Cross Validated</a> recommends that any sampling that is to be done should respect the structure of the data.</p>
+<p>This means first sampling (with replacement) hospitals, and then sampling (with replacement again) within each hospital before re-assembling the data.</p>
+<p>There is a better explanation along with a <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/HowToBootstrapCorrelatedData">code snippet</a> from the biostats department at Vanderbilt. However, with 48 hospitals and 15000 patients, this ran very slowly.</p>
+<p>I have re-written this using the <a href="https://github.com/Rdatatable/data.table/wiki">data.table</a> with a good (great?) improvement in speed (but some loss of flexibility).</p>
+<div class="highlight"><pre><span></span><span class="c1"># Generate sample data</span>
+<span class="c1"># --------------------</span>
+
+tdt <span class="o">&lt;-</span> data.table<span class="p">(</span>id<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">15000</span><span class="p">,</span> site<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">,</span> age<span class="o">=</span><span class="kp">round</span><span class="p">(</span>rnorm<span class="p">(</span>n<span class="o">=</span><span class="m">10000</span><span class="p">,</span> mean<span class="o">=</span><span class="m">65</span><span class="p">,</span> sd<span class="o">=</span><span class="m">18</span><span class="p">)))</span>
+
+<span class="c1"># Non data.table version</span>
+<span class="c1"># ----------------------</span>
+
+resample <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>dat<span class="p">,</span> cluster<span class="p">,</span> <span class="kp">replace</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1"># exit early for trivial data</span>
+  <span class="kr">if</span><span class="p">(</span><span class="kp">nrow</span><span class="p">(</span>dat<span class="p">)</span> <span class="o">==</span> <span class="m">1</span> <span class="o">||</span> <span class="kp">all</span><span class="p">(</span>replace<span class="o">==</span><span class="kc">FALSE</span><span class="p">))</span>
+      <span class="kr">return</span><span class="p">(</span>dat<span class="p">)</span>
+
+  <span class="c1"># sample the clustering factor</span>
+  cls <span class="o">&lt;-</span> <span class="kp">sample</span><span class="p">(</span><span class="kp">unique</span><span class="p">(</span>dat<span class="p">[[</span>cluster<span class="p">[</span><span class="m">1</span><span class="p">]]]),</span> replace<span class="o">=</span><span class="kp">replace</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+
+  <span class="c1"># subset on the sampled clustering factors</span>
+  sub <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span>cls<span class="p">,</span> <span class="kr">function</span><span class="p">(</span>b<span class="p">)</span> <span class="kp">subset</span><span class="p">(</span>dat<span class="p">,</span> dat<span class="p">[[</span>cluster<span class="p">[</span><span class="m">1</span><span class="p">]]]</span><span class="o">==</span>b<span class="p">))</span>
+
+  <span class="c1"># sample lower levels of hierarchy (if any)</span>
+  <span class="kr">if</span><span class="p">(</span><span class="kp">length</span><span class="p">(</span>cluster<span class="p">)</span> <span class="o">&gt;</span> <span class="m">1</span><span class="p">)</span>
+    sub <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span><span class="kp">sub</span><span class="p">,</span> resample<span class="p">,</span> cluster<span class="o">=</span>cluster<span class="p">[</span><span class="m">-1</span><span class="p">],</span> replace<span class="o">=</span><span class="kp">replace</span><span class="p">[</span><span class="m">-1</span><span class="p">])</span>
+
+  <span class="c1"># join and return samples</span>
+  <span class="kp">do.call</span><span class="p">(</span><span class="kp">rbind</span><span class="p">,</span> <span class="kp">sub</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="c1"># Data.table version</span>
+<span class="c1"># ------------------</span>
+
+rsample2 <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>data<span class="o">=</span>tdt<span class="p">,</span> id.unit<span class="o">=</span>id.u<span class="p">,</span> id.cluster<span class="o">=</span>id.c<span class="p">)</span> <span class="p">{</span>
+    <span class="kn">require</span><span class="p">(</span>data.table<span class="p">)</span>
+
+    setkeyv<span class="p">(</span>tdt<span class="p">,</span>id.cluster<span class="p">)</span>
+    <span class="c1"># Generate within cluster ID (needed for the sample command)</span>
+    tdt<span class="p">[,</span> <span class="s">&quot;id.within&quot;</span> <span class="o">:=</span> <span class="m">.</span>SD<span class="p">[,</span><span class="m">.</span><span class="kp">I</span><span class="p">],</span> by<span class="o">=</span>id.cluster<span class="p">,</span> with<span class="o">=</span><span class="kc">FALSE</span><span class="p">]</span>
+
+    <span class="c1"># Random sample of sites</span>
+    bdt <span class="o">&lt;-</span> data.table<span class="p">(</span><span class="kp">sample</span><span class="p">(</span><span class="kp">unique</span><span class="p">(</span>tdt<span class="p">[[</span>id.cluster<span class="p">]]),</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+    setnames<span class="p">(</span>bdt<span class="p">,</span><span class="s">&quot;V1&quot;</span><span class="p">,</span>id.cluster<span class="p">)</span>
+    setkeyv<span class="p">(</span>bdt<span class="p">,</span>id.cluster<span class="p">)</span>
+
+    <span class="c1"># Use random sample of sites to select from original data</span>
+    <span class="c1"># then</span>
+    <span class="c1"># within each site sample with replacement using the within site ID</span>
+    bdt <span class="o">&lt;-</span> tdt<span class="p">[</span>bdt<span class="p">,</span> <span class="m">.</span>SD<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">.</span>SD<span class="o">$</span>id.within<span class="p">,</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">)],</span>by<span class="o">=</span><span class="m">.</span>EACHI<span class="p">]</span>
+
+    <span class="c1"># return data sampled with replacement respecting clusters</span>
+    bdt<span class="p">[,</span> id.within <span class="o">:=</span> <span class="kc">NULL</span><span class="p">]</span> <span class="c1"># drop id.within</span>
+    <span class="kr">return</span><span class="p">(</span>bdt<span class="p">)</span>
+<span class="p">}</span>
+
+cluster <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;site&quot;</span><span class="p">,</span> <span class="s">&quot;id&quot;</span><span class="p">)</span>
+<span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> resample<span class="p">(</span>tdt<span class="p">,</span>cluster<span class="p">,</span><span class="kt">c</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="bp">T</span><span class="p">)))</span>
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> resample<span class="p">(</span>tdt<span class="p">,</span>cluster<span class="p">,</span><span class="kt">c</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="bp">T</span><span class="p">)))</span>
+   user  system elapsed 
+  <span class="m">8.597</span>   <span class="m">0.092</span>   <span class="m">8.786</span> 
+<span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> rsample2<span class="p">(</span>tdt<span class="p">,</span> id.unit<span class="o">=</span><span class="s">&quot;pid&quot;</span><span class="p">,</span> id.cluster<span class="o">=</span><span class="s">&quot;site&quot;</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> rsample2<span class="p">(</span>tdt<span class="p">,</span> id.unit<span class="o">=</span><span class="s">&quot;pid&quot;</span><span class="p">,</span> id.cluster<span class="o">=</span><span class="s">&quot;site&quot;</span><span class="p">))</span>
+   user  system elapsed 
+  <span class="m">0.051</span>   <span class="m">0.001</span>   <span class="m">0.052</span> 
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

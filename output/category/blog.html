@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - blog</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/blog.html">blog</a></li>
+                    <li><a href="/category/longform.html">longform</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/my-sql-setup.html">My SQL setup</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-02-14T00:00:00+00:00">
+                Published: Wed 14 February 2018
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/howto.html">[howto</a> <a href="/tag/tips.html">tips</a> <a href="/tag/methods.html">methods</a> <a href="/tag/sweetsetup.html">sweetsetup]</a> </p>
+</footer><!-- /.post-info --><hr>
+<p>Install MySQL via homebrew</p>
+<div class="highlight"><pre><span></span>brew install mysql
+</pre></div>
+
+
+<p>Data will be stored by default at <code>/usr/local/var/mysql</code>. You can confirm this as follows:</p>
+<div class="highlight"><pre><span></span>$&gt;mysql.server start
+$&gt;mysql -u root
+mysql&gt; select @@datadir;
++-----------------------+
+| @@datadir             |
++-----------------------+
+| /usr/local/var/mysql/ |
++-----------------------+
+1 row in set (0.00 sec)
+$&gt;mysql.server stop
+</pre></div>
+
+
+<p>Moving the data directory means editing the <code>my.cnf</code> file at <code>my.cnf</code> which can exist in multiple locations. See below ...</p>
+<div class="highlight"><pre><span></span>$&gt;my_print_defaults --help
+...
+Default options are read from the following files in the given order:
+/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf
+...
+</pre></div>
+
+
+<p>I edited <code>/usr/local/etc/my.cnf</code>. This worked and didn't require root privileges. Make sure the server has been stopped before you do this.</p>
+<p>My data directory is at `/volumes/safe/sql' and my file currently looks like:</p>
+<div class="highlight"><pre><span></span><span class="k">[mysqld]</span>
+<span class="c1"># Default Homebrew MySQL server config</span>
+<span class="c1"># Only allow connections from localhost</span>
+<span class="na">bind-address</span> <span class="o">=</span> <span class="s">127.0.0.1</span>
+
+<span class="na">datadir</span><span class="o">=</span><span class="s">/volumes/safe/sql</span>
+
+<span class="k">[client]</span>
+<span class="na">port</span><span class="o">=</span><span class="s">3306</span>
+</pre></div>
+
+
+<h2>Connecting to MySQL from R (without ODBC)</h2>
+<p>See https://github.com/r-dbi/RMariaDB</p>
+<div class="highlight"><pre><span></span>install.packages(&#39;RMariaDB&#39;, repos=&quot;https://cloud.r-project.org&quot;)
+</pre></div>
+
+
+<p>Install mysql-connector-c from Homebrew; this was tricky and I had to <code>brew unlink mysql</code> before it would work, and then <code>brew link mysql --overwrite</code> afterwards. Still not sure if this broke things</p>
+<div class="highlight"><pre><span></span>brew install mysql-connector-c
+</pre></div>
+
+
+<p>Then edit <code>/usr/local/etc/my.cnf</code></p>
+<div class="highlight"><pre><span></span><span class="k">[spotlight]</span>
+<span class="na">database</span><span class="o">=</span><span class="s">spotlight</span>
+<span class="na">user</span><span class="o">=</span><span class="s">steve</span>
+<span class="na">password</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+</pre></div>
+
+
+<h2>Useful links</h2>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-change-a-mysql-data-directory-to-a-new-location-on-centos-7">How to Change a MySQL Data Directory to a New Location on CentOS 7</a></li>
+<li><a href="https://stackoverflow.com/questions/7973927/for-homebrew-mysql-installs-wheres-my-cnf">For homebrew mysql installs, where's my.cnf?</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/no-free-lunch.html" rel="bookmark"
+                           title="Permalink to No Free Lunch">No Free Lunch</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-09-26T00:00:00+00:00">
+                Published: Mon 26 September 2016
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/rstats.html">[rstats</a> <a href="/tag/tips.html">tips</a> <a href="/tag/methods.html">methods]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>The average is the modern solution to summarising data. Where more than one measurement existed, then the original historical reflex was to choose the best measurement: a fine strategy if you know which is best. Originally, God, the Church, or the King (as His official representative) would choose. Practically, this …</p>
+                <a class="readmore" href="/no-free-lunch.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/simpsons-paradox-backwards.html" rel="bookmark"
+                           title="Permalink to Simpson's Paradox backwards">Simpson's Paradox backwards</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-02-13T00:00:00+00:00">
+                Published: Sat 13 February 2016
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/statistics.html">[statistics</a> <a href="/tag/tutorial.html">tutorial]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>I have been enjoying reading Judea Pearl's new book <em>Causal Inference in Statistics: A primer</em><sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup></p>
+<p>Following on from their example, consider trying to choose between two doctors. You automatically choose the one with the best outcomes. But suppose the one with the best outcomes chooses the easiest cases. The …</p>
+                <a class="readmore" href="/simpsons-paradox-backwards.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/r-functions-you-should-know.html" rel="bookmark"
+                           title="Permalink to R functions you should know">R functions you should know</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-28T00:00:00+00:00">
+                Published: Thu 28 January 2016
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/rstats.html">[rstats</a> <a href="/tag/tips.html">tips</a> <a href="/tag/runninglist.html">runninglist]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>A running list of R functions that <em>I</em> should have known, and didn't with a minimal worked example in the style of <a href="http://tldr-pages.github.io">tl;dr</a>.</p>
+<h2>Assignment operator <code>&lt;-</code> versus <code>&lt;&lt;-</code></h2>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> a <span class="o">&lt;-</span> <span class="m">1</span>    <span class="c1"># assigns only within the environment</span>
+<span class="o">&gt;</span> f <span class="o">&lt;-</span> <span class="kr">function</span> <span class="p">()</span> <span class="p">{</span>
+    a <span class="o">&lt;-</span> <span class="m">2</span>
+    <span class="kp">print</span><span class="p">(</span>a<span class="p">)</span>
+<span class="p">}</span>
+<span class="o">&gt;</span> f<span class="p">()</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">2</span>
+<span class="o">&gt;</span> a
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">1</span>   <span class="c1"># nothing happens &#39;a&#39; hasn …</span></pre></div>
+                <a class="readmore" href="/r-functions-you-should-know.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/advanced-r-book-notes.html" rel="bookmark"
+                           title="Permalink to advanced r book notes">advanced r book notes</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-26T00:00:00+00:00">
+                Published: Tue 26 January 2016
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/rstats.html">[rstats</a> <a href="/tag/books.html">books</a> <a href="/tag/notes.html">notes</a> <a href="/tag/runningfile.html">runningfile]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>A series of notes gleaned from reading Hadley Wickham's <a href="http://adv-r.had.co.nz">Advanced R</a>.<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> For now, I have created sections based around each chapter. I suspect that will rapidly make this page very cumbersome, but it seems like a good place to start.</p>
+<h2>Unsorted general tips</h2>
+<ul>
+<li>read the source code of functions …</li></ul>
+                <a class="readmore" href="/advanced-r-book-notes.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/parsing-command-line-options-in-r.html" rel="bookmark"
+                           title="Permalink to Parsing command line options in R">Parsing command line options in R</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-18T00:00:00+00:00">
+                Published: Mon 18 January 2016
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/.html">[]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>Notes to myself in the form of an R script about how to parse command line arguments. See <a href="http://stackoverflow.com/questions/2151212/ddg#2154190">StackOverflow</a> for alternatives.</p>
+<div class="highlight"><pre><span></span><span class="c1">#! /usr/local/bin/Rscript</span>
+
+<span class="c1"># Hashbang line - optional when running interactively but if you wish to</span>
+<span class="c1"># run `myfile.R` instead of `Rscript myfile.R`</span>
+<span class="c1"># Don&#39;t forget to chmod +x …</span></pre></div>
+                <a class="readmore" href="/parsing-command-line-options-in-r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/get-up-git-up.html" rel="bookmark"
+                           title="Permalink to "Get up, git up"">"Get up, git up"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-13T00:00:00+00:00">
+                Published: Wed 13 January 2016
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/git.html">[git</a> <a href="/tag/apps.html">apps</a> <a href="/tag/osx.html">osx]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>I have been using <a href="https://www.sourcetreeapp.com">SourceTree</a> as a GUI for git, but just came across <a href="http://gitup.co">GitUp</a>. It starts off just looking like a pretty way to view your repository with a fairly typical graph, but you can in fact work from within the graph.</p>
+<p><img alt="Screenshot of GitUp" src="/images/gitup_160113.gif"></p>
+<p>To me, this makes things seem much …</p>
+                <a class="readmore" href="/get-up-git-up.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/awesome-r.html" rel="bookmark"
+                           title="Permalink to Awesome R">Awesome R</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-12T00:00:00+00:00">
+                Published: Tue 12 January 2016
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/code.html">[code</a> <a href="/tag/link.html">link</a> <a href="/tag/r.html">R</a> <a href="/tag/github.html">github]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<blockquote>
+<p>A curated list of awesome R frameworks, packages and software.</p>
+</blockquote>
+                <a class="readmore" href="/awesome-r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/globally-set-options-in-r-markdown.html" rel="bookmark"
+                           title="Permalink to Globally set options in R markdown">Globally set options in R markdown</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-31T00:00:00+00:00">
+                Published: Thu 31 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/rstats.html">[rstats</a> <a href="/tag/tip.html">tip</a> <a href="/tag/markdown.html">markdown]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>Normally you specify options in R markdown at the start of each chunk which requires typing them out for every block if they differ from the defaults.</p>
+<div class="highlight"><pre><span></span><span class="sb">``</span>`<span class="p">{</span>r echo<span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> warnings<span class="o">=</span><span class="kc">FALSE</span><span class="p">}</span>
+<span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="kp">print</span><span class="p">(</span><span class="s">&quot;This line is printed but the one above isn&#39;t&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>But you can specify these …</pre></div>
+                <a class="readmore" href="/globally-set-options-in-r-markdown.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/getting-data-into-r.html" rel="bookmark"
+                           title="Permalink to Getting data into R">Getting data into R</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-29T00:00:00+00:00">
+                Published: Tue 29 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/recipes.html">recipes</a> <a href="/tag/tutorial.html">tutorial]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>Try</p>
+<ul>
+<li><a href="https://github.com/hadley/readr/blob/master/README.md">readr</a></li>
+<li><a href="http://www.rdocumentation.org/packages/data.table/functions/fread">fread</a></li>
+<li><code>read.csv</code> in Base R but beware you need to specify <code>stringsAsFactors=FALSE</code> otherwise strings are imported in a way that you are unlikely to find helpful</li>
+</ul>
+                <a class="readmore" href="/getting-data-into-r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/science-isnt-broken.html" rel="bookmark"
+                           title="Permalink to Science isn't broken">Science isn't broken</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-27T00:00:00+00:00">
+                Published: Sun 27 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/statistics.html">[statistics</a> <a href="/tag/link.html">link</a> <a href="/tag/quotes.html">quotes]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<blockquote>
+<p>The important lesson here is that a single analysis is not sufficient to find a definitive answer. Every result is a temporary truth, one that’s subject to change when someone else comes along to build, test and analyze anew.</p>
+</blockquote>
+                <a class="readmore" href="/science-isnt-broken.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/a-day-in-the-life-visualised.html" rel="bookmark"
+                           title="Permalink to A day in the life ... visualised">A day in the life ... visualised</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-26T00:00:00+00:00">
+                Published: Sat 26 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/statistics.html">[statistics</a> <a href="/tag/link.html">link</a> <a href="/tag/dataviz.html">dataviz]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+                <a class="readmore" href="/a-day-in-the-life-visualised.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/data-analysis-using-regression-and-multilevelhierarchical-models.html" rel="bookmark"
+                           title="Permalink to Data Analysis Using Regression and Multilevel/Hierarchical Models">Data Analysis Using Regression and Multilevel/Hierarchical Models</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-19T00:00:00+00:00">
+                Published: Sat 19 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/runningfile.html">[runningfile</a> <a href="/tag/notes.html">notes</a> <a href="/tag/statistics.html">statistics</a> <a href="/tag/books.html">books</a> <a href="/tag/gelman.html">gelman]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>These are notes from reading Andrew Gelman's and Jennifer Hill's 2007 edition of <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. I started reading this book a few days ago, so these are running notes which I will update as progress. You could consider this a live 'book review'.</p>
+<h2>General …</h2>
+                <a class="readmore" href="/data-analysis-using-regression-and-multilevelhierarchical-models.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/bootstap-at-the-cluster-or-unit-level.html" rel="bookmark"
+                           title="Permalink to Bootstap at the cluster or unit level?">Bootstap at the cluster or unit level?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-17T00:00:00+00:00">
+                Published: Thu 17 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/statistics.html">statistics</a> <a href="/tag/howto.html">howto]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful <a href="http://stats.stackexchange.com/q/97115/7746">Cross Validated</a> recommends that any sampling that is to be done should respect the structure of the data.</p>
+<p>This means first sampling (with replacement) hospitals …</p>
+                <a class="readmore" href="/bootstap-at-the-cluster-or-unit-level.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/an-exact-fishy-test.html" rel="bookmark"
+                           title="Permalink to An exact fishy test">An exact fishy test</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-11T00:00:00+00:00">
+                Published: Fri 11 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/.html">[]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>Unbelievable: What ever numbers you pick are statistically 'non-random'?</p>
+<blockquote>
+<p>You chose the numbers 09 08 07 06 45 08 07 02 77 01</p>
+<p>But these are clearly not random numbers. We can tell because random numbers do not contain patterns but the numbers you entered show a fairly obvious pattern …</p></blockquote>
+                <a class="readmore" href="/an-exact-fishy-test.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-make-a-great-r-reproducible-example.html" rel="bookmark"
+                           title="Permalink to How to make a great R reproducible example?">How to make a great R reproducible example?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-11T00:00:00+00:00">
+                Published: Fri 11 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/statistics.html">statistics</a> <a href="/tag/help.html">help</a> <a href="/tag/stackoverflow.html">stackoverflow]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+                <a class="readmore" href="/how-to-make-a-great-r-reproducible-example.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/stopping-rules-and-regression-to-the-mean.html" rel="bookmark"
+                           title="Permalink to Stopping rules and regression to the mean">Stopping rules and regression to the mean</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-11T00:00:00+00:00">
+                Published: Fri 11 December 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/statistics.html">[statistics</a> <a href="/tag/link.html">link]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+                <a class="readmore" href="/stopping-rules-and-regression-to-the-mean.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/mathjax-example.html" rel="bookmark"
+                           title="Permalink to "MathJax Example"">"MathJax Example"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-08-10T08:08:50-04:00">
+                Published: Mon 10 August 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/.html">[]</a> </p>
+</footer><!-- /.post-info -->                <p><a href="http://www.mathjax.org/">MathJax</a> is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know …</p>
+                <a class="readmore" href="/mathjax-example.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/calculate-the-sofa-score-in-r.html" rel="bookmark"
+                           title="Permalink to Calculate the SOFA score in R">Calculate the SOFA score in R</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-02-11T00:00:00+00:00">
+                Published: Wed 11 February 2015
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/howto.html">howto</a> <a href="/tag/data-wrangling.html">data-wrangling</a> <a href="/tag/severity-score.html">severity-score]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>A follow on from the Charlson score function previously <a href="http://alittleknowledge.net/2014/11/27/calculate-the-charlson-score-in-r.html">posted</a>. Here are functions to calculate the SOFA score.</p>
+<p>Please note</p>
+<ul>
+<li>it's almost inconceivable that your data will be similar to mine, and you will be able to just use these 'as is'; however, they might provide a useful skeleton.</li>
+<li>there …</li></ul>
+                <a class="readmore" href="/calculate-the-sofa-score-in-r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/my-first-r-package.html" rel="bookmark"
+                           title="Permalink to My first R package">My first R package</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-18T00:00:00+00:00">
+                Published: Thu 18 December 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/howto.html">[howto</a> <a href="/tag/r.html">R]</a> </p>
+</footer><!-- /.post-info -->                <p>This is a complete copy of Hilary Parker's post and techinque, but I am unreasonably pleased with myself for this. Please direct all credit to <a href="http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Not So Standard Deviations</a>. Any errors are mine - though it seems to work on my system. You'll note that my thankyou comment is the zillionth …</p>
+                <a class="readmore" href="/my-first-r-package.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/ggplot2-tips.html" rel="bookmark"
+                           title="Permalink to ggplot2 tips">ggplot2 tips</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-01T00:00:00+00:00">
+                Published: Mon 01 December 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/runningfile.html">[runningfile</a> <a href="/tag/tips.html">tips</a> <a href="/tag/howto.html">howto]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>Another running file of useful tips (for me) when using the <a href="http://ggplot2.org/">ggplot2</a> library.</p>
+<ul>
+<li>colour scales: I only just worked out how to find the names of the <a href="http://colorbrewer2.org/#">ColorBrewer</a> palettes that are available. The quickest way is to head over to the website, pick the colour scheme you want, and then …</li></ul>
+                <a class="readmore" href="/ggplot2-tips.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/sublime-text-tips.html" rel="bookmark"
+                           title="Permalink to Sublime Text tips">Sublime Text tips</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-01T00:00:00+00:00">
+                Published: Mon 01 December 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/tips.html">[tips</a> <a href="/tag/runningfile.html">runningfile</a> <a href="/tag/sublimetext.html">sublimetext]</a> </p>
+</footer><!-- /.post-info -->                <p>Just an aide-memoire for myself really. When referring to keybindings then I will use <code>C</code> to indicate <code>Command</code> (OS X) or <code>Control</code> (Windows).</p>
+<ul>
+<li><code>C-D</code> expands the current selection to the next word, but it's easy to overshoot. In which case, <code>C-U</code> will undo (called a soft undo, and therefore distinct …</li></ul>
+                <a class="readmore" href="/sublime-text-tips.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/syntax-highlighting-for-r-in-the-terminal.html" rel="bookmark"
+                           title="Permalink to Syntax highlighting for R in the terminal">Syntax highlighting for R in the terminal</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-28T00:00:00+00:00">
+                Published: Fri 28 November 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/code.html">[code</a> <a href="/tag/howto.html">howto</a> <a href="/tag/terminal.html">terminal]</a> </p>
+</footer><!-- /.post-info -->                <p>So R-studio seemed to be running really slowly today which prompted me to try using R in the terminal. This works nicely with <a href="https://github.com/randy3k/R-Box">R-Box</a>. Otherwise said, type in Sublime Text, and execute in R (via iTerm.)</p>
+<p>This all worked much more quickly, and the plots show up in a lovely …</p>
+                <a class="readmore" href="/syntax-highlighting-for-r-in-the-terminal.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/calculate-the-charlson-score-in-r.html" rel="bookmark"
+                           title="Permalink to Calculate the Charlson score in R">Calculate the Charlson score in R</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-27T00:00:00+00:00">
+                Published: Thu 27 November 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/data-wrangling.html">data-wrangling</a> <a href="/tag/howto.html">howto</a> <a href="/tag/code.html">code]</a> </p>
+</footer><!-- /.post-info -->                <p>It is unlikely that anyone else will have data formatted in the same way as me, but it shouldn't be too hard to convert this.</p>
+<p>You just need a data where the rows represent patients, and there are a series of columns containing indicator variables for the components of the …</p>
+                <a class="readmore" href="/calculate-the-charlson-score-in-r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/adding-comments-to-the-blog.html" rel="bookmark"
+                           title="Permalink to Adding comments to the blog">Adding comments to the blog</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-26T00:00:00+00:00">
+                Published: Wed 26 November 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/howto.html">[howto</a> <a href="/tag/blog.html">blog]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>Big day. I have added comments to the blog. Couldn't have been easier. Signed up for a <a href="https://disqus.com/">disqus</a> account, and followed the instructions <a href="https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions">here</a>. The only small hint I can offer is that when you add the 'Universal Embed code' the tags need to be enclosed in curly braces <code>{</code> and …</p>
+                <a class="readmore" href="/adding-comments-to-the-blog.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/qq-plots-in-r.html" rel="bookmark"
+                           title="Permalink to QQ plots in R">QQ plots in R</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-25T00:00:00+00:00">
+                Published: Tue 25 November 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/code.html">code</a> <a href="/tag/tutorial.html">tutorial]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>I was trying to show some colleagues how to draw a <a href="http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">QQ-plot</a> in R today. I failed miserably, and so have just spent a bit of time trying to redeem myself.</p>
+<p>This should do it.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Test data: 1000 patients with two different age distributions</span>
+tdt <span class="o">&lt;-</span> data.table<span class="p">(</span>age.old<span class="o">=</span>rnorm …</pre></div>
+                <a class="readmore" href="/qq-plots-in-r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/contingency-tables-in-r.html" rel="bookmark"
+                           title="Permalink to Contingency Tables in R">Contingency Tables in R</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-24T00:00:00+00:00">
+                Published: Mon 24 November 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r-statistics.html">[R statistics]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>Hmmm. As I have mentioned I am switching from Stata to R, and right now I am missing the nice simple <code>tab</code> function from Stata that would give me a nice table like this.</p>
+<div class="highlight"><pre><span></span>    tab dead7 icu_accept
+
+           | Accepted to critical
+        7d |         care
+ mortality |         0          1 |     Total
+-----------+----------------------+----------
+     False |     8,143      2 …</pre></div>
+                <a class="readmore" href="/contingency-tables-in-r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/neglected-blog-check-out-the-sublime-jekyll-package.html" rel="bookmark"
+                           title="Permalink to Neglected blog? Check-out the Sublime Jekyll package">Neglected blog? Check-out the Sublime Jekyll package</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-18T00:00:00+00:00">
+                Published: Tue 18 November 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/.html">[]</a> </p>
+</footer><!-- /.post-info -->                <p>Been neglecting this blog for a while, and that is because there is a certain amount of momentum required to write a post. However, I have now installed the <a href="https://sublime.wbond.net/packages/Jekyll">Jekyll</a> package for <a href="http://www.sublimetext.com/">Sublime Text</a>, and using this post as my first test.</p>
+<p>Now to publish ...</p>
+                <a class="readmore" href="/neglected-blog-check-out-the-sublime-jekyll-package.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/learning-r.html" rel="bookmark"
+                           title="Permalink to Learning R">Learning R</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-11T00:00:00+00:00">
+                Published: Thu 11 September 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/r.html">[R</a> <a href="/tag/statistics.html">statistics</a> <a href="/tag/howto.html">howto]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>I was asked by a colleague yesterday if there were any resources on the internet to help learn R. I feel that that should have an answer crafted by someone like <a href="http://xkcd.com/about/">Randall Munroe</a> along the lines of 'What if you tried to count the number of ways there are to …</p>
+                <a class="readmore" href="/learning-r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pubmed-did-you-know.html" rel="bookmark"
+                           title="Permalink to PubMed - Did you know?">PubMed - Did you know?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-11T00:00:00+00:00">
+                Published: Fri 11 July 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/tips.html">[tips]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>I have a nagging feeling that I have always been told that I should use Ovid Medline rather than PubMed if I am doing a <em>serious</em> search. I have just spent 10 minutes on the interweb trying to work out why. As far as I can see, Ovid is just …</p>
+                <a class="readmore" href="/pubmed-did-you-know.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pubmed-search-tags.html" rel="bookmark"
+                           title="Permalink to PubMed search tags">PubMed search tags</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-11T00:00:00+00:00">
+                Published: Fri 11 July 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/tips.html">[tips</a> <a href="/tag/literature.html">literature</a> <a href="/tag/search.html">search]</a> </p>
+</footer><!-- /.post-info -->                <hr>
+<p>I can never remember the tags that I need to help focus searches on <a href="http://www.ncbi.nlm.nih.gov/pubmed/">PubMed</a>. In particular, I didn't know it was possible to specify a date range via tags so for the last 5 years (2009--2014) you'd type <code>2009:2014[dp]</code>.</p>
+<table>
+<thead>
+<tr>
+<th align="left">FIELD NAME</th>
+<th align="left"><code>[TAG]</code></th>
+<th align="left">SEARCHES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Affiliation</td>
+<td align="left"><code>[AD]</code></td>
+<td align="left">First listed …</td></tr></tbody></table>
+                <a class="readmore" href="/pubmed-search-tags.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/edit-bash_profile-from-the-command-line.html" rel="bookmark"
+                           title="Permalink to Edit .bash_profile from the command line">Edit .bash_profile from the command line</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-06-20T00:00:00+00:00">
+                Published: Fri 20 June 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/terminal-bash-quicktip.html">terminal bash quicktip</a> </p>
+</footer><!-- /.post-info -->                <p>It's a pain to have to change my system preferences to show <code>.bash_profile</code>, then navigate, and open it for editing.</p>
+<p><code>subl .bash_profile</code></p>
+<p>does this directly from the command line.</p>
+<p>Make sure you have symlinked to your Sublime Text installtion first.</p>
+<p><code>ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl …</code></p>
+                <a class="readmore" href="/edit-bash_profile-from-the-command-line.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/using-test-to-check-on-a-file-in-the-shell.html" rel="bookmark"
+                           title="Permalink to Using test to check on a file in the shell">Using test to check on a file in the shell</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-06-03T00:00:00+00:00">
+                Published: Tue 03 June 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/shell-bash-tips-hazel.html">shell bash tips Hazel</a> </p>
+</footer><!-- /.post-info -->                <p>Do you need to check whether a file meets certain conditions? Then use the <code>test</code> command in the bash shell.</p>
+<p>For example, I am using <a href="http://www.noodlesoft.com/hazel.php">Hazel</a> to clean up my desktop, but I have a bunch of directories symlinked there that I don't want it to touch. There is no …</p>
+                <a class="readmore" href="/using-test-to-check-on-a-file-in-the-shell.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/git-tips.html" rel="bookmark"
+                           title="Permalink to Git tips">Git tips</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-21T00:00:00+00:00">
+                Published: Wed 21 May 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/code.html">[code</a> <a href="/tag/git.html">git</a> <a href="/tag/tips.html">tips]</a> </p>
+</footer><!-- /.post-info -->                <p>I have been using Git now for a couple of years, and have struggled to understand what it does. I get the basic concept  (that it keeps a record of the changes I make to my code) but it also sometimes seems to get in the way. I have read …</p>
+                <a class="readmore" href="/git-tips.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/blog-set-up-notes.html" rel="bookmark"
+                           title="Permalink to Blog set-up notes">Blog set-up notes</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-18T00:00:00+00:00">
+                Published: Fri 18 April 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/howto.html">[howto</a> <a href="/tag/jekyll.html">jekyll</a> <a href="/tag/github.html">github</a> <a href="/tag/blogging.html">blogging]</a> </p>
+</footer><!-- /.post-info -->                <p>This blog is hosted by github. And despite their claims of this being a simple thing to do, I struggled. Things now seem to work, and I think I now have the hang of this. These are a series of notes to myself to remind me of the things I …</p>
+                <a class="readmore" href="/blog-set-up-notes.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html" rel="bookmark"
+                           title="Permalink to Getting Microsoft OneNote 2007 files into the Mac version of OneNote">Getting Microsoft OneNote 2007 files into the Mac version of OneNote</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-18T00:00:00+00:00">
+                Published: Fri 18 April 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/howto.html">[howto]</a> </p>
+</footer><!-- /.post-info -->                <p>So I have just spent an entire evening extracting the data from my old Microsoft OneNote 2007 files. This was quite a task so I thought I would document my notes here. If I had had access to a Windows 8 machine then it would have been easier. As I …</p>
+                <a class="readmore" href="/getting-microsoft-onenote-2007-files-into-the-mac-version-of-onenote.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-report-frailty-in-a-cox-model.html" rel="bookmark"
+                           title="Permalink to How to report frailty in a Cox Model?">How to report frailty in a Cox Model?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-27T00:00:00+00:00">
+                Published: Thu 27 March 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/statistics.html">[statistics</a> <a href="/tag/questions.html">questions</a> <a href="/tag/stata.html">stata]</a> </p>
+</footer><!-- /.post-info -->                <p>Struggling to report frailty in a survival model. Any ideas? I posted the <a href="http://stats.stackexchange.com/questions/87672/the-right-way-to-report-random-effects-in-a-cox-survival-model">question</a> to <a href="http://stats.stackexchange.com/">Cross Validated</a>.</p>
+<h2>Update 2015-12-11</h2>
+<p>There's an <a href="http://stats.stackexchange.com/a/87679/7746">answer</a> now for parametric models, but below in the end I used the Median Hazard Ratio<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> (analogous to the Median Odds Ratio). </p>
+<p>Here's a little code snippet to …</p>
+                <a class="readmore" href="/how-to-report-frailty-in-a-cox-model.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/stop-using-bivariate-correlations-for-variable-selection.html" rel="bookmark"
+                           title="Permalink to Stop using bivariate correlations for variable selection">Stop using bivariate correlations for variable selection</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-26T00:00:00+00:00">
+                Published: Wed 26 March 2014
+        </abbr>
+
+<p>In <a href="/category/blog.html">blog</a>.</p>
+<p>tags: <a href="/tag/statistics.html">[statistics]</a> </p>
+</footer><!-- /.post-info -->                <p><a href="http://jacobsimmering.com/2014/03/20/BivariateCorrelations/">Stop using bivariate correlations for variable selection</a></p>
+                <a class="readmore" href="/stop-using-bivariate-correlations-for-variable-selection.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

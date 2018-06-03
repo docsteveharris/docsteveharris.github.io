@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Bootstap at the cluster or unit level? - a little knowledge ...</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/bootstap-at-the-cluster-or-unit-level.html">
+
+        <meta name="author" content="Steve Harris" />
+        <meta name="keywords" content="[R,statistics,howto]" />
+        <meta name="description" content="I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful Cross Validated recommends that any sampling that is to be done should respect the structure of the data. This means first sampling (with replacement) hospitals …" />
+
+        <meta property="og:site_name" content="a little knowledge ..." />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Bootstap at the cluster or unit level?"/>
+        <meta property="og:url" content="/bootstap-at-the-cluster-or-unit-level.html"/>
+        <meta property="og:description" content="I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful Cross Validated recommends that any sampling that is to be done should respect the structure of the data. This means first sampling (with replacement) hospitals …"/>
+        <meta property="article:published_time" content="2015-12-17" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="[R" />
+            <meta property="article:tag" content="statistics" />
+            <meta property="article:tag" content="howto]" />
+            <meta property="article:author" content="Steve Harris" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+a little knowledge ...            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li >
+                            <a href="/category/longform.html">Longform</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/bootstap-at-the-cluster-or-unit-level.html"
+                       rel="bookmark"
+                       title="Permalink to Bootstap at the cluster or unit level?">
+                        Bootstap at the cluster or unit level?
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-12-17T00:00:00+01:00"> Thu 17 December 2015</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/r.html">[R</a>
+        /
+	<a href="/tag/statistics.html">statistics</a>
+        /
+	<a href="/tag/howto.html">howto]</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <hr>
+<p>I have been using the bootstrap more often recently, but the data that I use is typically structured with patients nested in hospitals. The wonderful <a href="http://stats.stackexchange.com/q/97115/7746">Cross Validated</a> recommends that any sampling that is to be done should respect the structure of the data.</p>
+<p>This means first sampling (with replacement) hospitals, and then sampling (with replacement again) within each hospital before re-assembling the data.</p>
+<p>There is a better explanation along with a <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/HowToBootstrapCorrelatedData">code snippet</a> from the biostats department at Vanderbilt. However, with 48 hospitals and 15000 patients, this ran very slowly.</p>
+<p>I have re-written this using the <a href="https://github.com/Rdatatable/data.table/wiki">data.table</a> with a good (great?) improvement in speed (but some loss of flexibility).</p>
+<div class="highlight"><pre><span></span><span class="c1"># Generate sample data</span>
+<span class="c1"># --------------------</span>
+
+tdt <span class="o">&lt;-</span> data.table<span class="p">(</span>id<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">15000</span><span class="p">,</span> site<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">,</span> age<span class="o">=</span><span class="kp">round</span><span class="p">(</span>rnorm<span class="p">(</span>n<span class="o">=</span><span class="m">10000</span><span class="p">,</span> mean<span class="o">=</span><span class="m">65</span><span class="p">,</span> sd<span class="o">=</span><span class="m">18</span><span class="p">)))</span>
+
+<span class="c1"># Non data.table version</span>
+<span class="c1"># ----------------------</span>
+
+resample <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>dat<span class="p">,</span> cluster<span class="p">,</span> <span class="kp">replace</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1"># exit early for trivial data</span>
+  <span class="kr">if</span><span class="p">(</span><span class="kp">nrow</span><span class="p">(</span>dat<span class="p">)</span> <span class="o">==</span> <span class="m">1</span> <span class="o">||</span> <span class="kp">all</span><span class="p">(</span>replace<span class="o">==</span><span class="kc">FALSE</span><span class="p">))</span>
+      <span class="kr">return</span><span class="p">(</span>dat<span class="p">)</span>
+
+  <span class="c1"># sample the clustering factor</span>
+  cls <span class="o">&lt;-</span> <span class="kp">sample</span><span class="p">(</span><span class="kp">unique</span><span class="p">(</span>dat<span class="p">[[</span>cluster<span class="p">[</span><span class="m">1</span><span class="p">]]]),</span> replace<span class="o">=</span><span class="kp">replace</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+
+  <span class="c1"># subset on the sampled clustering factors</span>
+  sub <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span>cls<span class="p">,</span> <span class="kr">function</span><span class="p">(</span>b<span class="p">)</span> <span class="kp">subset</span><span class="p">(</span>dat<span class="p">,</span> dat<span class="p">[[</span>cluster<span class="p">[</span><span class="m">1</span><span class="p">]]]</span><span class="o">==</span>b<span class="p">))</span>
+
+  <span class="c1"># sample lower levels of hierarchy (if any)</span>
+  <span class="kr">if</span><span class="p">(</span><span class="kp">length</span><span class="p">(</span>cluster<span class="p">)</span> <span class="o">&gt;</span> <span class="m">1</span><span class="p">)</span>
+    sub <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span><span class="kp">sub</span><span class="p">,</span> resample<span class="p">,</span> cluster<span class="o">=</span>cluster<span class="p">[</span><span class="m">-1</span><span class="p">],</span> replace<span class="o">=</span><span class="kp">replace</span><span class="p">[</span><span class="m">-1</span><span class="p">])</span>
+
+  <span class="c1"># join and return samples</span>
+  <span class="kp">do.call</span><span class="p">(</span><span class="kp">rbind</span><span class="p">,</span> <span class="kp">sub</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="c1"># Data.table version</span>
+<span class="c1"># ------------------</span>
+
+rsample2 <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>data<span class="o">=</span>tdt<span class="p">,</span> id.unit<span class="o">=</span>id.u<span class="p">,</span> id.cluster<span class="o">=</span>id.c<span class="p">)</span> <span class="p">{</span>
+    <span class="kn">require</span><span class="p">(</span>data.table<span class="p">)</span>
+
+    setkeyv<span class="p">(</span>tdt<span class="p">,</span>id.cluster<span class="p">)</span>
+    <span class="c1"># Generate within cluster ID (needed for the sample command)</span>
+    tdt<span class="p">[,</span> <span class="s">&quot;id.within&quot;</span> <span class="o">:=</span> <span class="m">.</span>SD<span class="p">[,</span><span class="m">.</span><span class="kp">I</span><span class="p">],</span> by<span class="o">=</span>id.cluster<span class="p">,</span> with<span class="o">=</span><span class="kc">FALSE</span><span class="p">]</span>
+
+    <span class="c1"># Random sample of sites</span>
+    bdt <span class="o">&lt;-</span> data.table<span class="p">(</span><span class="kp">sample</span><span class="p">(</span><span class="kp">unique</span><span class="p">(</span>tdt<span class="p">[[</span>id.cluster<span class="p">]]),</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+    setnames<span class="p">(</span>bdt<span class="p">,</span><span class="s">&quot;V1&quot;</span><span class="p">,</span>id.cluster<span class="p">)</span>
+    setkeyv<span class="p">(</span>bdt<span class="p">,</span>id.cluster<span class="p">)</span>
+
+    <span class="c1"># Use random sample of sites to select from original data</span>
+    <span class="c1"># then</span>
+    <span class="c1"># within each site sample with replacement using the within site ID</span>
+    bdt <span class="o">&lt;-</span> tdt<span class="p">[</span>bdt<span class="p">,</span> <span class="m">.</span>SD<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">.</span>SD<span class="o">$</span>id.within<span class="p">,</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">)],</span>by<span class="o">=</span><span class="m">.</span>EACHI<span class="p">]</span>
+
+    <span class="c1"># return data sampled with replacement respecting clusters</span>
+    bdt<span class="p">[,</span> id.within <span class="o">:=</span> <span class="kc">NULL</span><span class="p">]</span> <span class="c1"># drop id.within</span>
+    <span class="kr">return</span><span class="p">(</span>bdt<span class="p">)</span>
+<span class="p">}</span>
+
+cluster <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;site&quot;</span><span class="p">,</span> <span class="s">&quot;id&quot;</span><span class="p">)</span>
+<span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> resample<span class="p">(</span>tdt<span class="p">,</span>cluster<span class="p">,</span><span class="kt">c</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="bp">T</span><span class="p">)))</span>
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> resample<span class="p">(</span>tdt<span class="p">,</span>cluster<span class="p">,</span><span class="kt">c</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="bp">T</span><span class="p">)))</span>
+   user  system elapsed 
+  <span class="m">8.597</span>   <span class="m">0.092</span>   <span class="m">8.786</span> 
+<span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> rsample2<span class="p">(</span>tdt<span class="p">,</span> id.unit<span class="o">=</span><span class="s">&quot;pid&quot;</span><span class="p">,</span> id.cluster<span class="o">=</span><span class="s">&quot;site&quot;</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="kp">system.time</span><span class="p">(</span>d <span class="o">&lt;-</span> rsample2<span class="p">(</span>tdt<span class="p">,</span> id.unit<span class="o">=</span><span class="s">&quot;pid&quot;</span><span class="p">,</span> id.cluster<span class="o">=</span><span class="s">&quot;site&quot;</span><span class="p">))</span>
+   user  system elapsed 
+  <span class="m">0.051</span>   <span class="m">0.001</span>   <span class="m">0.052</span> 
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
+    <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+    <li class="list-group-item">
+      <a href="#" target="_blank">You can modify those links in your config file</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Steve Harris
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>
